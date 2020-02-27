@@ -1,0 +1,19 @@
+.side-nav {
+
+  &-greeting {
+    height: 9rem;
+    background-image: url(https://res.cloudinary.com/ilnphotography/image/upload/v1582722885/HomePage/back_gl9w7c.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    text-align: center;
+  }
+
+  &-content {
+    padding: 24px;
+  }
+}
+
+.ant-drawer-body {
+  padding: 0;
+}

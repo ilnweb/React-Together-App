@@ -1,0 +1,36 @@
+.sign-in-up {
+  width: 80%;
+  height: 20rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.input-style {
+  width: 100%;
+}
+
+.button-size {
+  width: 12rem;
+}
+
+.g-signin,
+.f-signin {
+  background-color: #de5246;
+  color: white;
+  border: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.ant-btn>.anticon+span {
+  margin-left: 40px;
+}
+
+.f-signin {
+  background-color: #3b5998;
+}
+
+.signup-sub {
+  cursor: pointer;
+}

@@ -1,0 +1,15 @@
+.ant-tabs-nav {
+  width: 100%;
+}
+
+.ant-tabs-nav div {
+  display: flex;
+
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ant-tabs .ant-tabs-large-bar .ant-tabs-tab {
+  text-align: center;
+  width: 50%;
+}

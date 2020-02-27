@@ -1,0 +1,17 @@
+form.item-form {
+  width: 100%;
+  min-height: 11rem;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all .3s;
+}
+
+.fail-message {
+  color: rgb(240, 69, 69);
+  margin: .5rem;
+  font-size: .8rem;
+}
+
+.input-style {
+  margin: .5rem 0;
+}

@@ -1,0 +1,53 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+
+  &-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+  }
+
+  &-spend {
+    width: 100%;
+    color: white;
+    margin: .2rem;
+    padding: .2rem .5rem;
+    border-radius: 5px;
+    font-weight: 700;
+    display: flex;
+    border-bottom: 1px solid white;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 5px;
+  }
+
+  &-inc span {
+    font-size: 1.7rem;
+    font-weight: 100;
+  }
+
+  &-exp span {
+    font-size: 1.7rem;
+    font-weight: 100;
+  }
+}
+
+.avatar-no-picture {
+  background-color: #f50057;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+}
+
+.avatar-picture {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+}
+
+.avatar-no-picture span {
+  font-size: 2.5rem;
+
+}

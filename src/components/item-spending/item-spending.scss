@@ -1,0 +1,36 @@
+.item-spending {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem;
+  border: .5px solid grey;
+
+  .item-description {
+    font-weight: 600;
+  }
+
+  .item-delete {
+    margin-left: 15px;
+    transition: all .3s;
+  }
+
+  .item-delete:hover {
+    color: #f50057;
+    transform: scale(1.3);
+  }
+
+  p {
+    margin-bottom: 0;
+    font-weight: 300;
+    font-size: .8rem;
+  }
+
+  .item-red {
+    color: rgb(224, 59, 59);
+  }
+
+  .item-green {
+    color: rgb(126, 198, 55);
+  }
+}

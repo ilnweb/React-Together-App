@@ -1,0 +1,13 @@
+.ant-collapse {
+  width: 70%;
+  border: none;
+  border-radius: 0 0 25px 25px;
+}
+
+.ant-collapse-item:last-child > .ant-collapse-content {
+  border-radius: 0 0 25px 25px;
+}
+
+.ant-collapse > .ant-collapse-item {
+  border-bottom: none; 
+}
