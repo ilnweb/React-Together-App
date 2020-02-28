@@ -3,23 +3,14 @@
   top: 0;
   left: 0;
   z-index: 11;
-  height: 2rem;
-  padding: 6px;
+  padding: 6px 8px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
 
-  .dots {
-    height: 2rem;
-    width: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    line-height: 7px;
-    font-size: 1rem;
-    border-radius: 2px;
+  &-icon {
+    width: 5rem;
   }
 }

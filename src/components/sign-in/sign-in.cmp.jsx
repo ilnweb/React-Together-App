@@ -41,7 +41,8 @@ class SignIn extends React.Component {
 						value={this.state.email}
 						className="input-style"
 						type="email"
-						label="Email"
+            label="Email"
+            size="large"
 						placeholder="Email"
 						suffix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
 						autoComplete="true"
@@ -53,22 +54,23 @@ class SignIn extends React.Component {
 						value={this.state.password}
 						className="input-style"
 						type="password"
-						label="Password"
+            label="Password"
+            size="large"
 						placeholder="Password"
 						autoComplete="true"
 						onChange={this.handleChange}
 					/>
 
-					<Button className="button-size" type="primary" htmlType="submit" shape="round">
+					<Button className="button-size" size="large" type="primary" htmlType="submit" >
 						Sign In
 					</Button>
 
-					<Button className="button-size g-signin" type="danger" icon="google" onClick={signInWithGoogle}>
-						Sign In
+					<Button className="button-size g-signin" size="large" type="danger" icon="google" onClick={signInWithGoogle}>
+						Google
 					</Button>
 
-					<Button className="button-size f-signin" type="primary" icon="facebook" onClick={signInWithFacebook}>
-						Sign In
+					<Button className="button-size f-signin" size="large" type="primary" icon="facebook" onClick={signInWithFacebook}>
+						Facebook
 					</Button>
 
 					<div className="signup-sub" onClick={this.props.showSignUp}>

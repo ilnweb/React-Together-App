@@ -47,7 +47,8 @@ class SignUp extends React.Component {
 						value={displayName}
 						className="input-style"
 						type="text"
-						label="Name"
+            label="Name"
+            size="large"
 						placeholder="Name"
 						onChange={this.handleChange}
 						suffix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -58,7 +59,8 @@ class SignUp extends React.Component {
 						value={email}
 						className="input-style"
 						type="email"
-						label="Email"
+            label="Email"
+            size="large"
 						placeholder="Email"
 						onChange={this.handleChange}
 						suffix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -69,7 +71,8 @@ class SignUp extends React.Component {
 						value={password}
 						className="input-style"
 						type="password"
-						label="Password"
+            label="Password"
+            size="large"
 						placeholder="Password"
 						autoComplete="true"
 						onChange={this.handleChange}
@@ -80,12 +83,13 @@ class SignUp extends React.Component {
 						value={confirmPassword}
 						className="input-style"
 						type="password"
-						label="Password"
+            label="Password"
+            size="large"
 						placeholder="Confirm Password"
 						autoComplete="true"
 						onChange={this.handleChange}
 					/>
-					<Button className="button-size" type="primary" htmlType="submit" shape="round" size="large">
+					<Button className="button-size" type="primary" htmlType="submit" size="large">
 						Sign Up
 					</Button>
 					<div className="signup-sub" onClick={this.props.showSignUp}>

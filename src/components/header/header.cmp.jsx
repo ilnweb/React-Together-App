@@ -7,7 +7,7 @@ const Header = () => (
 	<div className="header">
 		<SideNav />
 		<div>
-			<Icon type="bell" />
+			<Icon style={{ fontSize: '50px'}} type="bell"/>
 			<Icon type="more" />
 		</div>
 	</div>

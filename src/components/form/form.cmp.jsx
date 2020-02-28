@@ -76,7 +76,7 @@ class FormAdd extends React.Component {
 					suffix={<Icon type="form" style={{ color: 'rgba(0,0,0,.25)' }} />}
 					onChange={this.handleChange}
 					value={this.state.description}
-					
+					size="large"
 				/>
 				<Input
 					id="amount"
@@ -88,7 +88,7 @@ class FormAdd extends React.Component {
 					suffix={<Icon type="dollar" style={{ color: 'rgba(0,0,0,.25)' }} />}
 					onChange={this.handleChange}
 					value={this.state.amount}
-					
+					size="large"
 				/>
 				<Button onClick={this.handleSubmit}>ADD</Button>
 			</Form>
