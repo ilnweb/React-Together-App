@@ -5,7 +5,8 @@
   font-size: 1rem;
   outline: none;
 }
-html{
+
+html {
   height: auto;
 }
 
@@ -16,13 +17,13 @@ body {
   font-size: 1.5rem;
   box-sizing: border-box;
   background-image: linear-gradient(to right bottom, rgb(107, 99, 193), #71cbd6);
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
+  color:rgb(42, 40, 40);
 }
 
 a {
   text-decoration: none;
-  color: white;
 }
 
 .App {
@@ -34,47 +35,20 @@ a {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  
 }
 
 @media (min-width: 500px) {
   .App {
     margin: 1% auto;
-  }
+   }
 }
 
 .App-footer {
-
   margin-top: auto;
   padding: .5rem;
   text-align: center;
   background: white;
-}
-
-h1 {
-  font-size: 2rem;
-  font-weight: 300;
-
-  color: white;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: 300;
-  margin: 1rem;
-  color: white;
-}
-
-.flex-c {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.flex-c-c {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .isLoading {
@@ -91,11 +65,29 @@ h2 {
 }
 
 .logo {
-  border: 2px solid white;
-  padding: 1.5rem;
-  font-size: 6rem;
+  border: 1px solid white;
+  padding: 1.5rem 2rem;
+  font-size: 4rem;
   font-weight: 400;
+  color: white;
 
+}
+.logo-container {
+  max-width: 30rem;
+}
+
+.logo-container p{
+  color: white;
+}
+
+.logo-container img {
+  margin-top: 8%;
+  width: 95%;
+}
+
+.logo-2 {
+  margin: 0 ;
+  font-size: 3.5rem;
 }
 
 .hide {

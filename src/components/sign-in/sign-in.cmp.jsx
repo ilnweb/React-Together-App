@@ -41,8 +41,8 @@ class SignIn extends React.Component {
 						value={this.state.email}
 						className="input-style"
 						type="email"
-            label="Email"
-            size="large"
+						label="Email"
+						size="large"
 						placeholder="Email"
 						suffix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
 						autoComplete="true"
@@ -54,26 +54,33 @@ class SignIn extends React.Component {
 						value={this.state.password}
 						className="input-style"
 						type="password"
-            label="Password"
-            size="large"
+						label="Password"
+						size="large"
 						placeholder="Password"
 						autoComplete="true"
 						onChange={this.handleChange}
 					/>
 
-					<Button className="button-size" size="large" type="primary" htmlType="submit" >
+					<Button className="button-size" size="large" type="primary" htmlType="submit">
 						Sign In
 					</Button>
-
-					<Button className="button-size g-signin" size="large" type="danger" icon="google" onClick={signInWithGoogle}>
-						Google
-					</Button>
-
-					<Button className="button-size f-signin" size="large" type="primary" icon="facebook" onClick={signInWithFacebook}>
-						Facebook
-					</Button>
-
-					<div className="signup-sub" onClick={this.props.showSignUp}>
+					<div className="flex-c input-style">
+						<Button
+							className="flex-c g-signin mr-5"
+							size="large"
+							type="danger"
+							icon="google"
+							onClick={signInWithGoogle}
+						/>
+						<Button
+							className="flex-c f-signin ml-5"
+							size="large"
+							type="primary"
+							icon="facebook"
+							onClick={signInWithFacebook}
+						/>
+					</div>
+					<div className="signup-sub input-style" onClick={this.props.showSignUp}>
 						New here? Sign Up
 					</div>
 				</Form>

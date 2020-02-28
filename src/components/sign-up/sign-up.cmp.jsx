@@ -89,10 +89,10 @@ class SignUp extends React.Component {
 						autoComplete="true"
 						onChange={this.handleChange}
 					/>
-					<Button className="button-size" type="primary" htmlType="submit" size="large">
+					<Button className="button-size input-style" type="primary" htmlType="submit" size="large">
 						Sign Up
 					</Button>
-					<div className="signup-sub" onClick={this.props.showSignUp}>
+					<div className="signup-sub input-style" onClick={this.props.showSignUp}>
 						Back to Sign In
 					</div>
 				</Form>

@@ -1,5 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
+import './style/css-util.css';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SignInAndSignUpPage from './pages/signIn-signUp/signIn-signUp-page.cmp/signIn-signUp-page.cmp';
@@ -54,8 +55,15 @@ class App extends React.Component {
 		console.log();
 		return (
 			<div className="App">
-				<div className={`flex-c ${this.state.isLoading ? 'isLoading' : 'hide'}`}>
-					<h1 className="logo">TG</h1>
+				<div className={`flex-c-c ${this.state.isLoading ? 'isLoading' : 'hide'}`}>
+        <div className="logo-container flex-c-c">
+            <h1 className="logo-2">TOGETHER</h1>
+            <p>Lets do it better!</p>
+        <img
+          src="https://res.cloudinary.com/ilnphotography/image/upload/v1582856305/HomePage/undraw_mobile_marketing_iqbr_bznozj.svg"
+          alt=""
+        />
+      </div>
 				</div>
 				<Header />
 				<Switch>

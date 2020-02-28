@@ -1,16 +1,7 @@
 .sign-in-up {
-  width: 80%;
-  height: 26rem;
+  width: 90%;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.input-style {
-  width: 100%;
-}
-
-.button-size {
-  width: 12rem;
 }
 
 .g-signin,
@@ -21,11 +12,15 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  
 }
 
-.ant-btn>.anticon+span {
-  margin-left: 40px;
+.ant-btn-icon-only.ant-btn-lg {
+  width: 50%;
+  display:flex;
+  justify-content: center;
 }
+
 
 .f-signin {
   background-color: #3b5998;
@@ -33,4 +28,5 @@
 
 .signup-sub {
   cursor: pointer;
+  text-align: center;
 }
