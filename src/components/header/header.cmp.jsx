@@ -8,7 +8,6 @@ const Header = () => (
 		<SideNav />
 		<div>
 			<Icon style={{ fontSize: '50px'}} type="bell"/>
-			<Icon type="more" />
 		</div>
 	</div>
 );
