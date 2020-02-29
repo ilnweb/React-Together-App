@@ -12,6 +12,7 @@
 <li>React Router Dom</li>
 <li>React-Redux</li>
 <li>Firebase</li>
-<li>EmailJS API - I integrated EmailJs and used the mailing servive from my domain so I can send emails to my personal email when a form is submited.</li>
+<li>NPM</li>
+<li>ES6+</li>
 
 </ul>
