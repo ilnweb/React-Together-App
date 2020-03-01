@@ -11,7 +11,7 @@ const TabSpendings = ({ spendingItems, totalExp, totalInc }) => {
 	const { TabPane } = Tabs;
 	return (
 		<Tabs size="large" defaultActiveKey="1">
-			<TabPane className="tab-full" tab="EXPENCE" key="1">
+			<TabPane className="tab-full" tab="EXPENSE" key="1">
 				{!totalExp ? <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} /> : ''}
 				{spendingItems.map((item) => (item.type === 'exp' ? <ItemSpending key={item.id} item={item} /> : ''))}
 			</TabPane>

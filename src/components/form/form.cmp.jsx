@@ -57,7 +57,7 @@ class FormAdd extends React.Component {
 				<Radio.Group name="type">
 					<div className="flex-c">
 						<Radio onChange={this.handleChange} value="exp" >
-							Expence
+							Expense
 						</Radio>
 
 						<Radio onChange={this.handleChange} value="inc" >

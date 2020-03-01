@@ -26,7 +26,7 @@ const User = ({ currentUser, reverce, totalExp, totalInc }) => {
 				Total Income : <span>+ {totalInc} zl.</span>{' '}
 			</div>
 			<div className="user-spend user-exp">
-				Total Expence : <span>- {totalExp} zl.</span>{' '}
+				Total Expense : <span>- {totalExp} zl.</span>{' '}
 			</div>
 		</div>
 	);
