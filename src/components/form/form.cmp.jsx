@@ -20,7 +20,7 @@ class FormAdd extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		const { addItem } = this.props;
+		const { addItem,currentUser } = this.props;
     const { description, amount, type } = this.state;
     if (description === '' || amount === '' || type === '') {
       this.setState({ formNotFilled: true });
@@ -34,7 +34,7 @@ class FormAdd extends React.Component {
     let formatDate = date.getDate() + "/" +  months[date.getMonth()]  + "/" + date.getFullYear();
 
 
-    const collectionSet = firestore.doc(`users/rsIn01D6Z0VrqfMROo8X0LKbcG52`);
+    const collectionSet = firestore.doc(`users/${currentUser.id}`);
     collectionSet.update({
       spendings: firebase.firestore.FieldValue.arrayUnion({
         id: id(),
@@ -116,7 +116,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-	spendingItems: state.spendings
+  spendingItems: state.spendings,
+  currentUser:state.user.currentUser
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormAdd);
