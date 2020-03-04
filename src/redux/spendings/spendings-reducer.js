@@ -15,7 +15,12 @@ const spendingsReducer = (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				spendingItems: state.spendingItems.filter((item) => item.id !== action.payload.id)
-			};
+      };
+      case spendingTypes.SET_USER_SPENDING:
+        return {
+          ...state,
+          spendingItems: action.payload
+        };
 		default:
 			return state;
 	}

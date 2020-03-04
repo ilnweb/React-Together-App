@@ -65,9 +65,9 @@ a {
 }
 
 .logo {
-  border: 1px solid white;
+  font-family: 'Pacifico', cursive;
   padding: .5rem 1rem;
-  font-size: 4rem;
+  font-size: 6rem;
   font-weight: 400;
   color: white;
 
@@ -86,8 +86,9 @@ a {
 }
 
 .logo-2 {
-  margin: 0 ;
-  font-size: 3.5rem;
+  font-family: 'Pacifico', cursive;
+  margin: 2rem ;
+  font-size: 4rem;
 }
 
 .hide {

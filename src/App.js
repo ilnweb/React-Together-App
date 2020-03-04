@@ -52,12 +52,12 @@ class App extends React.Component {
 	}
 
 	render() {
-		console.log();
+		
 		return (
 			<div className="App">
 				<div className={`flex-c-c ${this.state.isLoading ? 'isLoading' : 'hide'}`}>
         <div className="logo-container flex-c-c">
-            <h1 className="logo-2">TOGETHER</h1>
+            <h1 className="logo-2">Together</h1>
             <p>Lets do it better!</p>
         <img
           src="https://res.cloudinary.com/ilnphotography/image/upload/v1582856305/HomePage/undraw_mobile_marketing_iqbr_bznozj.svg"

@@ -3,6 +3,9 @@ import './form.scss';
 import { Button, Input, Form, Radio, Icon } from 'antd';
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/spendings/spending.actions';
+import firebase from 'firebase';
+import { firestore } from '../../firebase/firebase.config';
+
 
 class FormAdd extends React.Component {
 	constructor() {
@@ -29,6 +32,18 @@ class FormAdd extends React.Component {
     const date = new Date();
     const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
     let formatDate = date.getDate() + "/" +  months[date.getMonth()]  + "/" + date.getFullYear();
+
+
+    const collectionSet = firestore.doc(`users/rsIn01D6Z0VrqfMROo8X0LKbcG52`);
+    collectionSet.update({
+      spendings: firebase.firestore.FieldValue.arrayUnion({
+        id: id(),
+        date:formatDate,
+        description: description,
+        amount: amount,
+        type: type
+      })
+    })
 
     console.log(formatDate);
 		addItem({
