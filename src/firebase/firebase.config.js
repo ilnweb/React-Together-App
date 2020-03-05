@@ -1,4 +1,4 @@
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
@@ -44,15 +44,15 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 ////////////// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
+export const authFB = firebase.auth();
 export const firestore = firebase.firestore();
 
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
 providerGoogle.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(providerGoogle);
+export const signInWithGoogle = () => authFB.signInWithPopup(providerGoogle);
 
 const providerFacebook = new firebase.auth.FacebookAuthProvider();
 providerFacebook.setCustomParameters({ prompt: 'select_account' });
-export const signInWithFacebook = () => auth.signInWithPopup(providerFacebook);
+export const signInWithFacebook = () => authFB.signInWithPopup(providerFacebook);
 
 export default firebase;

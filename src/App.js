@@ -6,7 +6,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import SignInAndSignUpPage from './pages/signIn-signUp/signIn-signUp-page.cmp/signIn-signUp-page.cmp';
 import Header from './components/header/header.cmp';
 import SpendingPage from './pages/Spendings/spendings-page.cmp';
-import { auth, createUserProfileDocument } from './firebase/firebase.config';
+import { authFB, createUserProfileDocument } from './firebase/firebase.config';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
@@ -25,7 +25,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		const { setCurrentUser } = this.props;
-		this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+		this.unsubscribeFromAuth = authFB.onAuthStateChanged(async (userAuth) => {
 			if (userAuth) {
 				const userRef = await createUserProfileDocument(userAuth);
 				userRef.onSnapshot((snapShot) => {
@@ -38,6 +38,7 @@ class App extends React.Component {
 			} else {
 				this.setState({ currentUser: userAuth });
 			}
+
 			setTimeout(
 				function() {
 					this.setState({ isLoading: false });
@@ -52,30 +53,29 @@ class App extends React.Component {
 	}
 
 	render() {
-		
 		return (
 			<div className="App">
 				<div className={`flex-c-c ${this.state.isLoading ? 'isLoading' : 'hide'}`}>
-        <div className="logo-container flex-c-c">
-            <h1 className="logo-2">Together</h1>
-            <p>Lets do it better!</p>
-        <img
-          src="https://res.cloudinary.com/ilnphotography/image/upload/v1582856305/HomePage/undraw_mobile_marketing_iqbr_bznozj.svg"
-          alt=""
-        />
-      </div>
+					<div className="logo-container flex-c-c">
+						<h1 className="logo-2">Together</h1>
+						<p>Lets do it better!</p>
+						<img
+							src="https://res.cloudinary.com/ilnphotography/image/upload/v1582856305/HomePage/undraw_mobile_marketing_iqbr_bznozj.svg"
+							alt=""
+						/>
+					</div>
 				</div>
 				<Header />
 				<Switch>
 					<Route
 						exact
 						path="/"
-						render={() => (auth.currentUser === null ? <Redirect to="/signin" /> : <SpendingPage />)}
+						render={() => (authFB.currentUser === null ? <Redirect to="/signin" /> : <SpendingPage />)}
 					/>
 					<Route
 						exact
 						path="/signin"
-						render={() => (auth.currentUser !== null ? <Redirect to="/" /> : <SignInAndSignUpPage />)}
+						render={() => (authFB.currentUser !== null ? <Redirect to="/" /> : <SignInAndSignUpPage />)}
 					/>
 				</Switch>
 				<footer className="App-footer">Copyright &copy; ILNweb 2020</footer>

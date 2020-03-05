@@ -1,7 +1,7 @@
 import React from 'react';
 import './sign-up.scss';
 import { Button, Input, Form, Icon } from 'antd';
-import { auth, createUserProfileDocument } from '../../firebase/firebase.config';
+import { authFB, createUserProfileDocument } from '../../firebase/firebase.config';
 
 class SignUp extends React.Component {
 	constructor() {
@@ -23,7 +23,7 @@ class SignUp extends React.Component {
 		}
 
 		try {
-			const { user } = await auth.createUserWithEmailAndPassword(email, password);
+			const { user } = await authFB.createUserWithEmailAndPassword(email, password);
 			await createUserProfileDocument(user, { displayName });
 		} catch (error) {
 			console.error(error);

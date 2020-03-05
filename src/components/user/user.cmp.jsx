@@ -9,7 +9,6 @@ import { Avatar } from 'antd';
 const User = ({ currentUser, reverce, totalExp, totalInc }) => {
 	const userName = currentUser.displayName.split(' ').slice(0, 1);
 	const avatarLetter = userName[0].split('')[0].toUpperCase();
-	console.log(avatarLetter);
 	return (
 		<div className={`user ${reverce ? 'user-reverce' : ''}`}>
 			<div className="user-img">

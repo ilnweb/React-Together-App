@@ -4,6 +4,7 @@ import { removeItem } from '../../redux/spendings/spending.actions';
 import { connect } from 'react-redux';
 import { Icon } from 'antd';
 
+
 const ItemSpending = ({ item, removeItem }) => {
 	return (
 		<div id={item.id} className="item-spending">

@@ -1,7 +1,7 @@
 import React from 'react';
 import './side-nav.scss';
 import { Drawer, Icon } from 'antd';
-import { auth } from '../../firebase/firebase.config';
+import { authFB } from '../../firebase/firebase.config';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
@@ -36,7 +36,7 @@ class SideNav extends React.Component {
 						</p>
 						<p><Icon type="usergroup-add" /> Conections</p>
 						<p>
-							<Icon type="logout" /> <span onClick={() => auth.signOut().then(() => this.onClose())}> Sign out</span>
+							<Icon type="logout" /> <span onClick={() => authFB.signOut().then(() => this.onClose())}> Sign out</span>
 						</p>
 					</div>
 				</Drawer>

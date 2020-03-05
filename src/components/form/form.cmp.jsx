@@ -3,7 +3,7 @@ import './form.scss';
 import { Button, Input, Form, Radio, Icon } from 'antd';
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/spendings/spending.actions';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import { firestore } from '../../firebase/firebase.config';
 
 
@@ -16,12 +16,15 @@ class FormAdd extends React.Component {
       type: '',
       formNotFilled:false
 		};
-	}
+  }
+  
+  
 
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const { addItem,currentUser } = this.props;
     const { description, amount, type } = this.state;
+
     if (description === '' || amount === '' || type === '') {
       this.setState({ formNotFilled: true });
       return;
@@ -45,8 +48,7 @@ class FormAdd extends React.Component {
       })
     })
 
-    console.log(formatDate);
-		addItem({
+    addItem({
       id: id(),
       date:formatDate,
 			description: description,

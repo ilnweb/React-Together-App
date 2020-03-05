@@ -1,4 +1,5 @@
 import { spendingTypes } from './spending-type';
+import {removeItem} from './spending.ustils';
 
 const INITIAL_STATE = {
 	spendingItems: []
@@ -14,7 +15,7 @@ const spendingsReducer = (state = INITIAL_STATE, action) => {
 		case spendingTypes.REMOVE_ITEM:
 			return {
 				...state,
-				spendingItems: state.spendingItems.filter((item) => item.id !== action.payload.id)
+				spendingItems: removeItem(state.spendingItems, action.payload)
       };
       case spendingTypes.SET_USER_SPENDING:
         return {

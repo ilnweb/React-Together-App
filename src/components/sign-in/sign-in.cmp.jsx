@@ -1,6 +1,6 @@
 import React from 'react';
 import './sign-in.scss';
-import { auth, signInWithGoogle, signInWithFacebook } from '../../firebase/firebase.config';
+import { authFB, signInWithGoogle, signInWithFacebook } from '../../firebase/firebase.config';
 import { Button, Input, Form, Icon } from 'antd';
 
 class SignIn extends React.Component {
@@ -17,7 +17,7 @@ class SignIn extends React.Component {
 		const { email, password } = this.state;
 
 		try {
-			await auth.signInWithEmailAndPassword(email, password);
+			await authFB.signInWithEmailAndPassword(email, password);
 			// this.setState({ email: '', password: '' });
 		} catch (error) {
 			console.error(`wtf ${error}`);
