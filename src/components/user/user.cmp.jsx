@@ -7,8 +7,8 @@ import { createStructuredSelector } from 'reselect';
 import { Avatar } from 'antd';
 
 const User = ({ currentUser, reverce, totalExp, totalInc }) => {
-	const userName = currentUser.displayName.split(' ').slice(0, 1);
-	const avatarLetter = userName[0].split('')[0].toUpperCase();
+	const userName = currentUser ? currentUser.displayName.split(' ').slice(0, 1) :'';
+	const avatarLetter = userName ? userName[0].split('')[0].toUpperCase():'';
 	return (
 		<div className={`user ${reverce ? 'user-reverce' : ''}`}>
 			<div className="user-img">
