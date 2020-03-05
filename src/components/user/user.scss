@@ -10,21 +10,24 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    margin: 0;
+    margin-bottom: 2rem;
   }
 
   &-spend {
     width: 100%;
     color: white;
-    margin: .2rem;
-    padding: .2rem .5rem;
-    border-radius: 5px;
+    
+    padding: 0 .5rem;
+   
     font-weight: 700;
     display: flex;
-    border-bottom: 1px solid white;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding-bottom: 5px;
+  }
+
+  .totals-conatiner{
+    width: 100%;
   }
 
   &-inc span {
@@ -32,11 +35,20 @@
     font-weight: 100;
   }
 
-  &-exp span {
+  &-inc {
+    border-left: .1px solid white;
+  }
+
+  &-exp  span{
     font-size: 1.7rem;
     font-weight: 100;
   }
+
+  &-exp  {
+    border-right: .1px solid white;
+  }
 }
+
 
 .avatar-no-picture {
   background-color: #f50057;

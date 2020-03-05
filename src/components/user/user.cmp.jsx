@@ -7,7 +7,7 @@ import { createStructuredSelector } from 'reselect';
 import { Avatar } from 'antd';
 
 const User = ({ currentUser, reverce, totalExp, totalInc }) => {
-	const userName = currentUser ? currentUser.displayName.split(' ').slice(0, 1) :'';
+	const userName = currentUser.displayName !== null? currentUser.displayName.split(' ').slice(0, 1) :'';
 	const avatarLetter = userName ? userName[0].split('')[0].toUpperCase():'';
 	return (
 		<div className={`user ${reverce ? 'user-reverce' : ''}`}>
@@ -20,13 +20,15 @@ const User = ({ currentUser, reverce, totalExp, totalInc }) => {
 					</Avatar>
 				)}
 				<h1 className="user-name">{userName}</h1>
-			</div>
-			<div className="user-spend user-inc">
+      </div>
+      <div className="flex-c totals-conatiner">
+			<div className="user-spend user-exp flex-c-c">
+				Total Expense : <span>- {totalExp} zl.</span>{' '}
+        </div>
+        <div className="user-spend user-inc flex-c-c">
 				Total Income : <span>+ {totalInc} zl.</span>{' '}
 			</div>
-			<div className="user-spend user-exp">
-				Total Expense : <span>- {totalExp} zl.</span>{' '}
-			</div>
+      </div>
 		</div>
 	);
 };
