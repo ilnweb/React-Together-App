@@ -6,6 +6,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import SignInAndSignUpPage from './pages/signIn-signUp/signIn-signUp-page.cmp/signIn-signUp-page.cmp';
 import Header from './components/header/header.cmp';
 import SpendingPage from './pages/Spendings/spendings-page.cmp';
+import BottomNav from './components/bottom-nav/bottom-nav.cmp';
 import { authFB, createUserProfileDocument } from './firebase/firebase.config';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
@@ -78,7 +79,7 @@ class App extends React.Component {
 						render={() => (authFB.currentUser !== null ? <Redirect to="/" /> : <SignInAndSignUpPage />)}
 					/>
 				</Switch>
-				<footer className="App-footer">Copyright &copy; ILNweb 2020</footer>
+				<BottomNav className="App-footer" />
 			</div>
 		);
 	}
