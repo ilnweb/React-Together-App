@@ -1,6 +1,7 @@
 import React from 'react';
 import './side-nav.scss';
-import { Drawer, Icon } from 'antd';
+import { Drawer } from 'antd';
+import { LogoutOutlined,UsergroupAddOutlined,UserOutlined,MenuUnfoldOutlined } from '@ant-design/icons';
 import { authFB } from '../../firebase/firebase.config';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -26,17 +27,17 @@ class SideNav extends React.Component {
 
 		return (
 			<div className="side-nav">
-				<Icon type="menu-unfold" onClick={this.showDrawer} />
+      <MenuUnfoldOutlined onClick={this.showDrawer} />
 
 				<Drawer title="Togheder" placement="left" closable={false} onClose={this.onClose} visible={this.state.visible}>
 					<h2 className="side-nav-greeting flex-c">Hi, {currentUser !== null ? currentUser.displayName !== null ? currentUser.displayName.split(' ').slice(0, 1):'' : ''}</h2>
 					<div className="side-nav-content">
 						<p>
-              <Icon style={{fontSize:"30px"}} type="user" /> Profile
+            <UserOutlined /> Profile
 						</p>
-						<p><Icon type="usergroup-add" /> Conections</p>
+						<p><UsergroupAddOutlined /> Conections</p>
 						<p>
-							<Icon type="logout" /> <span onClick={() => authFB.signOut().then(() => this.onClose())}> Sign out</span>
+              <LogoutOutlined /> <span onClick={() => authFB.signOut().then(() => this.onClose())}> Sign out</span>
 						</p>
 					</div>
 				</Drawer>
