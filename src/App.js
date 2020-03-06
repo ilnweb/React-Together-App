@@ -80,12 +80,12 @@ class App extends React.Component {
 						exact
 						path="/signin"
 						render={() => (authFB.currentUser !== null ? <Redirect to="/" /> : <SignInAndSignUpPage />)}
-          />
-          <Route path='/connections' component={ConnectionsPage} />
-          <Route path='/calendar' component={CalendarPage} />
-          <Route path='/to-do' component={ToDoPage} />
+					/>
+					<Route path="/connections" component={ConnectionsPage} />
+					<Route path="/calendar" component={CalendarPage} />
+					<Route path="/to-do" component={ToDoPage} />
 				</Switch>
-        <Route component={BottomNav} />
+				<Route component={BottomNav} />
 			</div>
 		);
 	}
