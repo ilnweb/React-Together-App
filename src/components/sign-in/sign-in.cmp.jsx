@@ -1,7 +1,9 @@
 import React from 'react';
 import './sign-in.scss';
 import { authFB, signInWithGoogle, signInWithFacebook } from '../../firebase/firebase.config';
-import { Button, Input, Form, Icon } from 'antd';
+import { Button, Input, Form } from 'antd';
+import { MailOutlined } from '@ant-design/icons';
+
 
 class SignIn extends React.Component {
 	constructor() {
@@ -44,7 +46,7 @@ class SignIn extends React.Component {
 						label="Email"
 						size="large"
 						placeholder="Email"
-						suffix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+						suffix={<MailOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
 						autoComplete="true"
 						onChange={this.handleChange}
 					/>

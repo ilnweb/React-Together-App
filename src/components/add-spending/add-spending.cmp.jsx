@@ -1,9 +1,11 @@
 import React from 'react';
 import './add-spending.scss';
 import FormAdd from '../form/form.cmp';
-import { Collapse, Icon } from 'antd';
+import { PlusCircleFilled  } from '@ant-design/icons';
 
-const genExtra = () => <Icon type="plus-circle" className="color-primary" theme="filled" size="large" />;
+import { Collapse } from 'antd';
+
+const genExtra = () => <PlusCircleFilled className="color-primary"/>;
 
 export default function AddSpending() {
 	const { Panel } = Collapse;

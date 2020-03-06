@@ -1,6 +1,7 @@
 import React from 'react';
 import './form.scss';
-import { Button, Input, Form, Radio, Icon } from 'antd';
+import { Button, Input, Form, Radio } from 'antd';
+import { DollarCircleOutlined, FormOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/spendings/spending.actions';
 import firebase from 'firebase/app';
@@ -90,7 +91,7 @@ class FormAdd extends React.Component {
 					type="text"
 					label="Description"
 					placeholder="Description"
-					suffix={<Icon type="form" style={{ color: 'rgba(0,0,0,.25)' }} />}
+					suffix={<FormOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
 					onChange={this.handleChange}
 					value={this.state.description}
 					size="large"
@@ -102,7 +103,7 @@ class FormAdd extends React.Component {
 					type="number"
 					label="Amount"
 					placeholder="Amount"
-					suffix={<Icon type="dollar" style={{ color: 'rgba(0,0,0,.25)' }} />}
+					suffix={<DollarCircleOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
 					onChange={this.handleChange}
 					value={this.state.amount}
 					size="large"

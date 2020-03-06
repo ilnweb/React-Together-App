@@ -2,7 +2,7 @@ import React from 'react';
 import './bottom-nav.scss';
 import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
-import { HomeOutlined, UsergroupAddOutlined, CalendarOutlined, FormOutlined } from '@ant-design/icons';
+import { HomeOutlined, UsergroupAddOutlined, CalendarOutlined, FileDoneOutlined } from '@ant-design/icons';
 
 class BottomNav extends React.Component {
 	state = {
@@ -44,7 +44,7 @@ class BottomNav extends React.Component {
 					<Link to="/calendar" />
 				</Menu.Item>
 				<Menu.Item key="/to-do">
-					<FormOutlined />
+        <FileDoneOutlined />
 					<Link to="/to-do" />
 				</Menu.Item>
 			</Menu>

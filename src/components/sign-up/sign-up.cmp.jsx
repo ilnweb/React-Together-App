@@ -1,6 +1,7 @@
 import React from 'react';
 import './sign-up.scss';
-import { Button, Input, Form, Icon } from 'antd';
+import { UserOutlined, MailOutlined } from '@ant-design/icons';
+import { Button, Input, Form } from 'antd';
 import { authFB, createUserProfileDocument } from '../../firebase/firebase.config';
 
 class SignUp extends React.Component {
@@ -51,7 +52,7 @@ class SignUp extends React.Component {
             size="large"
 						placeholder="Name"
 						onChange={this.handleChange}
-						suffix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+						suffix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
 					/>
 					<Input
 						id="email"
@@ -63,7 +64,7 @@ class SignUp extends React.Component {
             size="large"
 						placeholder="Email"
 						onChange={this.handleChange}
-						suffix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+						suffix={<MailOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
 					/>
 					<Input.Password
 						id="password"
