@@ -32,7 +32,7 @@ class SideNav extends React.Component {
 					<h2 className="side-nav-greeting flex-c">Hi, {currentUser !== null ? currentUser.displayName !== null ? currentUser.displayName.split(' ').slice(0, 1):'' : ''}</h2>
 					<div className="side-nav-content">
 						<p>
-							<Icon type="user" /> Profile
+              <Icon style={{fontSize:"30px"}} type="user" /> Profile
 						</p>
 						<p><Icon type="usergroup-add" /> Conections</p>
 						<p>
