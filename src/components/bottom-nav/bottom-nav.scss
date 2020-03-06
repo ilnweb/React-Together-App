@@ -4,10 +4,12 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   position: fixed;
+
   bottom: -1px;
-  left: 0;
+
   width: 100%;
-  z-index: 100;
+  max-width: 30rem;
+  z-index: 99;
   color: white;
 }
 

@@ -24,7 +24,8 @@ class BottomNav extends React.Component {
 	};
 
 	render() {
-		return (
+    return (
+      
 			<Menu
 				className="bottom-nav flex-c"
 				onClick={this.handleClick}

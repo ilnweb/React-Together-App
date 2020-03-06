@@ -38,7 +38,7 @@ a {
 
 @media (min-width: 500px) {
   .App {
-    margin: 1% auto;
+    margin: 0 auto;
    }
 }
 
