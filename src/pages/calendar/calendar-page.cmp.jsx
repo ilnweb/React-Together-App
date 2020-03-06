@@ -1,10 +1,9 @@
 import React from 'react';
 import './calendar-page.cmp';
-import { Icon } from 'antd';
 
 const CalendarPage = () => (
 	<div className="calendar-page">
-	
+	<h1> Calendar page</h1>
 	</div>
 );
 

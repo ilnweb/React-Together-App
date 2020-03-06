@@ -4,7 +4,7 @@ import { Icon } from 'antd';
 
 const ConnectionsPage = () => (
 	<div className="connections-page">
-	
+	<h1> Conections page</h1>
 	</div>
 );
 

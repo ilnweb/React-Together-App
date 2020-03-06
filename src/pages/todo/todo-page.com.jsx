@@ -1,10 +1,10 @@
 import React from 'react';
 import './todo-page.com';
-import { Icon } from 'antd';
+
 
 const ToDoPage = () => (
 	<div className="todo-page">
-	
+	<h1>  Todo page</h1>
 	</div>
 );
 

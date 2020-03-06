@@ -6,6 +6,9 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import SignInAndSignUpPage from './pages/signIn-signUp/signIn-signUp-page.cmp/signIn-signUp-page.cmp';
 import Header from './components/header/header.cmp';
 import SpendingPage from './pages/Spendings/spendings-page.cmp';
+import ConnectionsPage from './pages/conections/connections-page.cmp';
+import CalendarPage from './pages/calendar/calendar-page.cmp';
+import ToDoPage from './pages/todo/todo-page.com';
 import BottomNav from './components/bottom-nav/bottom-nav.cmp';
 import { authFB, createUserProfileDocument } from './firebase/firebase.config';
 import { connect } from 'react-redux';
@@ -77,9 +80,12 @@ class App extends React.Component {
 						exact
 						path="/signin"
 						render={() => (authFB.currentUser !== null ? <Redirect to="/" /> : <SignInAndSignUpPage />)}
-					/>
+          />
+          <Route path='/connections' component={ConnectionsPage} />
+          <Route path='/calendar' component={CalendarPage} />
+          <Route path='/to-do' component={ToDoPage} />
 				</Switch>
-				<BottomNav className="App-footer" />
+				<BottomNav />
 			</div>
 		);
 	}
