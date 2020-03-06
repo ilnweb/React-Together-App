@@ -29,9 +29,7 @@ a {
 .App {
   position: relative;
   max-width: 30rem;
-  background: #24C6DC;
-  background: -webkit-linear-gradient(to right, #514A9D, #24C6DC);
-  background: linear-gradient(to right, rgb(107, 99, 193), #71cbd6);
+  background: linear-gradient(to right bottom, rgb(207, 207, 207),#edf4ff );
   display: flex;
   flex-direction: column;
   min-height: 100vh;

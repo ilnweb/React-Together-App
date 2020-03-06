@@ -1,11 +1,22 @@
 .bottom-nav{
-  background-color: white;
-  border-radius: 2px;
+  background-image: url(https://res.cloudinary.com/ilnphotography/image/upload/v1582805877/HomePage/back.png_uynssv.jpg);
+  background-size:cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   position: fixed;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   width: 100%;
+  z-index: 100;
+  color: white;
 }
+
+.ant-menu-horizontal > .ant-menu-item:hover, .ant-menu-horizontal > .ant-menu-submenu:hover, .ant-menu-horizontal > .ant-menu-item-active, .ant-menu-horizontal > .ant-menu-submenu-active, .ant-menu-horizontal > .ant-menu-item-open, .ant-menu-horizontal > .ant-menu-submenu-open, .ant-menu-horizontal > .ant-menu-item-selected, .ant-menu-horizontal > .ant-menu-submenu-selected{
+    color: #e9e9e9;
+    border-bottom: 2px solid #e9e9e9;
+}
+
+
 
 .ant-menu-item .anticon{
   margin-right: 0;
