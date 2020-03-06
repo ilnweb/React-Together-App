@@ -7,36 +7,48 @@ import { HomeOutlined, UsergroupAddOutlined, CalendarOutlined, FormOutlined } fr
 class BottomNav extends React.Component {
 	state = {
 		current: 'home'
-	};
+  };
 
-	handleClick = (e) => {
+  componentDidMount(){
+    const { pathname } = this.props.location;
+    this.setState({
+			current: pathname
+		});
+  }
+  
+  pathLocation = () => {
+    
+  }
+
+  handleClick = (e) => {
+    
 		console.log('click ', e);
 		this.setState({
 			current: e.key
 		});
 	};
 
-	render() {
+  render() {
 		return (
-			<Menu
+      <Menu
 				className="bottom-nav flex-c"
 				onClick={this.handleClick}
 				selectedKeys={[ this.state.current ]}
 				mode="horizontal"
 			>
-				<Menu.Item key="home">
+				<Menu.Item key="/">
           <HomeOutlined />
           <Link to="/" />
 				</Menu.Item>
-				<Menu.Item key="connections">
+				<Menu.Item key="/connections">
           <UsergroupAddOutlined />
           <Link to="/connections" />
 				</Menu.Item>
-				<Menu.Item key="calendar">
+				<Menu.Item key="/calendar">
           <CalendarOutlined />
           <Link to="/calendar" />
 				</Menu.Item>
-				<Menu.Item key="todo">
+				<Menu.Item key="/to-do">
           <FormOutlined />
           <Link to="/to-do" />
 				</Menu.Item>

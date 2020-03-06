@@ -85,7 +85,7 @@ class App extends React.Component {
           <Route path='/calendar' component={CalendarPage} />
           <Route path='/to-do' component={ToDoPage} />
 				</Switch>
-				<BottomNav />
+        <Route component={BottomNav} />
 			</div>
 		);
 	}
