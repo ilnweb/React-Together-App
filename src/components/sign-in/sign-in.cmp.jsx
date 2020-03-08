@@ -2,7 +2,7 @@ import React from 'react';
 import './sign-in.scss';
 import { authFB, signInWithGoogle, signInWithFacebook } from '../../firebase/firebase.config';
 import { Button, Input, Form } from 'antd';
-import { MailOutlined } from '@ant-design/icons';
+import { MailOutlined, FacebookOutlined, GoogleOutlined } from '@ant-design/icons';
 
 
 class SignIn extends React.Component {
@@ -70,15 +70,15 @@ class SignIn extends React.Component {
 						<Button
 							className="flex-c g-signin mr-5"
 							size="large"
-							type="danger"
-							icon="google"
+              type="danger"
+              icon={<GoogleOutlined/>}
 							onClick={signInWithGoogle}
 						/>
 						<Button
 							className="flex-c f-signin ml-5"
 							size="large"
-							type="primary"
-							icon="facebook"
+              type="primary"
+              icon={<FacebookOutlined/>}
 							onClick={signInWithFacebook}
 						/>
 					</div>
