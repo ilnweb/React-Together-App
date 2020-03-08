@@ -7,7 +7,7 @@ const Header = () => (
 	<div className="header">
 		<SideNav />
 		<div>
-			<BellOutlined />
+      <BellOutlined />
 		</div>
 	</div>
 );

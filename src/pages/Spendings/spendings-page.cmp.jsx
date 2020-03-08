@@ -15,8 +15,8 @@ class SpendingPage extends React.Component {
 		const { setUserSpending, currentUser } = this.props;
 
 		const collectionRef = firestore.doc(`users/${currentUser.id}`);
-		collectionRef.get().then(async (snapshot) => {
-			const items = await snapshot.data().spendings;
+		collectionRef.get().then((snapshot) => {
+			const items = snapshot.data().spendings;
 			setUserSpending(items);
 		});
 	}

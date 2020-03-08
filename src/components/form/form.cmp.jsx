@@ -19,8 +19,6 @@ class FormAdd extends React.Component {
 		};
   }
   
-  
-
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const { addItem,currentUser } = this.props;
@@ -36,7 +34,6 @@ class FormAdd extends React.Component {
     const date = new Date();
     const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
     let formatDate = date.getDate() + "/" +  months[date.getMonth()]  + "/" + date.getFullYear();
-
 
     const collectionSet = firestore.doc(`users/${currentUser.id}`);
     collectionSet.update({
