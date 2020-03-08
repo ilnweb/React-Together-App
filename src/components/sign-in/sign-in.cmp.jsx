@@ -36,7 +36,7 @@ class SignIn extends React.Component {
 		return (
 			<div className="sign-in-up flex-c-c">
 				<h1>Sign In</h1>
-				<Form className="sign-in-up flex-c" onSubmit={this.handleSubmit}>
+				<Form className="sign-in-up flex-c">
 					<Input
 						id="email1"
 						name="email"
@@ -63,7 +63,7 @@ class SignIn extends React.Component {
 						onChange={this.handleChange}
 					/>
 
-					<Button className="button-size" size="large" type="primary" htmlType="submit">
+					<Button className="button-size" size="large" type="primary" onClick={this.handleSubmit}>
 						Sign In
 					</Button>
 					<div className="flex-c input-style">

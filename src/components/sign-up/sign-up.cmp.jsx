@@ -41,7 +41,7 @@ class SignUp extends React.Component {
 		return (
 			<div className="sign-in-up flex-c-c">
 				<h1>Sign Up</h1>
-				<Form className="sign-in-up flex-c" onSubmit={this.handleSubmit}>
+				<Form className="sign-in-up flex-c">
 					<Input
 						id="name"
 						name="displayName"
@@ -90,7 +90,7 @@ class SignUp extends React.Component {
 						autoComplete="true"
 						onChange={this.handleChange}
 					/>
-					<Button className="button-size input-style" type="primary" htmlType="submit" size="large">
+					<Button className="button-size input-style" type="primary" size="large" onClick={this.handleSubmit}>
 						Sign Up
 					</Button>
 					<div className="signup-sub input-style" onClick={this.props.showSignUp}>
