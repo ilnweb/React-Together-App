@@ -1,14 +1,10 @@
 import React from 'react';
 import './user.scss';
-import { connect } from 'react-redux';
-import { selectSpendingsExpTotal, selectSpendingsIncTotal } from '../../redux/spendings/spendings.selectors';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { createStructuredSelector } from 'reselect';
 import { Avatar } from 'antd';
 
-const User = ({ currentUser, reverce, totalExp, totalInc }) => {
-	const userName = currentUser.displayName !== null? currentUser.displayName.split(' ').slice(0, 1) :'';
-	const avatarLetter = userName ? userName[0].split('')[0].toUpperCase():'';
+const User = ({ currentUser, reverce, totalExp, totalInc, income }) => {
+	const userName = currentUser.displayName !== null ? currentUser.displayName.split(' ').slice(0, 1) : '';
+	const avatarLetter = userName ? userName[0].split('')[0].toUpperCase() : '';
 	return (
 		<div className={`user ${reverce ? 'user-reverce' : ''}`}>
 			<div className="user-img">
@@ -20,23 +16,17 @@ const User = ({ currentUser, reverce, totalExp, totalInc }) => {
 					</Avatar>
 				)}
 				<h1 className="user-name">{userName}</h1>
-      </div>
-      <div className="flex-c totals-conatiner">
-			<div className="user-spend user-exp flex-c-c">
-				Total Expense : <span>- {totalExp} zl.</span>{' '}
-        </div>
-        <div className="user-spend user-inc flex-c-c">
-				Total Income : <span>+ {totalInc} zl.</span>{' '}
 			</div>
-      </div>
+			<div className="flex-c totals-conatiner">
+				<div className="user-spend  user-exp  flex-c-c">
+					Total Expense : <span>- {totalExp} zl.</span>{' '}
+				</div>
+				{ income ? <div className="user-spend user-inc flex-c-c">
+					Total Income : <span>+ {totalInc} zl.</span>{' '}
+				</div> : ''}
+			</div>
 		</div>
 	);
 };
 
-const mapStateToProps = createStructuredSelector({
-	currentUser: selectCurrentUser,
-	totalExp: selectSpendingsExpTotal,
-	totalInc: selectSpendingsIncTotal
-});
-
-export default connect(mapStateToProps)(User);
+export default User;

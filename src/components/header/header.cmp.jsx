@@ -7,7 +7,7 @@ const Header = () => (
 	<div className="header">
 		<SideNav />
 		<div>
-      <BellOutlined />
+      <BellOutlined style={{ fontSize:"25px"}}/>
 		</div>
 	</div>
 );

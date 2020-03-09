@@ -9,23 +9,26 @@ import { connect } from 'react-redux';
 import { setUserSpending } from '../../redux/spendings/spending.actions';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
+import { selectSpendingsExpTotal, selectSpendingsIncTotal } from '../../redux/spendings/spendings.selectors';
+
 
 class SpendingPage extends React.Component {
 	componentDidMount() {
 		const { setUserSpending, currentUser } = this.props;
 
 		const collectionRef = firestore.doc(`users/${currentUser.id}`);
-		collectionRef.get().then((snapshot) => {
+		collectionRef.get().then( (snapshot) => {
 			const items = snapshot.data().spendings;
 			setUserSpending(items);
 		});
 	}
 
-	render() {
+  render() {
+    const { currentUser, totalExp, totalInc } = this.props;
 		return (
 			<div className="spending">
 				<HeaderContainer>
-					<User />
+          <User currentUser={currentUser} totalExp={totalExp} totalInc={totalInc} income={true} />
 				</HeaderContainer>
 				<AddSpending />
 				<div className="spending-list">
@@ -41,7 +44,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = createStructuredSelector({
-	currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  totalExp: selectSpendingsExpTotal,
+	totalInc: selectSpendingsIncTotal
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SpendingPage);
