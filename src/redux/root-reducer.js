@@ -7,7 +7,7 @@ import spendingsReducer from './spendings/spendings-reducer';
 const persisitConfig = {
   key: 'root',
   storage,
-  whitelist:['spendings']
+  whitelist:[]
 }
 
  const rootReducer = combineReducers({

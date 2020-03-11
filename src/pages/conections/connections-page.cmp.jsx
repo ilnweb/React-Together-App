@@ -20,7 +20,6 @@ class ConnectionsPage extends React.Component {
 		return (
 			<div className="connections-page">
         <HeaderContainer>
-          
           <UserWithSpinner currentUser={currentUser} isLoading={isLoading}/>
 					<UserWithSpinner currentUser={currentUser} isLoading={isLoading}/>
 				</HeaderContainer>

@@ -10,16 +10,23 @@ import { setUserSpending } from '../../redux/spendings/spending.actions';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import { selectSpendingsExpTotal, selectSpendingsIncTotal } from '../../redux/spendings/spendings.selectors';
+import WithSpinner from '../../components/with-spinner/with-spinner.cmp';
+
+const TabSpendingsWithSpinner = WithSpinner(TabSpendings);
 
 
 class SpendingPage extends React.Component {
+  state = {
+    isLoading:true
+  }
 	componentDidMount() {
 		const { setUserSpending, currentUser } = this.props;
 
 		const collectionRef = firestore.doc(`users/${currentUser.id}`);
 		collectionRef.get().then( (snapshot) => {
 			const items = snapshot.data().spendings;
-			setUserSpending(items);
+      setUserSpending(items);
+      this.setState({ isLoading: false });
 		});
 	}
 
@@ -32,7 +39,7 @@ class SpendingPage extends React.Component {
 				</HeaderContainer>
 				<AddSpending />
 				<div className="spending-list">
-					<TabSpendings />
+          <TabSpendingsWithSpinner isLoading={this.state.isLoading}/>
 				</div>
 			</div>
 		);

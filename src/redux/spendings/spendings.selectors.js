@@ -9,12 +9,12 @@ export const selectSpendingsItems = createSelector(
 
 export const selectSpendingsExpTotal = createSelector(
   [selectSpendingsItems],
-  spendingItems => spendingItems.reduce(
-    (sumTotal, item) => item.type === 'exp' ? sumTotal + parseInt(item.amount) : sumTotal, 0)
+  spendingItems => spendingItems ? spendingItems.reduce(
+    (sumTotal, item) =>  item.type === 'exp' ? sumTotal + parseInt(item.amount) : sumTotal , 0): null
 );
 
 export const selectSpendingsIncTotal = createSelector(
   [selectSpendingsItems],
-  spendingItems => spendingItems.reduce(
-    (sumTotal, item) => item.type === 'inc' ? sumTotal + parseInt(item.amount) : sumTotal, 0)
+  spendingItems =>  spendingItems ? spendingItems.reduce(
+    (sumTotal, item) => item.type === 'inc' ? sumTotal + parseInt(item.amount) : sumTotal , 0) : null
 );

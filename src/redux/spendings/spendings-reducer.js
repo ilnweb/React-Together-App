@@ -2,7 +2,7 @@ import { spendingTypes } from './spending-type';
 import {removeItem} from './spending.ustils';
 
 const INITIAL_STATE = {
-	spendingItems: []
+	spendingItems: null
 };
 
 const spendingsReducer = (state = INITIAL_STATE, action) => {
