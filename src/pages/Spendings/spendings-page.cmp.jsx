@@ -13,6 +13,7 @@ import { selectSpendingsExpTotal, selectSpendingsIncTotal } from '../../redux/sp
 import WithSpinner from '../../components/with-spinner/with-spinner.cmp';
 
 const TabSpendingsWithSpinner = WithSpinner(TabSpendings);
+const UserWithSpinner = WithSpinner(User);
 
 
 class SpendingPage extends React.Component {
@@ -35,7 +36,7 @@ class SpendingPage extends React.Component {
 		return (
 			<div className="spending">
 				<HeaderContainer>
-          <User currentUser={currentUser} totalExp={totalExp} totalInc={totalInc} income={true} />
+          <UserWithSpinner isLoading={this.state.isLoading} currentUser={currentUser} totalExp={totalExp} totalInc={totalInc} income={true} />
 				</HeaderContainer>
 				<AddSpending />
 				<div className="spending-list">

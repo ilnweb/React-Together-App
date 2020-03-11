@@ -9,12 +9,17 @@ import SpendingPage from './pages/Spendings/spendings-page.cmp';
 import ConnectionsPage from './pages/conections/connections-page.cmp';
 import CalendarPage from './pages/calendar/calendar-page.cmp';
 import ToDoPage from './pages/todo/todo-page.com';
+import AllConectionsPage from './pages/all-conections/all-connections-page.cmp';
 import BottomNav from './components/bottom-nav/bottom-nav.cmp';
 import { authFB, createUserProfileDocument } from './firebase/firebase.config';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
+import WithSpinner from './components/with-spinner/with-spinner.cmp';
+
+const SpendingPageWithSpinner = WithSpinner(SpendingPage);
+const ConnectionsPageWithSpinner = WithSpinner(ConnectionsPage);
 
 class App extends React.Component {
 	constructor() {
@@ -38,17 +43,12 @@ class App extends React.Component {
 						photoURL: userAuth.photoURL,
 						...snapShot.data()
 					});
+					this.setState({ isLoading: false });
 				});
 			} else {
 				this.setState({ currentUser: userAuth });
+				this.setState({ isLoading: false });
 			}
-
-			setTimeout(
-				function() {
-					this.setState({ isLoading: false });
-				}.bind(this),
-				2000
-			);
 		});
 	}
 
@@ -74,16 +74,22 @@ class App extends React.Component {
 					<Route
 						exact
 						path="/"
-						render={() => (authFB.currentUser === null ? <Redirect to="/signin" /> : <SpendingPage />)}
+						render={() =>
+							authFB.currentUser === null ? (
+								<Redirect to="/signin" />
+							) : (
+								<SpendingPageWithSpinner isLoading={this.state.isLoading} />
+							)}
 					/>
 					<Route
 						exact
 						path="/signin"
 						render={() => (authFB.currentUser !== null ? <Redirect to="/" /> : <SignInAndSignUpPage />)}
 					/>
-					<Route path="/connections" component={ConnectionsPage} />
+					<Route path="/connections" render={() => <ConnectionsPageWithSpinner isLoading={this.state.isLoading} />} />
 					<Route path="/calendar" component={CalendarPage} />
 					<Route path="/to-do" component={ToDoPage} />
+					<Route path="/all-connections" component={AllConectionsPage} />
 				</Switch>
 				<Route component={BottomNav} />
 			</div>

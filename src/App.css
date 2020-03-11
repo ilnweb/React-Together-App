@@ -24,6 +24,7 @@ body {
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 .App {
@@ -57,9 +58,6 @@ a {
   top: 0;
   left: 0;
   background-image: linear-gradient(to right bottom, #563ac6, #8fedf1);
-  transition: all .4s;
-  animation: crazy .5s ease-in-out 2s forwards;
-  opacity: 1;
 }
 
 .logo {
@@ -94,17 +92,6 @@ a {
   display: none;
 }
 
-@keyframes crazy {
-  0% {
-    opacity: 1;
-
-  }
-
-  100% {
-    opacity: 0;
-
-  }
-}
 
 .color-primary {
   color: #f50057;
