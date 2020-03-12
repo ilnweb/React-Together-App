@@ -57,7 +57,7 @@ class FormAdd extends React.Component {
 		this.setState({
 			description: '',
 			amount: '',
-      formNotFilled:false
+      formNotFilled: false
 		});
 	};
 
