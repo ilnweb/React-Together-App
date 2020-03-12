@@ -1,6 +1,7 @@
 import React from 'react';
 import './search-modal.scss';
 import { firestore } from '../../firebase/firebase.config';
+import ItemUser from '../item-user/item-user.cmp';
 import { Modal, Button, Input } from 'antd';
 
 class SearchModal extends React.Component {
@@ -84,7 +85,7 @@ class SearchModal extends React.Component {
 						enterButton
 					/>
 					<div className="search-user-list">
-						{usersFound ? usersFound.map((item) => <div key={item.id}>{item.displayName}</div>) : ''}
+            {usersFound ? usersFound.map((item) => <ItemUser key={item.id} item={item}/>) : 'Nothing Found'}
 					</div>
 				</Modal>
 			</div>
