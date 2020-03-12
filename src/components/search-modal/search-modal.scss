@@ -2,6 +2,9 @@
   margin: 2rem .2rem;
   min-height: 10rem;
 }
-.search-modal{
-  max-width: 29rem;
+
+@media (min-width: 500px) {
+  .search-modal{
+    max-width: 29rem;
+  }
 }

@@ -23,7 +23,9 @@ class SearchModal extends React.Component {
 
 	handleCancel = () => {
 		this.setState({
-			visible: false
+      visible: false,
+			userSearch: '',
+			userFound: null
 		});
 	};
 
