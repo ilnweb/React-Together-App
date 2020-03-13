@@ -23,7 +23,7 @@ class SearchModal extends React.Component {
 
 	handleCancel = () => {
 		this.setState({
-      visible: false,
+			visible: false,
 			userSearch: '',
 			userFound: null
 		});
@@ -49,10 +49,10 @@ class SearchModal extends React.Component {
 			.get()
 			.then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
-          let item = {
-            id: doc.id,
-            ...doc.data()
-          };
+					let item = {
+						id: doc.id,
+						...doc.data()
+					};
 					users.push(item);
 				});
 			})
@@ -87,8 +87,23 @@ class SearchModal extends React.Component {
 						enterButton
 					/>
 					<div className="search-user-list">
-            {usersFound ? usersFound.map((item) => <ItemUser key={item.id} item={item}/>) : 'Nothing Found'}
+						{usersFound ? usersFound.map((item) => <ItemUser key={item.id} item={item} />) : ''}
 					</div>
+					<hr />
+					<div className="conection-details">
+						<div className="search-user-list">
+							<p>Connected with</p>
+						</div>
+						<div className="search-user-list">
+							<p>Connection Name</p>
+						</div>
+						<div className="search-user-list">
+							<p>Connection Image</p>
+						</div>
+          </div>
+          <Button className="mt-30" size="large" type="primary">
+					Create
+				</Button>
 				</Modal>
 			</div>
 		);
