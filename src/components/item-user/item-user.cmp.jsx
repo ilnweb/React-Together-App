@@ -7,7 +7,7 @@ const ItemUser = ({ item }) => {
 		<div className="item-user flex-c">
       <div className="item-data flex-c">
         <Avatar size="large" src={item.photoURL} />
-				<div className="user-name">{item.displayName.toUpperCase()}</div>
+				<div className="user-list-item">{item.displayName}</div>
 			</div>
 			<div className="flex-c">
 				<Button type="primary" size="large">Invite</Button>

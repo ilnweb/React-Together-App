@@ -13,28 +13,43 @@ const firebaseConfig = {
 	measurementId: 'G-04GFM4DMET'
 };
 
-
 export const createUserProfileDocument = async (userAuth, additionalData) => {
 	if (!userAuth) return;
 
 	const userRef = firestore.doc(`users/${userAuth.uid}`);
 	const snapShot = await userRef.get();
+	const userRefArray = firestore.doc(`searchusers/F6HYw5Nwerc3tnwSf3aI`);
 
 	if (!snapShot.exists) {
-		const { displayName, email } = userAuth;
-    const createdAt = new Date();
-    const spendings = [];
-
+		const createdAt = new Date();
+    const { displayName, email, photoURL } = userAuth;
 		try {
 			await userRef.set({
 				displayName,
 				email,
-        createdAt,
-        spendings,
+				photoURL,
+				createdAt,
+				spendings: [],
+        connections: [],
+        notifications:[],
 				...additionalData
 			});
 		} catch (error) {
 			alert('error creating user', error.message);
+		}
+
+		try {
+			await userRefArray.update({
+        users: firebase.firestore.FieldValue.arrayUnion({
+          id: userAuth.uid,
+          photoURL,
+          displayName,
+          ...additionalData,
+         
+				})
+			});
+		} catch (error) {
+			console.log('error creating user array', error.message);
 		}
 	}
 

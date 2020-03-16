@@ -68,6 +68,10 @@ a {
   color: white;
 
 }
+
+.logo img {
+  width: 40%;
+}
 .logo-container {
   max-width: 30rem;
 }

@@ -10,10 +10,23 @@ class SearchModal extends React.Component {
 		this.state = {
 			visible: false,
 			userSearch: '',
-			userFound: null
+			userFound: ''
 		};
-		this.handleSearch = this.handleSearch.bind(this);
-	}
+  }
+  
+  componentDidMount() { 
+    const usersArray = firestore.doc(`searchusers/F6HYw5Nwerc3tnwSf3aI`);
+    usersArray.get()
+      .then((doc) => {
+        this.setState({
+          userFound: doc.data().users
+        });
+				
+			})
+			.catch(function(error) {
+				console.log('Error getting documents: ', error);
+			});
+  }
 
 	showModal = () => {
 		this.setState({
@@ -25,15 +38,8 @@ class SearchModal extends React.Component {
 		this.setState({
 			visible: false,
 			userSearch: '',
-			userFound: null
+			userFound: ''
 		});
-	};
-
-	setUser = (user) => {
-		this.setState({
-			userFound: user
-		});
-		console.log(this.state.userFound);
 	};
 
 	handleChange = (e) => {
@@ -42,31 +48,13 @@ class SearchModal extends React.Component {
 	};
 
 	handleSearch = () => {
-		const users = [];
-		firestore
-			.collection('users')
-			.where('displayName', '==', this.state.userSearch)
-			.get()
-			.then(function(querySnapshot) {
-				querySnapshot.forEach(function(doc) {
-					let item = {
-						id: doc.id,
-						...doc.data()
-					};
-					users.push(item);
-				});
-			})
-			.then(() => {
-				this.setState({ usersFound: users });
-			})
-			.catch(function(error) {
-				console.log('Error getting documents: ', error);
-			});
+    
 	};
 
 	render() {
-		const { usersFound } = this.state;
-		console.log(usersFound);
+		const { userFound } = this.state;
+		const { userSearch } = this.state;
+		console.log(this.state);
 		return (
 			<div>
 				<Button className="mt-30" size="large" type="primary" onClick={this.showModal}>
@@ -74,22 +62,12 @@ class SearchModal extends React.Component {
 				</Button>
 				<Modal
 					className="search-modal"
-					title="Find a friend"
+					title="New connection"
 					visible={this.state.visible}
 					onOk={this.handleOk}
 					onCancel={this.handleCancel}
 					footer={null}
 				>
-					<Input.Search
-						placeholder="Search user by name"
-						onSearch={this.handleSearch}
-						onChange={this.handleChange}
-						enterButton
-					/>
-					<div className="search-user-list">
-						{usersFound ? usersFound.map((item) => <ItemUser key={item.id} item={item} />) : ''}
-					</div>
-					<hr />
 					<div className="conection-details">
 						<div className="search-user-list">
 							<p>Connected with</p>
@@ -101,6 +79,17 @@ class SearchModal extends React.Component {
 							<p>Connection Image</p>
 						</div>
           </div>
+          <hr />
+          <Input.Search
+						placeholder="Search user by name"
+						onSearch={this.handleSearch}
+						onChange={this.handleChange}
+						enterButton
+					/>
+          <div className="search-user-list">
+						{userSearch ? userFound.map((item) => item.displayName.toLowerCase().includes(userSearch.toLowerCase()) ? <ItemUser key={item.id} item={item} />:'') : '' }
+					</div>
+					
           <Button className="mt-30" size="large" type="primary">
 					Create
 				</Button>

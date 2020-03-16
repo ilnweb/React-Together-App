@@ -1,6 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './style/css-util.css';
+import './style/sass-variable.scss';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SignInAndSignUpPage from './pages/signIn-signUp/signIn-signUp-page.cmp/signIn-signUp-page.cmp';
