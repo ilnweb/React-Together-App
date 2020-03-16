@@ -2,8 +2,9 @@ import React from 'react';
 import './search-modal.scss';
 import { firestore } from '../../firebase/firebase.config';
 import ItemUser from '../item-user/item-user.cmp';
-import { Modal, Button, Input, Upload, message } from 'antd';
+import { Modal, Button, Input, Upload, Avatar } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import { letterName } from '../../functions/functions';
 
 class SearchModal extends React.Component {
 	constructor(props) {
@@ -12,11 +13,9 @@ class SearchModal extends React.Component {
 			visible: false,
 			userSearch: '',
       userFound: '',
-      newConnection: {
-        name: '',
-        image: '',
-        invitedfriends:[]
-      }
+      invitedfriends: [],
+      connectionName: '',
+      connectionImg:''
 		};
 	}
 
@@ -46,18 +45,27 @@ class SearchModal extends React.Component {
 			userSearch: '',
 			userFound: ''
 		});
-	};
+  };
+  
+  handleClick = (item) => {
+    this.setState(prevState => ({
+    
+      invitedfriends: [...this.state.invitedfriends, item]
+    
+    }));
+  }
+  
 
 	handleChange = (e) => {
-		const { value } = e.target;
-		this.setState({ userSearch: value });
+		const { name, value } = e.target;
+		this.setState({ [name]: value });
 	};
 
 	handleSearch = () => {};
 
 	render() {
-		const { userFound } = this.state;
-		const { userSearch } = this.state;
+		const { userFound,userSearch,invitedfriends } = this.state;
+   
 
 		return (
 			<div>
@@ -66,55 +74,64 @@ class SearchModal extends React.Component {
 				</Button>
 				<Modal
 					className="search-modal"
-					title="New connection"
+          title="New connection"
+          style={{ top: 20 }}
 					visible={this.state.visible}
 					onOk={this.handleOk}
 					onCancel={this.handleCancel}
 					footer={null}
 				>
 					<div className="conection-details">
-						<div className="search-user-list mb-30">
+						<div className="search-user-list mb-20">
 							Connection Name
 							<Input
-								id="email1"
-								name="email"
-								value={this.state.newConnection.name}
+								id="name"
+								name="connectionName"
+								value={this.state.connectionName}
 								className="input-style"
-								type="email"
-								label="Email"
+								type="text"
+								label="name"
 								size="large"
-								placeholder="Email"
+								placeholder="Your new connection name"
 								autoComplete="true"
 								onChange={this.handleChange}
 							/>
 						</div>
-						<div className="search-user-list mb-30">
-							Connection Image
-							<Upload action="https://www.mocky.io/v2/5cc8019d300000980a055e76" directory>
-								<Button>
-									<UploadOutlined /> Upload Directory
+						<div className="search-user-list mb-20">
+            <p>Connection Image</p>
+							<Upload accept="image/x-png,image/gif,image/jpeg,image/jpg" action="https://www.mocky.io/v2/5cc8019d300000980a055e76" directory>
+								<Button size="large" type="primary">
+									<UploadOutlined /> Upload Image
 								</Button>
 							</Upload>
 						</div>
-						<div className="search-user-list mb-30">
-							Invited friends
+						<div className="search-user-list mb-20">
+            <p>Invited friends</p>
+              <div className="invited-friends flex-c">
+                {
+                  invitedfriends ? invitedfriends.map(item => <Avatar className="avatar-no-picture" key={item.id} className="m-10" size="large" src={item.photoURL}>{letterName(item.displayName)}</Avatar>) :''
+              }
+              </div>
 						</div>
 					</div>
 					<hr />
 
 					<div className="search-user-list mt-10">
 						<p>Search friends</p>
-						<Input.Search
+            <Input.Search
+              className="mb-20"
+              name="userSearch"
 							placeholder="Search user by name"
 							onSearch={this.handleSearch}
-							onChange={this.handleChange}
+              onChange={this.handleChange}
+              value={userSearch}
 							enterButton
 						/>
 						{userSearch ? (
 							userFound.map(
 								(item) =>
 									item.displayName.toLowerCase().includes(userSearch.toLowerCase()) ? (
-										<ItemUser key={item.id} item={item} />
+                    <ItemUser key={item.id} item={item} handleClick={this.handleClick}/>
 									) : (
 										''
 									)
