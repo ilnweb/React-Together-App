@@ -1,5 +1,12 @@
-.search-user-list{
-  margin: 2rem .2rem;
+.ant-modal-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 20px;
+}
+
+.ant-modal-content {
+  border-radius: 20px;
   
 }
 
