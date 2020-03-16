@@ -12,10 +12,10 @@ class SearchModal extends React.Component {
 		this.state = {
 			visible: false,
 			userSearch: '',
-      userFound: '',
-      invitedfriends: [],
-      connectionName: '',
-      connectionImg:''
+			userFound: '',
+			invitedfriends: [],
+			connectionName: '',
+			connectionImg: ''
 		};
 	}
 
@@ -45,16 +45,13 @@ class SearchModal extends React.Component {
 			userSearch: '',
 			userFound: ''
 		});
-  };
-  
-  handleClick = (item) => {
-    this.setState(prevState => ({
-    
-      invitedfriends: [...this.state.invitedfriends, item]
-    
-    }));
-  }
-  
+	};
+
+	handleClick = (item) => {
+		this.setState((prevState) => ({
+			invitedfriends: [ ...this.state.invitedfriends, item ]
+		}));
+	};
 
 	handleChange = (e) => {
 		const { name, value } = e.target;
@@ -64,8 +61,7 @@ class SearchModal extends React.Component {
 	handleSearch = () => {};
 
 	render() {
-		const { userFound,userSearch,invitedfriends } = this.state;
-   
+		const { userFound, userSearch, invitedfriends } = this.state;
 
 		return (
 			<div>
@@ -74,8 +70,8 @@ class SearchModal extends React.Component {
 				</Button>
 				<Modal
 					className="search-modal"
-          title="New connection"
-          style={{ top: 20 }}
+					title="New connection"
+					style={{ top: 20 }}
 					visible={this.state.visible}
 					onOk={this.handleOk}
 					onCancel={this.handleCancel}
@@ -98,40 +94,55 @@ class SearchModal extends React.Component {
 							/>
 						</div>
 						<div className="search-user-list mb-20">
-            <p>Connection Image</p>
-							<Upload accept="image/x-png,image/gif,image/jpeg,image/jpg" action="https://www.mocky.io/v2/5cc8019d300000980a055e76" directory>
+							<p>Connection Image</p>
+							<Upload
+								accept="image/x-png,image/gif,image/jpeg,image/jpg"
+								action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+								directory
+							>
 								<Button size="large" type="primary">
 									<UploadOutlined /> Upload Image
 								</Button>
 							</Upload>
 						</div>
 						<div className="search-user-list mb-20">
-            <p>Invited friends</p>
-              <div className="invited-friends flex-c">
-                {
-                  invitedfriends ? invitedfriends.map(item => <Avatar className="avatar-no-picture" key={item.id} className="m-10" size="large" src={item.photoURL}>{letterName(item.displayName)}</Avatar>) :''
-              }
-              </div>
+							<p>Invited friends</p>
+							<div className="invited-friends flex-c">
+								{invitedfriends ? (
+									invitedfriends.map((item) => (
+										<Avatar
+											className="avatar-no-picture"
+											key={item.id}
+											size="large"
+											src={item.photoURL}
+										>
+											{letterName(item.displayName)}
+										</Avatar>
+									))
+								) : (
+									''
+								)}
+							</div>
 						</div>
 					</div>
 					<hr />
 
 					<div className="search-user-list mt-10">
 						<p>Search friends</p>
-            <Input.Search
-              className="mb-20"
-              name="userSearch"
+						<Input.Search
+							className="mb-20"
+							name="userSearch"
 							placeholder="Search user by name"
 							onSearch={this.handleSearch}
-              onChange={this.handleChange}
-              value={userSearch}
+							onChange={this.handleChange}
+							value={userSearch}
 							enterButton
 						/>
 						{userSearch ? (
 							userFound.map(
 								(item) =>
 									item.displayName.toLowerCase().includes(userSearch.toLowerCase()) ? (
-                    <ItemUser key={item.id} item={item} handleClick={this.handleClick}/>
+										<ItemUser key={item.id} item={item} handleClick={this.handleClick} />
 									) : (
 										''
 									)
