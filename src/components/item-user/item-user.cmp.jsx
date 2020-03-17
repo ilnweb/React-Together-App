@@ -7,7 +7,7 @@ const ItemUser = ({ item, handleClick }) => {
 	return (
 		<div className="item-user flex-c">
       <div className="item-data flex-c">
-        <Avatar size="large" src={item.photoURL} >{letterName(item.displayName)}</Avatar>
+        <Avatar className="avatar-no-picture" size="large" src={item.photoURL} >{letterName(item.displayName)}</Avatar>
 				<div className="user-list-item">{item.displayName}</div>
 			</div>
 			<div className="flex-c">

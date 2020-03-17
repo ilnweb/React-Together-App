@@ -2,8 +2,8 @@ import React from 'react';
 import './search-modal.scss';
 import { firestore } from '../../firebase/firebase.config';
 import ItemUser from '../item-user/item-user.cmp';
-import { Modal, Button, Input, Upload, Avatar } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import { Modal, Button, Input, Avatar } from 'antd';
+import UploadImage from '../upload-image/upload-image.cmp';
 import { letterName } from '../../functions/functions';
 
 class SearchModal extends React.Component {
@@ -58,7 +58,11 @@ class SearchModal extends React.Component {
 		this.setState({ [name]: value });
 	};
 
-	handleSearch = () => {};
+	handleImage = (imageUrl) => {
+		this.setState({
+			connectionImg: imageUrl
+		});
+	};
 
 	render() {
 		const { userFound, userSearch, invitedfriends } = this.state;
@@ -95,27 +99,14 @@ class SearchModal extends React.Component {
 						</div>
 						<div className="search-user-list mb-20">
 							<p>Connection Image</p>
-							<Upload
-								accept="image/x-png,image/gif,image/jpeg,image/jpg"
-								action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-								directory
-							>
-								<Button size="large" type="primary">
-									<UploadOutlined /> Upload Image
-								</Button>
-							</Upload>
+							<UploadImage handleImage={this.handleImage} />
 						</div>
 						<div className="search-user-list mb-20">
 							<p>Invited friends</p>
 							<div className="invited-friends flex-c">
 								{invitedfriends ? (
 									invitedfriends.map((item) => (
-										<Avatar
-											className="avatar-no-picture"
-											key={item.id}
-											size="large"
-											src={item.photoURL}
-										>
+										<Avatar className="avatar-no-picture" key={item.id} size="large" src={item.photoURL}>
 											{letterName(item.displayName)}
 										</Avatar>
 									))
@@ -138,18 +129,16 @@ class SearchModal extends React.Component {
 							value={userSearch}
 							enterButton
 						/>
-						{userSearch ? (
+						{userSearch &&
+							userFound &&
 							userFound.map(
 								(item) =>
-									item.displayName.toLowerCase().includes(userSearch.toLowerCase()) ? (
-										<ItemUser key={item.id} item={item} handleClick={this.handleClick} />
-									) : (
-										''
-									)
-							)
-						) : (
-							''
-						)}
+                item.displayName.toLowerCase().includes(userSearch.toLowerCase()) ? (
+                  <ItemUser key={item.id} item={item} handleClick={this.handleClick} />
+                ) : (
+                  ''
+                )
+							)}
 					</div>
 
 					<Button className="mt-30" size="large" type="primary">
