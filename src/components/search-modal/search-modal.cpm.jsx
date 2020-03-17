@@ -47,10 +47,12 @@ class SearchModal extends React.Component {
 		});
 	};
 
-	handleClick = (item) => {
-		this.setState((prevState) => ({
-			invitedfriends: [ ...this.state.invitedfriends, item ]
-		}));
+  handleClick = (item) => {
+    if (!this.state.invitedfriends.includes(item)) {
+      this.setState((prevState) => ({
+        invitedfriends: [ ...this.state.invitedfriends, item ]
+      }));
+    }
 	};
 
 	handleChange = (e) => {
