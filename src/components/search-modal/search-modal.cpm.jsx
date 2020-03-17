@@ -12,8 +12,8 @@ class SearchModal extends React.Component {
 		this.state = {
 			visible: false,
 			userSearch: '',
-			userFound: '',
-			invitedfriends: [],
+			userList: '',
+			invitedfriends: '',
 			connectionName: '',
 			connectionImg: ''
 		};
@@ -25,7 +25,7 @@ class SearchModal extends React.Component {
 			.get()
 			.then((doc) => {
 				this.setState({
-					userFound: doc.data().users
+					userList: doc.data().users
 				});
 			})
 			.catch(function(error) {
@@ -43,7 +43,7 @@ class SearchModal extends React.Component {
 		this.setState({
 			visible: false,
 			userSearch: '',
-			userFound: ''
+			userList: ''
 		});
 	};
 
@@ -67,8 +67,7 @@ class SearchModal extends React.Component {
 	};
 
 	render() {
-		const { userFound, userSearch, invitedfriends } = this.state;
-
+		const { userList, userSearch, invitedfriends } = this.state;
 		return (
 			<div>
 				<Button className="mt-30" size="large" type="primary" onClick={this.showModal}>
@@ -79,7 +78,6 @@ class SearchModal extends React.Component {
 					title="New connection"
 					style={{ top: 20 }}
 					visible={this.state.visible}
-					onOk={this.handleOk}
 					onCancel={this.handleCancel}
 					footer={null}
 				>
@@ -106,20 +104,17 @@ class SearchModal extends React.Component {
 						<div className="search-user-list mb-20">
 							<p>Invited friends</p>
 							<div className="invited-friends flex-c">
-								{invitedfriends ? (
+								{invitedfriends ?
 									invitedfriends.map((item) => (
-										<Avatar className="avatar-no-picture" key={item.id} size="large" src={item.photoURL}>
+										<Avatar className="avatar-no-picture m-5" key={item.id} size="large" src={item.photoURL}>
 											{letterName(item.displayName)}
 										</Avatar>
-									))
-								) : (
-									''
-								)}
+									)) : <div>"No friends Invited" </div> 
+								}
 							</div>
 						</div>
 					</div>
 					<hr />
-
 					<div className="search-user-list mt-10">
 						<p>Search friends</p>
 						<Input.Search
@@ -132,17 +127,13 @@ class SearchModal extends React.Component {
 							enterButton
 						/>
 						{userSearch &&
-							userFound &&
-							userFound.map(
+							userList &&
+							userList.map(
 								(item) =>
-                item.displayName.toLowerCase().includes(userSearch.toLowerCase()) ? (
+                item.displayName.toLowerCase().includes(userSearch.toLowerCase()) &&
                   <ItemUser key={item.id} item={item} handleClick={this.handleClick} />
-                ) : (
-                  ''
-                )
 							)}
 					</div>
-
 					<Button className="mt-30" size="large" type="primary">
 						Create
 					</Button>

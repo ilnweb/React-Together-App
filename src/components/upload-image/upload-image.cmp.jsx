@@ -40,16 +40,16 @@ class UploadImage extends React.Component {
           loading: false,
         }, () => {
             const imagesplit = imageUrl.split('/').slice(3, 4);
-            console.log(imagesplit);
+            
             const imageID = imagesplit[0].split('').slice(0, 30).join('');
             const uploadTask = storageFB.ref(`/connectionimages/${imageID}`).put(info.file.originFileObj)
             uploadTask.on('state_changed',
               (snapShot) => {
                 //takes a snap shot of the process as it is happening
-                console.log(snapShot)
+                // console.log(snapShot)
               }, (err) => {
                 //catches the errors
-                console.log(err)
+                // console.log(err)
               }, () => {
                 // gets the functions from storage refences the image storage in firebase by the children
                 // gets the download url then sets the image from firebase as the value for the imgUrl key:

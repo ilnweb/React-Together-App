@@ -57,6 +57,40 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 	return userRef;
 };
 
+export const createNewConnection = async (invitedfriends, connectionName, connectionImg) => {
+	
+	const connectionRef = firestore.doc(`connections/${firebase.id}`);
+	const snapShot = await connectionRef.get();
+
+	if (!snapShot.exists) {
+		const createdAt = new Date();
+    
+		try {
+			await connectionRef.set({
+				
+			
+			});
+		} catch (error) {
+			alert('error creating user', error.message);
+		}
+
+	// 	try {
+	// 		await userRefArray.update({
+  //       users: firebase.firestore.FieldValue.arrayUnion({
+  //         id:'',
+          
+         
+
+	// 		// 	})
+	// 		});
+	// 	} catch (error) {
+	// 		console.log('error creating user array', error.message);
+	// 	}
+	}
+
+	return connectionRef;
+};
+
 ////////////// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
