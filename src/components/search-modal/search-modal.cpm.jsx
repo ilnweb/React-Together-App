@@ -1,10 +1,14 @@
 import React from 'react';
 import './search-modal.scss';
-import { firestore } from '../../firebase/firebase.config';
+import { firestore, createNewConnection } from '../../firebase/firebase.config';
 import ItemUser from '../item-user/item-user.cmp';
 import { Modal, Button, Input, Avatar } from 'antd';
 import UploadImage from '../upload-image/upload-image.cmp';
 import { letterName } from '../../functions/functions';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+
 
 class SearchModal extends React.Component {
 	constructor(props) {
@@ -64,7 +68,13 @@ class SearchModal extends React.Component {
 		this.setState({
 			connectionImg: imageUrl
 		});
-	};
+  };
+  
+  handleCreate = () => {
+    const { invitedfriends, connectionName, connectionImg } = this.state;
+    console.log(invitedfriends, connectionName, connectionImg);
+    // createNewConnection();
+  }
 
 	render() {
 		const { userList, userSearch, invitedfriends } = this.state;
@@ -134,7 +144,7 @@ class SearchModal extends React.Component {
                   <ItemUser key={item.id} item={item} handleClick={this.handleClick} />
 							)}
 					</div>
-					<Button className="mt-30" size="large" type="primary">
+					<Button className="mt-30" size="large" type="primary" onClick={this.handleCreate}>
 						Create
 					</Button>
 				</Modal>
@@ -143,4 +153,8 @@ class SearchModal extends React.Component {
 	}
 }
 
-export default SearchModal;
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
+
+export default connect(mapStateToProps)(SearchModal);

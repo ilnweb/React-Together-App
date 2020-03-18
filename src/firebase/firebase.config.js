@@ -57,18 +57,20 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 	return userRef;
 };
 
-export const createNewConnection = async (invitedfriends, connectionName, connectionImg) => {
+export const createNewConnection = async (connectionName, connectionImg, invitedfriends, currentuser) => {
 	
 	const connectionRef = firestore.doc(`connections/${firebase.id}`);
-	const snapShot = await connectionRef.get();
-  let pushConnection = connectionRef.push();
-	const createdAt = new Date();
+  const createdAt = new Date();
+  
+
     
 		try {
-			await connectionRef.set({
+      await connectionRef.add({
+        createdAt,
         connectionName,
         connectionImg,
-        userStatus:{ ...invitedfriends.id}
+        userStatus: { ...invitedfriends.id },
+        users:[...invitedfriends]
 
         
 			
