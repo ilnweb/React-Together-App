@@ -57,20 +57,33 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 	return userRef;
 };
 
-export const createNewConnection = async (connectionName, connectionImg, invitedfriends, currentuser) => {
+export const createNewConnection = async (connectionName, connectionImg, invitedfriends) => {
 	
-	const connectionRef = firestore.doc(`connections/${firebase.id}`);
+	const connectionRef = firestore.collection(`connections`);
   const createdAt = new Date();
-  
-
+  const userIDs = {};
+  const usersDataReady = [];
+  invitedfriends.map((item) => {
+     userIDs[item.id] = false;
+    let data = {
+      ...item,
+      data: {
+        spendings: [],
+        calendar: [],
+        todo:[]
+      }
+    }
+    return usersDataReady.push(data) 
+  });
+ 
     
 		try {
       await connectionRef.add({
         createdAt,
         connectionName,
         connectionImg,
-        userStatus: { ...invitedfriends.id },
-        users:[...invitedfriends]
+        userStatus: userIDs,
+        users:usersDataReady
 
         
 			

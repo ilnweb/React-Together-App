@@ -72,8 +72,14 @@ class SearchModal extends React.Component {
   
   handleCreate = () => {
     const { invitedfriends, connectionName, connectionImg } = this.state;
-    console.log(invitedfriends, connectionName, connectionImg);
-    // createNewConnection();
+    const { currentUser } = this.props;
+    const currentUserData = {
+      displayName:currentUser.displayName,
+      id:currentUser.id,
+      photoURL:currentUser.photoURL
+    };
+    invitedfriends.push(currentUserData);
+    createNewConnection(connectionName,connectionImg,invitedfriends);
   }
 
 	render() {
