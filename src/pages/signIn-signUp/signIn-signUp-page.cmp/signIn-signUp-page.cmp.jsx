@@ -13,7 +13,7 @@ class SignInAndSignUpPage extends React.Component {
 	render() {
 		return (
 			<div className="sign-in-and-sign-up flex-c">
-				<div className="logo mb-20 flex-c"> <img src="https://res.cloudinary.com/ilnphotography/image/upload/v1584107549/HomePage/Asset_2_yjwt2l.png" alt="logo"/></div>
+				<div className="logo mb-20 flex-c"> <img src="https://res.cloudinary.com/ilnphotography/image/upload/v1584531306/HomePage/logoTT_weox84.png" alt="logo"/></div>
 
 				{this.state.signin ? <SignIn showSignUp={this.showSignUp} /> : <SignUP showSignUp={this.showSignUp} />}
 			</div>

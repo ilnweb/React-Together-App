@@ -61,13 +61,16 @@ export const createNewConnection = async (invitedfriends, connectionName, connec
 	
 	const connectionRef = firestore.doc(`connections/${firebase.id}`);
 	const snapShot = await connectionRef.get();
-
-	if (!snapShot.exists) {
-		const createdAt = new Date();
+  let pushConnection = connectionRef.push();
+	const createdAt = new Date();
     
 		try {
 			await connectionRef.set({
-				
+        connectionName,
+        connectionImg,
+        userStatus:{ ...invitedfriends.id}
+
+        
 			
 			});
 		} catch (error) {
@@ -86,7 +89,7 @@ export const createNewConnection = async (invitedfriends, connectionName, connec
 	// 	} catch (error) {
 	// 		console.log('error creating user array', error.message);
 	// 	}
-	}
+
 
 	return connectionRef;
 };
