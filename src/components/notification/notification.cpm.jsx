@@ -1,15 +1,21 @@
 import React from 'react';
 import './notification.scss';
 import { Button } from 'antd';
+import Moment from 'react-moment';
 
 const Notification = ({ item, handleClick }) => {
 	return (
 		<div className="notification">
 			<div className="notification-data flex p-10">
 				<div className="notification-image" style={{ backgroundImage: `url(${item.connectionImg})` }} alt="conection" />
-				<div className="notification-list-item ml-10 flex-c">
-					{item.displayName} invited you to  {item.connectionName}
+        <div className="notification-list-item ml-10 flex-c-c">
+        <div className="notification-date">
+          <strong>{item.displayName}</strong> invited you to <strong>{item.connectionName}</strong>
+          </div>
+					<Moment fromNow date={item.createdAt.toDate()} />
+				
 				</div>
+				
 			</div>
 
 			<div className="flex-c">

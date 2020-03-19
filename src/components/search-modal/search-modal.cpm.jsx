@@ -122,7 +122,7 @@ class SearchModal extends React.Component {
 							<div className="invited-friends flex-c">
 								{invitedfriends ?
 									invitedfriends.map((item) => (
-										<Avatar className="avatar-no-picture m-5" key={item.id} size="large" src={item.photoURL}>
+										<Avatar className="avatar-small-no-picture m-5" key={item.id} size="large" src={item.photoURL}>
 											{letterName(item.displayName)}
 										</Avatar>
 									)) : <div>"No friends Invited" </div> 
