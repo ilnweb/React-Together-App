@@ -9,7 +9,7 @@ const User = ({ currentUser, reverce, totalExp, totalInc, income }) => {
 		<div className={`user ${reverce ? 'user-reverce' : ''}`}>
 			<div className="user-img">
 				{currentUser.photoURL ? (
-					<Avatar className="avatar-picture" size={70} src={currentUser.photoURL} />
+          <Avatar className="avatar-picture" size={70} src={currentUser.photoURL} />
 				) : (
 					<Avatar className="avatar-no-picture" size={70}>
 						{avatarLetter}

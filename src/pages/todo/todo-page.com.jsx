@@ -1,7 +1,8 @@
 import React from 'react';
+import './todo-page.com';
 import HeaderContainer from '../../components/header-container/header-container.cmp';
 
-import './todo-page.com';
+
 
 
 const ToDoPage = () => (

@@ -10,6 +10,7 @@ import SpendingPage from './pages/Spendings/spendings-page.cmp';
 import ConnectionsPage from './pages/conections/connections-page.cmp';
 import CalendarPage from './pages/calendar/calendar-page.cmp';
 import ToDoPage from './pages/todo/todo-page.com';
+import NotificationsPage from './pages/notifications/notifications-page.cmp';
 import AllConectionsPage from './pages/all-conections/all-connections-page.cmp';
 import BottomNav from './components/bottom-nav/bottom-nav.cmp';
 import { authFB, createUserProfileDocument } from './firebase/firebase.config';
@@ -91,6 +92,7 @@ class App extends React.Component {
 					<Route path="/calendar" component={CalendarPage} />
 					<Route path="/to-do" component={ToDoPage} />
 					<Route path="/all-connections" component={AllConectionsPage} />
+					<Route path="/notifications" component={NotificationsPage} />
 				</Switch>
 				<Route component={BottomNav} />
 			</div>
