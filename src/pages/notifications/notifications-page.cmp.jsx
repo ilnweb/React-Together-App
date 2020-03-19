@@ -22,7 +22,7 @@ class NotificationsPage extends React.Component {
 					<h1>Your notifications</h1>
 				</HeaderContainer>
 				<div className="notifications-container m-10">
-          {currentUser && <Notification item={currentUser.notifications[0]} handleAccept={this.handleAccept}/>}
+          {currentUser && currentUser.notifications.map(item =>(<Notification item={item} handleAccept={this.handleAccept}/>))}
 				</div>
 			</div>
 		);
