@@ -79,7 +79,7 @@ class SearchModal extends React.Component {
       photoURL:currentUser.photoURL
     };
     invitedfriends.push(currentUserData);
-    createNewConnection(connectionName,connectionImg,invitedfriends);
+    createNewConnection(connectionName,connectionImg,invitedfriends,currentUser);
   }
 
 	render() {

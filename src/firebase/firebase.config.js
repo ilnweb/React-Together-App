@@ -23,7 +23,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 	if (!snapShot.exists) {
 		const createdAt = new Date();
-    const { displayName, email, photoURL } = userAuth;
+		const { displayName, email, photoURL } = userAuth;
 		try {
 			await userRef.set({
 				displayName,
@@ -31,8 +31,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 				photoURL,
 				createdAt,
 				spendings: [],
-        connections: [],
-        notifications:[],
+				connections: [],
+				notifications: [],
 				...additionalData
 			});
 		} catch (error) {
@@ -41,12 +41,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 		try {
 			await userRefArray.update({
-        users: firebase.firestore.FieldValue.arrayUnion({
-          id: userAuth.uid,
-          photoURL,
-          displayName,
-          ...additionalData,
-         
+				users: firebase.firestore.FieldValue.arrayUnion({
+					id: userAuth.uid,
+					photoURL,
+					displayName,
+					...additionalData
 				})
 			});
 		} catch (error) {
@@ -57,54 +56,55 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 	return userRef;
 };
 
-export const createNewConnection = async (connectionName, connectionImg, invitedfriends) => {
-	
+export const createNewConnection = async (connectionName, connectionImg, invitedfriends, currentUser) => {
 	const connectionRef = firestore.collection(`connections`);
-  const createdAt = new Date();
-  const userIDs = {};
-  const usersDataReady = [];
-  invitedfriends.map((item) => {
-     userIDs[item.id] = false;
-    let data = {
-      ...item,
-      data: {
-        spendings: [],
-        calendar: [],
-        todo:[]
-      }
-    }
-    return usersDataReady.push(data) 
-  });
- 
-    
-		try {
-      await connectionRef.add({
-        createdAt,
-        connectionName,
-        connectionImg,
-        userStatus: userIDs,
-        users:usersDataReady
+	const createdAt = new Date();
+	const userIDs = {};
+  const usersDataReady = {};
+  let connectionId='';
 
-        
-			
+	invitedfriends.map((item) => {
+		userIDs[item.id] = [];
+		usersDataReady[item.id] = {
+			displayName: item.displayName,
+			photoURL: item.photoURL,
+			status: false
+		};
+		return usersDataReady;
+	});
+
+	try {
+		await connectionRef.add({
+			createdAt,
+			connectionName,
+			connectionImg,
+			users: usersDataReady,
+			usersData: {
+				spendings: userIDs,
+				calendar: userIDs,
+				todo: userIDs
+			}
+		}).then(function(docRef) {
+      connectionId= docRef.id;
+    });
+	} catch (error) {
+		alert('error creating user', error.message);
+	}
+
+	invitedfriends.map(async (item) => {
+		const userRef = firestore.doc(`users/${item.id}`);
+		if (item.id !== currentUser.id) {
+			await userRef.update({
+				notifications: firebase.firestore.FieldValue.arrayUnion({
+          displayName: currentUser.displayName,
+          connectionId,
+					createdAt,
+					connectionName,
+					connectionImg
+				})
 			});
-		} catch (error) {
-			alert('error creating user', error.message);
 		}
-
-	// 	try {
-	// 		await userRefArray.update({
-  //       users: firebase.firestore.FieldValue.arrayUnion({
-  //         id:'',
-          
-         
-
-	// 		// 	})
-	// 		});
-	// 	} catch (error) {
-	// 		console.log('error creating user array', error.message);
-	// 	}
-
+	});
 
 	return connectionRef;
 };
@@ -114,7 +114,7 @@ firebase.initializeApp(firebaseConfig);
 
 export const authFB = firebase.auth();
 export const firestore = firebase.firestore();
-export const storageFB = firebase.storage()
+export const storageFB = firebase.storage();
 
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
 providerGoogle.setCustomParameters({ prompt: 'select_account' });
