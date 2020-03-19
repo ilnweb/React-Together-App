@@ -1,0 +1,17 @@
+.notification{
+  margin: 1rem;
+  justify-content: space-between;
+  position: relative;
+  height: 6rem;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color:white;
+}
+
+.notification-image{
+  width: 6rem;
+  height:100%;
+  background-size:cover ;
+  background-position: center;
+}
+
