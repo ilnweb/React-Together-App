@@ -1,23 +1,30 @@
 .notification{
-  margin: 1rem;
+  margin: 2rem 1rem;
   justify-content: space-between;
   position: relative;
   
   border-radius: 20px;
   overflow: hidden;
   background-color:white;
+
+  &-image{
+    width: 40%;
+    height:100%;
+    background-size:cover ;
+    background-position: center;
+    border-radius: 20px;
+  }
+
+  &-data{
+    height: 7rem;
+  }
+
 }
 
-.notification-image{
-  width: 40%;
-  height:100%;
-  background-size:cover ;
-  background-position: center;
-  border-radius: 20px;
-}
 
-.notification-data{
-  height: 7rem;
-}
+
+
+
+
 
 

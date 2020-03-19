@@ -8,7 +8,7 @@ const Notification = ({ item, handleClick }) => {
 			<div className="notification-data flex p-10">
 				<div className="notification-image" style={{ backgroundImage: `url(${item.connectionImg})` }} alt="conection" />
 				<div className="notification-list-item ml-10 flex-c">
-					{item.displayName} invited you to {item.connectionName}
+					{item.displayName} invited you to  {item.connectionName}
 				</div>
 			</div>
 

@@ -60,8 +60,8 @@ export const createNewConnection = async (connectionName, connectionImg, invited
 	const connectionRef = firestore.collection(`connections`);
 	const createdAt = new Date();
 	const userIDs = {};
-  const usersDataReady = {};
-  let connectionId='';
+	const usersDataReady = {};
+	let connectionId = '';
 
 	invitedfriends.map((item) => {
 		userIDs[item.id] = [];
@@ -74,37 +74,55 @@ export const createNewConnection = async (connectionName, connectionImg, invited
 	});
 
 	try {
-		await connectionRef.add({
-			createdAt,
-			connectionName,
-			connectionImg,
-			users: usersDataReady,
-			usersData: {
-				spendings: userIDs,
-				calendar: userIDs,
-				todo: userIDs
-			}
-		}).then(function(docRef) {
-      connectionId= docRef.id;
-    });
+		await connectionRef
+			.add({
+				createdAt,
+				connectionName,
+				connectionImg,
+				users: usersDataReady,
+				usersData: {
+					spendings: userIDs,
+					calendar: userIDs,
+					todo: userIDs
+				}
+			})
+			.then(function(docRef) {
+				connectionId = docRef.id;
+			});
 	} catch (error) {
-		alert('error creating user', error.message);
+		alert('error creating connection', error.message);
 	}
 
 	invitedfriends.map(async (item) => {
 		const userRef = firestore.doc(`users/${item.id}`);
-		if (item.id !== currentUser.id) {
+    if (item.id !== currentUser.id) {
+      try {
 			await userRef.update({
 				notifications: firebase.firestore.FieldValue.arrayUnion({
-          displayName: currentUser.displayName,
-          connectionId,
+					displayName: currentUser.displayName,
+					connectionId,
 					createdAt,
 					connectionName,
 					connectionImg
 				})
-			});
+      });
+    } catch (error) {
+      alert('error sending notification', error.message);
+    }
 		}
-	});
+  });
+  
+  const userRef = firestore.doc(`users/${currentUser.id}`);
+
+  try {
+    await userRef.update({
+      connections: firebase.firestore.FieldValue.arrayUnion({
+        connectionId
+      })
+    });
+  } catch (error) {
+    alert('error sending notification', error.message);
+  }
 
 	return connectionRef;
 };
