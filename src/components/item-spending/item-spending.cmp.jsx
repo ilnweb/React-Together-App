@@ -3,9 +3,7 @@ import './item-spending.scss';
 import { removeItem } from '../../redux/spendings/spending.actions';
 import { connect } from 'react-redux';
 import { DeleteFilled } from '@ant-design/icons';
-import Moment from 'react-moment';
-
-
+// import Moment from 'react-moment';
 
 const ItemSpending = ({ item, removeItem }) => {
 	return (

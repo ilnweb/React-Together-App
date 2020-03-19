@@ -95,38 +95,50 @@ export const createNewConnection = async (connectionName, connectionImg, invited
 
 	invitedfriends.map(async (item) => {
 		const userRef = firestore.doc(`users/${item.id}`);
-    if (item.id !== currentUser.id) {
-      try {
-			await userRef.update({
-				notifications: firebase.firestore.FieldValue.arrayUnion({
-					displayName: currentUser.displayName,
-					connectionId,
-					createdAt,
-					connectionName,
-					connectionImg
-				})
-      });
-    } catch (error) {
-      alert('error sending notification', error.message);
-    }
+		if (item.id !== currentUser.id) {
+			try {
+				await userRef.update({
+					notifications: firebase.firestore.FieldValue.arrayUnion({
+						displayName: currentUser.displayName,
+						connectionId,
+						createdAt,
+						connectionName,
+						connectionImg
+					})
+				});
+			} catch (error) {
+				alert('error sending notification', error.message);
+			}
 		}
-  });
-  
-  const userRef = firestore.doc(`users/${currentUser.id}`);
+	});
 
-  try {
-    await userRef.update({
-      connections: firebase.firestore.FieldValue.arrayUnion({
-        connectionId
-      })
-    });
-  } catch (error) {
-    alert('error sending notification', error.message);
-  }
+	const userRef = firestore.doc(`users/${currentUser.id}`);
+	try {
+		await userRef.update({
+			connections: firebase.firestore.FieldValue.arrayUnion({
+				connectionId
+			})
+		});
+	} catch (error) {
+		alert('error sending notification', error.message);
+	}
 
 	return connectionRef;
 };
 
+
+export const acceptInvitation = async (connectionId, currentUserId) => { 
+  const userRef = firestore.doc(`users/${currentUserId}`);
+	try {
+		await userRef.update({
+			connections: firebase.firestore.FieldValue.arrayUnion({
+				connectionId
+			})
+		});
+	} catch (error) {
+		alert('error sending notification', error.message);
+	}
+}
 ////////////// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
