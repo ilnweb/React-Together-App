@@ -43,8 +43,8 @@ class ConnectionsPage extends React.Component {
         <div className="flex-c-c">
 					<h4 className="mb-20">Connection: {connection && connection.connectionName}</h4>
             <div className="flex-c">
-              <User currentUser={currentUser} />
-              {connection && connection.users.map(user => user.id !== currentUser.id ? <User currentUser={user} /> :'')}
+              <User currentUser={currentUser} small/>
+              {connection && Object.keys(connection.users).map(key => key !== currentUser.id ? <User key={key} currentUser={connection.users[key]} small /> :'')}
 						
 						
 					</div>
