@@ -13,9 +13,10 @@ import ToDoPage from './pages/todo/todo-page.com';
 import NotificationsPage from './pages/notifications/notifications-page.cmp';
 import AllConectionsPage from './pages/all-conections/all-connections-page.cmp';
 import BottomNav from './components/bottom-nav/bottom-nav.cmp';
-import { authFB, createUserProfileDocument } from './firebase/firebase.config';
+import { authFB, createUserProfileDocument, firestore } from './firebase/firebase.config';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
+import { setConnection } from './redux/connection/connection.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import WithSpinner from './components/with-spinner/with-spinner.cmp';
@@ -35,16 +36,27 @@ class App extends React.Component {
 	unsubscribeFromAuth = null;
 
 	componentDidMount() {
-		const { setCurrentUser } = this.props;
+		const { setCurrentUser, setConnection } = this.props;
 		this.unsubscribeFromAuth = authFB.onAuthStateChanged(async (userAuth) => {
 			if (userAuth) {
 				const userRef = await createUserProfileDocument(userAuth);
-				userRef.onSnapshot(async (snapShot) => {
-					await setCurrentUser({
+				userRef.onSnapshot((snapShot) => {
+					setCurrentUser({
 						id: snapShot.id,
 						photoURL: userAuth.photoURL,
 						...snapShot.data()
-					});
+          });
+					const connectionID = snapShot.data().connections[0].connectionId;
+					const connections = firestore.doc(`connections/${connectionID}`);
+					connections
+						.get()
+						.then((doc) => {
+							setConnection(doc.data());
+						})
+						.then(() => this.setState({ isLoading: false }))
+						.catch(function(error) {
+							console.log('Error getting documents: ', error);
+						});
 					this.setState({ isLoading: false });
 				});
 			} else {
@@ -102,7 +114,7 @@ class App extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
 	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-
+	setConnection: (connection) => dispatch(setConnection(connection))
 });
 
 const mapStateToProps = createStructuredSelector({

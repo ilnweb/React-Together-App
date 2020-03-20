@@ -18,10 +18,10 @@ const UserWithSpinner = WithSpinner(User);
 class SpendingPage extends React.Component {
 	state = {
 		isLoading: true
-	};
+  };
+  
 	componentDidMount() {
 		const { setUserSpending, currentUser } = this.props;
-
 		const collectionRef = firestore.doc(`users/${currentUser.id}`);
 		collectionRef.get().then((snapshot) => {
 			const items = snapshot.data().spendings;
