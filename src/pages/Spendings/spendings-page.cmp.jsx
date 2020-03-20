@@ -15,32 +15,37 @@ import WithSpinner from '../../components/with-spinner/with-spinner.cmp';
 const TabSpendingsWithSpinner = WithSpinner(TabSpendings);
 const UserWithSpinner = WithSpinner(User);
 
-
 class SpendingPage extends React.Component {
-  state = {
-    isLoading:true
-  }
+	state = {
+		isLoading: true
+	};
 	componentDidMount() {
 		const { setUserSpending, currentUser } = this.props;
 
 		const collectionRef = firestore.doc(`users/${currentUser.id}`);
-		collectionRef.get().then( (snapshot) => {
+		collectionRef.get().then((snapshot) => {
 			const items = snapshot.data().spendings;
-      setUserSpending(items);
-      this.setState({ isLoading: false });
+			setUserSpending(items);
+			this.setState({ isLoading: false });
 		});
 	}
 
-  render() {
-    const { currentUser, totalExp, totalInc } = this.props;
+	render() {
+		const { currentUser, totalExp, totalInc } = this.props;
 		return (
 			<div className="spending">
 				<HeaderContainer>
-          <UserWithSpinner isLoading={this.state.isLoading} currentUser={currentUser} totalExp={totalExp} totalInc={totalInc} income={true} />
+					<UserWithSpinner
+						isLoading={this.state.isLoading}
+						currentUser={currentUser}
+						totalExp={totalExp}
+						totalInc={totalInc}
+						income={true}
+					/>
 				</HeaderContainer>
 				<AddSpending />
 				<div className="spending-list">
-          <TabSpendingsWithSpinner isLoading={this.state.isLoading}/>
+					<TabSpendingsWithSpinner isLoading={this.state.isLoading} />
 				</div>
 			</div>
 		);
@@ -52,8 +57,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  totalExp: selectSpendingsExpTotal,
+	currentUser: selectCurrentUser,
+	totalExp: selectSpendingsExpTotal,
 	totalInc: selectSpendingsIncTotal
 });
 
