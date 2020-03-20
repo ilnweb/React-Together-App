@@ -4,7 +4,10 @@ import HeaderContainer from '../../components/header-container/header-container.
 import User from '../../components/user/user.cmp';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { selectConnectionData } from '../../redux/connection/connection.selectors';
 import { createStructuredSelector } from 'reselect';
+import { setConnection } from '../../redux/connection/connection.actions';
+import { firestore } from '../../firebase/firebase.config';
 // import WithSpinner from '../../components/with-spinner/with-spinner.cmp';
 
 // const UserWithSpinner = WithSpinner(User);
@@ -14,14 +17,38 @@ class ConnectionsPage extends React.Component {
 		isLoading: true
 	};
 
-  render() {
-    const { currentUser } = this.props;
-    // const { isLoading } = this.state;
+	componentDidMount() {
+		const { currentUser, setConnection } = this.props;
+		console.log(currentUser);
+		const connectionID = currentUser.connections[0].connectionId;
+		const connections = firestore.doc(`connections/${connectionID}`);
+		connections
+			.get()
+			.then((doc) => {
+				setConnection(doc.data());
+				console.log(doc.data());
+			})
+			.then(() => this.setState({ isLoading: false }))
+			.catch(function(error) {
+				console.log('Error getting documents: ', error);
+			});
+	}
+
+	render() {
+		const { currentUser, connection } = this.props;
+		console.log(connection);
 		return (
 			<div className="connections-page">
-        <HeaderContainer>
-          <User currentUser={currentUser} />
-					<User currentUser={currentUser} />
+        <HeaderContainer >
+        <div className="flex-c-c">
+					<h4 className="mb-20">Connection: {connection && connection.connectionName}</h4>
+            <div className="flex-c">
+              <User currentUser={currentUser} />
+              {connection && connection.users.map(user => user.id !== currentUser.id ? <User currentUser={user} /> :'')}
+						
+						
+					</div>
+					</div>
 				</HeaderContainer>
 			</div>
 		);
@@ -29,11 +56,12 @@ class ConnectionsPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	// setUserSpending: (list) => dispatch(setUserSpending(list))
+	setConnection: (connection) => dispatch(setConnection(connection))
 });
 
 const mapStateToProps = createStructuredSelector({
-	currentUser: selectCurrentUser
+	currentUser: selectCurrentUser,
+	connection: selectConnectionData
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectionsPage);

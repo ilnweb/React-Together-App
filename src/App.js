@@ -39,8 +39,8 @@ class App extends React.Component {
 		this.unsubscribeFromAuth = authFB.onAuthStateChanged(async (userAuth) => {
 			if (userAuth) {
 				const userRef = await createUserProfileDocument(userAuth);
-				userRef.onSnapshot((snapShot) => {
-					setCurrentUser({
+				userRef.onSnapshot(async (snapShot) => {
+					await setCurrentUser({
 						id: snapShot.id,
 						photoURL: userAuth.photoURL,
 						...snapShot.data()
@@ -101,7 +101,8 @@ class App extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	setCurrentUser: (user) => dispatch(setCurrentUser(user))
+	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+
 });
 
 const mapStateToProps = createStructuredSelector({
