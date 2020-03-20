@@ -10,6 +10,25 @@ html {
   height: auto;
 }
 
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: rgb(68, 68, 68) !important;
+}
+
+input:-internal-autofill-selected {
+  background-color: #1890ff !important;
+  background-image: none !important;
+  -webkit-box-shadow: 0 0 0px 1000px #1890ff inset !important;
+}
+
+.ant-input-affix-wrapper {
+  border: none;
+  background-color: #1890ff;
+} */
+
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
@@ -66,7 +85,7 @@ a {
   font-size: 6rem;
   font-weight: 400;
   color: white;
-
+  
 }
 
 .logo img {

@@ -30,7 +30,7 @@ class SideNav extends React.Component {
 			<div className="side-nav">
       <MenuUnfoldOutlined onClick={this.showDrawer} />
 
-				<Drawer title="Togheder" placement="left" closable={false} onClose={this.onClose} visible={this.state.visible}>
+				<Drawer title="Together" placement="left" closable={false} onClose={this.onClose} visible={this.state.visible}>
 					<h2 className="side-nav-greeting flex-c">Hi, {currentUser && currentUser.displayName.split(' ').slice(0, 1)}</h2>
 					<div className="side-nav-content flex-c-c">
 						<Link to="/profile">

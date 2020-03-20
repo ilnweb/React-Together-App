@@ -1,0 +1,6 @@
+export const connectionTypes = {
+  ADD_ITEM: 'ADD_ITEM',
+  REMOVE_ITEM: 'REMOVE_ITEM',
+  SET_USER_CONNECTION: 'SET_USER_CONNECTION'
+};
+
