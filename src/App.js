@@ -71,9 +71,10 @@ class App extends React.Component {
 	}
 
 	render() {
+    const { isLoading } = this.state;
 		return (
 			<div className="App">
-				<div className={`flex-c-c ${this.state.isLoading ? 'isLoading' : 'hide'}`}>
+				<div className={`flex-c-c ${isLoading ? 'isLoading' : 'hide'}`}>
 					<div className="logo-container flex-c-c">
 						<h1 className="logo-2">Together</h1>
 						<p>Lets do it better!</p>
@@ -92,7 +93,7 @@ class App extends React.Component {
 							authFB.currentUser === null ? (
 								<Redirect to="/signin" />
 							) : (
-								<SpendingPageWithSpinner isLoading={this.state.isLoading} />
+								<SpendingPageWithSpinner isLoading={isLoading} />
 							)}
 					/>
 					<Route
@@ -100,7 +101,7 @@ class App extends React.Component {
 						path="/signin"
 						render={() => (authFB.currentUser !== null ? <Redirect to="/" /> : <SignInAndSignUpPage />)}
 					/>
-					<Route path="/connections" render={() => <ConnectionsPageWithSpinner isLoading={this.state.isLoading} />} />
+					<Route path="/connections" render={() => <ConnectionsPageWithSpinner isLoading={isLoading} />} />
 					<Route path="/calendar" component={CalendarPage} />
 					<Route path="/to-do" component={ToDoPage} />
 					<Route path="/all-connections" component={AllConectionsPage} />

@@ -2,6 +2,7 @@ import React from 'react';
 import './connections-page.scss';
 import HeaderContainer from '../../components/header-container/header-container.cmp';
 import User from '../../components/user/user.cmp';
+import ItemUser from '../../components/item-user/item-user.cmp';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectConnectionData } from '../../redux/connection/connection.selectors';
@@ -20,15 +21,21 @@ class ConnectionsPage extends React.Component {
 		console.log(connection);
 		return (
 			<div className="connections-page">
-        <HeaderContainer >
-        <div className="flex-c-c">
-					<h4 className="mb-20">Connection: {connection && connection.connectionName}</h4>
-            <div className="flex-c">
-              <User currentUser={currentUser} small/>
-              {connection && Object.keys(connection.users).map(key => key !== currentUser.id ? <User key={key} currentUser={connection.users[key]} small /> :'')}
-					</div>
+				<HeaderContainer>
+					<div className="flex-c-c">
+						<h2 className="mb-20">Work project</h2>
+            <img className="conect-img" src={connection && connection.connectionImg} alt="" />
+            <h2 className="mt-20 mb-0">Total spent :</h2>
+            <h2>4305$</h2>
 					</div>
 				</HeaderContainer>
+				<div className="connection-users flex-c-c p-20 ">
+					<ItemUser item={currentUser} small />
+					{connection &&
+						Object.keys(connection.users).map(
+							(key) => (key !== currentUser.id ? <ItemUser key={key} item={connection.users[key]} small /> : ''))}
+        </div>
+        
 			</div>
 		);
 	}
