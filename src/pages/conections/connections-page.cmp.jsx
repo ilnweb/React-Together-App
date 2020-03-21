@@ -1,7 +1,6 @@
 import React from 'react';
 import './connections-page.scss';
 import HeaderContainer from '../../components/header-container/header-container.cmp';
-import User from '../../components/user/user.cmp';
 import ItemUser from '../../components/item-user/item-user.cmp';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';

@@ -6,7 +6,9 @@
   min-height: 100vh;
   z-index: 100;
   width: 100%;
-  background-image: radial-gradient(circle at center, #563ac6 ,#8fedf1  );
+  background: url(https://res.cloudinary.com/ilnphotography/image/upload/v1582805877/HomePage/back.png_uynssv.jpg);
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
