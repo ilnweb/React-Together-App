@@ -7,7 +7,7 @@
 
 .g-signin,
 .f-signin {
-  background-color: #de5246;
+  background-image: linear-gradient(to right , #5e50a5 , #1890ff);
   color: white;
   border: none;
   display: flex;
@@ -22,9 +22,11 @@
   justify-content: center;
 }
 
-
-.f-signin {
-  background-color: #3b5998;
+.g-signin:hover,
+.f-signin:hover {
+  background-image: linear-gradient(to right , #1890ff , #5e50a5);
+  color: white;
+  transition: all 2s;
 }
 
 .signup-sub {

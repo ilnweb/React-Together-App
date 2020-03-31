@@ -70,14 +70,12 @@ class SignIn extends React.Component {
 						<Button
 							className="flex-c g-signin mr-5"
 							size="large"
-              type="danger"
               icon={<GoogleOutlined/>}
 							onClick={signInWithGoogle}
 						/>
 						<Button
 							className="flex-c f-signin ml-5"
 							size="large"
-              type="primary"
               icon={<FacebookOutlined/>}
 							onClick={signInWithFacebook}
 						/>
