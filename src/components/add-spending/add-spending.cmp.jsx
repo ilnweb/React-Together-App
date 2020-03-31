@@ -11,7 +11,7 @@ export default function AddSpending() {
 	const { Panel } = Collapse;
 
 	return (
-		<Collapse defaultActiveKey={[ '1' ]} expandIconPosition="left">
+		<Collapse expandIconPosition="left">
 			<Panel header="ADD ITEM" key="1" extra={genExtra()}>
 				<FormAdd />
 			</Panel>

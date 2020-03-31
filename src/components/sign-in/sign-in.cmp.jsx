@@ -41,7 +41,7 @@ class SignIn extends React.Component {
 						id="email1"
 						name="email"
 						value={this.state.email}
-						className="input-style"
+						className="input-style input-signin"
 						type="email"
 						label="Email"
 						size="large"
@@ -54,7 +54,7 @@ class SignIn extends React.Component {
 						id="password1"
 						name="password"
 						value={this.state.password}
-						className="input-style"
+						className="input-style input-signin"
 						type="password"
 						label="Password"
 						size="large"

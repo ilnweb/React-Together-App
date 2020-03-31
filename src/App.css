@@ -28,26 +28,20 @@ input:-webkit-autofill:focus {
   -webkit-text-fill-color:  white!important;
 } 
 
-.ant-input-affix-wrapper {
-  border: 1px solid #529fe7;
-  background-color: #5645a1;
-}
-
-.ant-input-affix-wrapper > input.ant-input {
-  background-color: #5645a1;
-}
-
 .ant-btn-primary{
   background-image: linear-gradient(to right , #5e50a5 , #ed1459);
   border: none;
   transition: 1s;
+  transition: all .25s;
+  opacity: .9;
   
 }
-.ant-btn-primary:hover{
+.ant-btn-primary:hover,.ant-btn-primary:focus{
   background-image: linear-gradient(to right ,#ed1459 ,  #5e50a5);
   border: none;
-  -webkit-transition: all 2s;
+ 
 }
+
 
 
 

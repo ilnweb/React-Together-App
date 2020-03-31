@@ -46,7 +46,7 @@ class SignUp extends React.Component {
 						id="name"
 						name="displayName"
 						value={displayName}
-						className="input-style"
+						className="input-style input-signin"
 						type="text"
             label="Name"
             size="large"
@@ -58,7 +58,7 @@ class SignUp extends React.Component {
 						id="email"
 						name="email"
 						value={email}
-						className="input-style"
+						className="input-style input-signin"
 						type="email"
             label="Email"
             size="large"
@@ -70,7 +70,7 @@ class SignUp extends React.Component {
 						id="password"
 						name="password"
 						value={password}
-						className="input-style"
+						className="input-style input-signin"
 						type="password"
             label="Password"
             size="large"
@@ -82,7 +82,7 @@ class SignUp extends React.Component {
 						id="confirm-password"
 						name="confirmPassword"
 						value={confirmPassword}
-						className="input-style"
+						className="input-style input-signin"
 						type="password"
             label="Password"
             size="large"

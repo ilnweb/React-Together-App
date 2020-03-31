@@ -5,6 +5,15 @@
   margin-bottom: 2rem;
 }
 
+.input-signin{
+  border: 1px solid #529fe7;
+  background-color: #5645a1;
+}
+
+.input-signin > input.ant-input{
+  background-color: #5645a1;
+}
+
 .g-signin,
 .f-signin {
   background-image: linear-gradient(to right , #5e50a5 , #1890ff);
@@ -32,4 +41,5 @@
 .signup-sub {
   cursor: pointer;
   text-align: center;
+  color: rgb(201, 201, 201);
 }

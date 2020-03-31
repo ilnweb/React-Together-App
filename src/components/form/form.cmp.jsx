@@ -105,7 +105,7 @@ class FormAdd extends React.Component {
 					value={this.state.amount}
 					size="large"
 				/>
-				<Button className="mt-15" onClick={this.handleSubmit}>ADD</Button>
+				<Button type="primary" size="large" className="mt-15" onClick={this.handleSubmit}>ADD</Button>
 			</Form>
 		);
 	}

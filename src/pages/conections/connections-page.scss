@@ -1,11 +1,21 @@
+.connections-page{
+  display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
 .conect-img{
   width: 13rem;
   border-radius: 20px;
 }
 
 .connection-users{
-
+  width: 100%;
 }
 .connection-users > div{
   width: 100%;
+}
+
+.ant-collapse-content-box{
+  border-top: 1px solid gray;
 }
