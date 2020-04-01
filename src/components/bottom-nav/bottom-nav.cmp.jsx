@@ -7,7 +7,7 @@ import { FaRegEdit} from "react-icons/fa";
 
 class BottomNav extends React.Component {
 	state = {
-		current: 'home'
+		current: '/'
 	};
 
 	componentDidMount() {

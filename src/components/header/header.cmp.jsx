@@ -9,7 +9,7 @@ const Header = () => (
 		<SideNav />
 		<Link to="/notifications">
       <MdNotificationsNone className="icon-standart" style={{ color:"white"}}/>
-      <MdGroup className="icon-standart ml-5" style={{ color:"white"}}/>
+      <MdGroup className="icon-standart ml-10" style={{ color:"white"}}/>
 		</Link>
 	</div>
 );
