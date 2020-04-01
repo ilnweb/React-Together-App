@@ -21,6 +21,10 @@
   height: 3rem;
 }
 
+.ant-menu-horizontal>.ant-menu-item{
+  color: rgba(255, 255, 255, 0.537);
+}
+
 .ant-menu-horizontal>.ant-menu-item:hover,
 .ant-menu-horizontal>.ant-menu-submenu:hover,
 .ant-menu-horizontal>.ant-menu-item-active,
@@ -33,9 +37,7 @@
   border-bottom: 3px solid rgb(239, 1, 86);
 }
 
-.ant-menu-horizontal>.ant-menu-item{
-  color: rgba(255, 255, 255, 0.537);
-}
+
 
 
 

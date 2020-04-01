@@ -146,3 +146,6 @@ input:-webkit-autofill:focus {
   border-radius: 2px;
 }
 
+.ant-collapse-content {
+  border-top: none;
+}
