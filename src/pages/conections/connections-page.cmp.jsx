@@ -3,6 +3,7 @@ import './connections-page.scss';
 import HeaderContainer from '../../components/header-container/header-container.cmp';
 import UserConnect from '../../components/user-connect/user-connect.cmp';
 import AddSpending from '../../components/add-spending/add-spending.cmp';
+import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectConnectionData } from '../../redux/connection/connection.selectors';
@@ -22,8 +23,9 @@ class ConnectionsPage extends React.Component {
 	render() {
 		const { currentUser, connection } = this.props;
 		console.log(connection);
-		return (
-			<div className="connections-page">
+    return (
+      <div className="connections-page">
+      <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_mobile_testing_reah_dmknjs.svg" title="Connect with friends to track common spendings!" inside/> 
 				<HeaderContainer>
 					<div className="flex-c-c">
 						<h2 className="mb-20">Work project</h2>
@@ -36,18 +38,12 @@ class ConnectionsPage extends React.Component {
 				<div className="connection-users flex-c-c p-20 mb-50 ">
 					<Collapse bordered={false} defaultActiveKey={[ '1' ]}>
 						<Panel className="user-header" header={<UserConnect item={currentUser} small />} key="1">
-            <UserConnect  item={currentUser} small />
-            <UserConnect  item={currentUser} small />
-            <UserConnect  item={currentUser} small />
 						</Panel>
 						{connection &&
 							Object.keys(connection.users).map(
-								(key) =>
+								(key,index) =>
 									key !== currentUser.id ? (
-										<Panel className="user-header" header={<UserConnect key={key} item={connection.users[key]} small />}>
-                    <UserConnect key={key} item={connection.users[key]} small />
-                    <UserConnect key={key} item={connection.users[key]} small />
-                    <UserConnect key={key} item={connection.users[key]} small />
+										<Panel key={key+index} className="user-header" header={<UserConnect item={connection.users[key]} small />}>
 										</Panel>
 									) : (
 										''

@@ -2,6 +2,7 @@ import React from 'react';
 import './calendar-page.scss';
 import HeaderContainer from '../../components/header-container/header-container.cmp';
 import MyCalendar from '../../components/calendar/calendar.cmp';
+import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectConnectionData } from '../../redux/connection/connection.selectors';
@@ -14,8 +15,9 @@ class CalendarPage extends React.Component {
   render() {
     const { connection } = this.props;
     console.log(connection);
-		return (
-			<div className="calendar-page">
+    return (
+      <div className="calendar-page">
+      <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_events_2p66_lvgvqw.svg" title="Coming soon, Shared Calendar!" inside/> 
 				<HeaderContainer>
 					<h1> Calendar page</h1>
 				</HeaderContainer>

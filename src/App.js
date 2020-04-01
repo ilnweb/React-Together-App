@@ -13,6 +13,7 @@ import ToDoPage from './pages/todo/todo-page.com';
 import NotificationsPage from './pages/notifications/notifications-page.cmp';
 import AllConectionsPage from './pages/all-conections/all-connections-page.cmp';
 import BottomNav from './components/bottom-nav/bottom-nav.cmp';
+import LoadingScreen from './components/loading-screen/loading-screen.cmp';
 import { authFB, createUserProfileDocument, firestore } from './firebase/firebase.config';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
@@ -74,16 +75,7 @@ class App extends React.Component {
     const { isLoading } = this.state;
 		return (
 			<div className="App">
-				<div className={`flex-c-c ${isLoading ? 'isLoading' : 'hide'}`}>
-					<div className="logo-container flex-c-c">
-						<h1 className="logo-2">Together</h1>
-						<p>Lets do it better!</p>
-						<img
-							src="https://res.cloudinary.com/ilnphotography/image/upload/v1582856305/HomePage/undraw_mobile_marketing_iqbr_bznozj.svg"
-							alt=""
-						/>
-					</div>
-				</div>
+        {isLoading && <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1582856305/HomePage/undraw_mobile_marketing_iqbr_bznozj.svg" title="Lets do it better!" /> }
 				<Header />
 				<Switch>
 					<Route

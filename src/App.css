@@ -55,16 +55,6 @@ a {
  
 }
 
-.isLoading {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  z-index: 100000;
-  top: 0;
-  left: 0;
-  background-image: linear-gradient(to right bottom, #7243a9, #436fb9);
-}
-
 .logo {
   font-family: 'Pacifico', cursive;
   padding: .5rem 1rem;
@@ -77,30 +67,6 @@ a {
 .logo img {
   width: 40%;
 }
-.logo-container {
-  max-width: 30rem;
-}
-
-.logo-container p{
-  color: white;
-}
-
-.logo-container img {
-  margin-top: 8%;
-  width: 95%;
-}
-
-.logo-2 {
-  font-family: 'Pacifico', cursive;
-  margin: 2rem ;
-  font-size: 4rem;
-}
-
-.hide {
-  opacity: 0;
-  display: none;
-}
-
 
 .color-primary {
   color: #f50057;
