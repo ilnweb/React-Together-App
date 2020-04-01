@@ -29,7 +29,7 @@ class SideNav extends React.Component {
 
 		return (
 			<div className="side-nav">
-				<FaBars style={{fontSize:"1.2rem"}} onClick={this.showDrawer} />
+				<FaBars style={{fontSize:"1.1rem"}} onClick={this.showDrawer} />
 
 				<Drawer title="Together" placement="left" closable={false} onClose={this.onClose} visible={this.state.visible}>
 					<h2 className="side-nav-greeting flex-c">
