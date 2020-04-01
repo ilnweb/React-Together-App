@@ -1,20 +1,28 @@
 .user-connect {
   justify-content: space-between;
-  
-    padding: 1rem;
-    border-radius:5px;
+  margin-left: .8rem;
+  padding: 1rem;
+  border-radius:5px;
 
-    .item-red {
-      color: rgb(236, 13, 13);
-    }
+  .item-red {
+    color: rgb(236, 13, 13);
+  }
 }
 
 .user-header {
-  margin: 12px 16px;
+  background-color: transparent;
   box-shadow: 0 3px 30px -10px rgba(51, 49, 49, 0.46);
   border-radius:10px;
+  background: white;
+  margin: 1rem;
 }
 
 .ant-collapse-borderless > .ant-collapse-item:last-child, .ant-collapse-borderless > .ant-collapse-item:last-child .ant-collapse-header {
   border-radius: 10px;
+
+}
+
+.connection-users > div {
+  width: 100%;
+  background: transparent;
 }

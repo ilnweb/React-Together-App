@@ -10,41 +10,6 @@ html {
   height: auto;
 }
 
-input:-webkit-autofill,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  border: none;
-  -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 1000px #5645a1 inset;
-  transition: background-color 5000s ease-in-out 0s;
-}
-
-input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 50px #5645a1 inset!important;/*your box-shadow*/
-  -webkit-text-fill-color:  white!important;
-} 
-
-.ant-btn-primary{
-  background-image: linear-gradient(to right , #5e50a5 , #ed1459);
-  border: none;
-  transition: 1s;
-  transition: all .25s;
-  opacity: .9;
-  
-}
-.ant-btn-primary:hover,.ant-btn-primary:focus{
-  background-image: linear-gradient(to right ,#ed1459 ,  #5e50a5);
-  border: none;
- 
-}
-
-
-
-
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
@@ -83,6 +48,11 @@ a {
   padding: .5rem;
   text-align: center;
   background: white;
+}
+
+.icon-standart{
+  font-size: 1.4rem;
+ 
 }
 
 .isLoading {
@@ -136,6 +106,38 @@ a {
   color: #f50057;
 }
 
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #5645a1 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px #5645a1 inset!important;/*your box-shadow*/
+  -webkit-text-fill-color:  white!important;
+} 
+
+.ant-btn-primary{
+  background-image: linear-gradient(to right , #5e50a5 , #ed1459);
+  border: none;
+  transition: 1s;
+  transition: all .25s;
+  opacity: .9;
+  
+}
+.ant-btn-primary:hover,.ant-btn-primary:focus{
+  background-image: linear-gradient(to right ,#ed1459 ,  #5e50a5);
+  border: none;
+ 
+}
+
 .ant-input {
   
   /* background-color: #fff; */
@@ -143,3 +145,4 @@ a {
   border: 1px solid #1890ff;
   border-radius: 2px;
 }
+

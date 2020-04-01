@@ -1,7 +1,8 @@
 import React from 'react';
 import './side-nav.scss';
 import { Drawer } from 'antd';
-import { LogoutOutlined,UsergroupAddOutlined,UserOutlined,MenuUnfoldOutlined } from '@ant-design/icons';
+import { MdExitToApp, MdGroup, MdPerson } from 'react-icons/md';
+import { FaBars} from 'react-icons/fa';
 import { authFB } from '../../firebase/firebase.config';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -28,17 +29,24 @@ class SideNav extends React.Component {
 
 		return (
 			<div className="side-nav">
-      <MenuUnfoldOutlined onClick={this.showDrawer} />
+				<FaBars style={{fontSize:"1.2rem"}} onClick={this.showDrawer} />
 
 				<Drawer title="Together" placement="left" closable={false} onClose={this.onClose} visible={this.state.visible}>
-					<h2 className="side-nav-greeting flex-c">Hi, {currentUser && currentUser.displayName.split(' ').slice(0, 1)}</h2>
+					<h2 className="side-nav-greeting flex-c">
+						Hi, {currentUser && currentUser.displayName.split(' ').slice(0, 1)}
+					</h2>
 					<div className="side-nav-content flex-c-c">
-						<Link to="/profile">
-            <UserOutlined /> <span onClick={this.onClose}> Profile</span>
+						<Link className="flex-c" to="/profile">
+              <MdPerson className="icon-standart m-15 ml-0 mb-10" />
+              <span onClick={this.onClose}> Profile</span>
 						</Link>
-						<Link to="/all-connections"><UsergroupAddOutlined /> <span onClick={this.onClose}> All Conections</span></Link>
-						<Link to="/signin">
-              <LogoutOutlined /> <span onClick={() => authFB.signOut().then(() => this.onClose())}> Sign out</span>
+						<Link className="flex-c" to="/all-connections">
+              <MdGroup className="icon-standart m-15 ml-0 mb-10" />
+              <span onClick={this.onClose}> All Conections</span>
+						</Link>
+						<Link className="flex-c" to="/signin">
+							<MdExitToApp className="icon-standart m-15 ml-0 mb-10" />{' '}
+							<span onClick={() => authFB.signOut().then(() => this.onClose())}> Sign out</span>
 						</Link>
 					</div>
 				</Drawer>

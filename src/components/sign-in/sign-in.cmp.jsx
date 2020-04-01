@@ -2,7 +2,8 @@ import React from 'react';
 import './sign-in.scss';
 import { authFB, signInWithGoogle, signInWithFacebook } from '../../firebase/firebase.config';
 import { Button, Input, Form } from 'antd';
-import { MailOutlined, FacebookOutlined, GoogleOutlined } from '@ant-design/icons';
+import { MdMailOutline } from "react-icons/md";
+import { FaGoogle, FaFacebook } from "react-icons/fa";
 
 
 class SignIn extends React.Component {
@@ -46,7 +47,7 @@ class SignIn extends React.Component {
 						label="Email"
 						size="large"
 						placeholder="Email"
-						suffix={<MailOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+						suffix={<MdMailOutline style={{ color: 'rgba(0,0,0,.25)' }} />}
 						autoComplete="true"
 						onChange={this.handleChange}
 					/>
@@ -70,13 +71,13 @@ class SignIn extends React.Component {
 						<Button
 							className="flex-c g-signin mr-5"
 							size="large"
-              icon={<GoogleOutlined/>}
+              icon={<FaGoogle/>}
 							onClick={signInWithGoogle}
 						/>
 						<Button
 							className="flex-c f-signin ml-5"
 							size="large"
-              icon={<FacebookOutlined/>}
+              icon={<FaFacebook/>}
 							onClick={signInWithFacebook}
 						/>
 					</div>

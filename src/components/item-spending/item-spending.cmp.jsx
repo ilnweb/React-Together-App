@@ -2,7 +2,7 @@ import React from 'react';
 import './item-spending.scss';
 import { removeItem } from '../../redux/spendings/spending.actions';
 import { connect } from 'react-redux';
-import { DeleteFilled } from '@ant-design/icons';
+import { MdDelete } from "react-icons/md";
 // import Moment from 'react-moment';
 
 const ItemSpending = ({ item, removeItem }) => {
@@ -16,7 +16,7 @@ const ItemSpending = ({ item, removeItem }) => {
 				<div className={`item-amount ${item.type === 'exp' ? 'item-red' : 'item-green'}`}>
 					{item.type === 'exp' ? '-' : '+'} {item.amount}
 				</div>
-					<DeleteFilled className="item-delete" onClick={() => removeItem(item)} />
+					<MdDelete className="item-delete icon-standart" onClick={() => removeItem(item)} />
 			</div>
 		</div>
 	);

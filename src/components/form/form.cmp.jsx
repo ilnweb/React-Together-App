@@ -1,7 +1,7 @@
 import React from 'react';
 import './form.scss';
 import { Button, Input, Form, Radio } from 'antd';
-import { DollarCircleOutlined, FormOutlined } from '@ant-design/icons';
+import { MdAttachMoney, MdModeEdit } from "react-icons/md";
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/spendings/spending.actions';
 import firebase from 'firebase/app';
@@ -88,7 +88,7 @@ class FormAdd extends React.Component {
 					type="text"
 					label="Description"
 					placeholder="Description"
-					suffix={<FormOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+					suffix={<MdModeEdit style={{ color: 'rgba(0,0,0,.25)' }} />}
 					onChange={this.handleChange}
 					value={this.state.description}
 					size="large"
@@ -100,7 +100,7 @@ class FormAdd extends React.Component {
 					type="number"
 					label="Amount"
 					placeholder="Amount"
-					suffix={<DollarCircleOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+					suffix={<MdAttachMoney style={{ color: 'rgba(0,0,0,.25)' }} />}
 					onChange={this.handleChange}
 					value={this.state.amount}
 					size="large"

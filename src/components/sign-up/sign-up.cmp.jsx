@@ -1,6 +1,6 @@
 import React from 'react';
 import './sign-up.scss';
-import { UserOutlined, MailOutlined } from '@ant-design/icons';
+import { MdMailOutline,MdPersonOutline } from "react-icons/md";
 import { Button, Input, Form } from 'antd';
 import { authFB, createUserProfileDocument } from '../../firebase/firebase.config';
 
@@ -52,7 +52,7 @@ class SignUp extends React.Component {
             size="large"
 						placeholder="Name"
 						onChange={this.handleChange}
-						suffix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+						suffix={<MdPersonOutline style={{ color: 'rgba(0,0,0,.25)' }} />}
 					/>
 					<Input
 						id="email"
@@ -64,7 +64,7 @@ class SignUp extends React.Component {
             size="large"
 						placeholder="Email"
 						onChange={this.handleChange}
-						suffix={<MailOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+						suffix={<MdMailOutline style={{ color: 'rgba(0,0,0,.25)' }} />}
 					/>
 					<Input.Password
 						id="password"

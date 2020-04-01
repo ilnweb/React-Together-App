@@ -10,6 +10,15 @@
   z-index: 99;
   color: white;
   transition: all 2s;
+
+  
+}
+
+.ant-menu-horizontal > .ant-menu-item{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  height: 3rem;
 }
 
 .ant-menu-horizontal>.ant-menu-item:hover,
@@ -20,8 +29,12 @@
 .ant-menu-horizontal>.ant-menu-submenu-open,
 .ant-menu-horizontal>.ant-menu-item-selected,
 .ant-menu-horizontal>.ant-menu-submenu-selected {
-  color: rgb(239, 1, 108);
+  color: rgb(255, 255, 255);
   border-bottom: 3px solid rgb(239, 1, 86);
+}
+
+.ant-menu-horizontal>.ant-menu-item{
+  color: rgba(255, 255, 255, 0.537);
 }
 
 

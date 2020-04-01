@@ -2,7 +2,8 @@ import React from 'react';
 import './bottom-nav.scss';
 import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
-import { HomeOutlined, UsergroupAddOutlined, CalendarOutlined, FileDoneOutlined } from '@ant-design/icons';
+import { MdPersonOutline, MdGroup, MdInsertInvitation } from "react-icons/md";
+import { FaRegEdit} from "react-icons/fa";
 
 class BottomNav extends React.Component {
 	state = {
@@ -33,19 +34,19 @@ class BottomNav extends React.Component {
 				mode="horizontal"
 			>
 				<Menu.Item key="/">
-					<HomeOutlined />
+					<MdPersonOutline className="icon-standart"/>
 					<Link to="/" />
 				</Menu.Item>
 				<Menu.Item key="/connections">
-					<UsergroupAddOutlined />
+					<MdGroup className="icon-standart"/>
 					<Link to="/connections" />
 				</Menu.Item>
 				<Menu.Item key="/calendar">
-					<CalendarOutlined />
+					<MdInsertInvitation className="icon-standart"/>
 					<Link to="/calendar" />
 				</Menu.Item>
-				<Menu.Item key="/to-do">
-        <FileDoneOutlined />
+				<Menu.Item className="flex-c" key="/to-do">
+        <FaRegEdit className="icon-standart"/>
 					<Link to="/to-do" />
 				</Menu.Item>
 			</Menu>

@@ -1,18 +1,18 @@
 import React from 'react';
 import './add-spending.scss';
 import FormAdd from '../form/form.cmp';
-import { PlusCircleFilled  } from '@ant-design/icons';
+import { MdAddCircle  } from "react-icons/md";
 
 import { Collapse } from 'antd';
 
-const genExtra = () => <PlusCircleFilled className="color-primary"/>;
+
 
 export default function AddSpending() {
 	const { Panel } = Collapse;
 
 	return (
 		<Collapse expandIconPosition="left">
-			<Panel header="ADD ITEM" key="1" extra={genExtra()}>
+			<Panel header={<div className="flex-c"> <MdAddCircle className="plus-icon color-primary"/></div> } key="1" showArrow={false}>
 				<FormAdd />
 			</Panel>
 		</Collapse>
