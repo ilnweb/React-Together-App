@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectConnectionData } from '../../redux/connection/connection.selectors';
 import { createStructuredSelector } from 'reselect';
-import { Collapse } from 'antd';
+import { Collapse, Empty } from 'antd';
 
 const { Panel } = Collapse;
 // import WithSpinner from '../../components/with-spinner/with-spinner.cmp';
@@ -25,10 +25,10 @@ class ConnectionsPage extends React.Component {
 		console.log(connection);
     return (
       <div className="connections-page">
-      <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_mobile_testing_reah_dmknjs.svg" title="Connect with friends to track common spendings!" inside button/> 
+      {connection ?'': <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_mobile_testing_reah_dmknjs.svg" title="Connect with friends to track common spendings!" inside button/>} 
 				<HeaderContainer>
 					<div className="flex-c-c">
-						<h2 className="mb-20">Work project</h2>
+						<h2 className="mb-20">{connection && connection.connectionName}</h2>
 						<img className="conect-img" src={connection && connection.connectionImg} alt="" />
 						<h2 className="mt-20 mb-0">Total spent :</h2>
 						<h2>4305$</h2>
@@ -37,13 +37,15 @@ class ConnectionsPage extends React.Component {
         <AddSpending/>
 				<div className="connection-users flex-c-c p-20 mb-50 ">
 					<Collapse bordered={false} defaultActiveKey={[ '1' ]}>
-						<Panel className="user-header" header={<UserConnect item={currentUser} small />} key="1">
+            <Panel className="user-header" header={<UserConnect item={currentUser} small />} key="1">
+              <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
 						</Panel>
 						{connection &&
 							Object.keys(connection.users).map(
 								(key,index) =>
 									key !== currentUser.id ? (
-										<Panel key={key+index} className="user-header" header={<UserConnect item={connection.users[key]} small />}>
+                    <Panel key={key + index} className="user-header" header={<UserConnect item={connection.users[key]} small />}>
+                      <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
 										</Panel>
 									) : (
 										''
