@@ -25,7 +25,7 @@ class ConnectionsPage extends React.Component {
 		console.log(connection);
     return (
       <div className="connections-page">
-      <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_mobile_testing_reah_dmknjs.svg" title="Connect with friends to track common spendings!" inside/> 
+      <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_mobile_testing_reah_dmknjs.svg" title="Connect with friends to track common spendings!" inside button/> 
 				<HeaderContainer>
 					<div className="flex-c-c">
 						<h2 className="mb-20">Work project</h2>
