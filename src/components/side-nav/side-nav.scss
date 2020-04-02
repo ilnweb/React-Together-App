@@ -1,17 +1,22 @@
 .side-nav {
+  
 
   &-greeting {
     height: 9rem;
-    background-image: url(https://res.cloudinary.com/ilnphotography/image/upload/v1582722885/HomePage/back_gl9w7c.png);
+    background-image: url(https://res.cloudinary.com/ilnphotography/image/upload/v1582805877/HomePage/back.png_uynssv.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0;
     text-align: center;
+    color: white;
   }
 
   &-content {
     padding: 24px;
     align-items:flex-start;
+    a{
+      color: white;
+    }
     }
 }
 
@@ -25,4 +30,24 @@
 
 a .anticon span{
   margin-left: 10px;
+}
+
+.ant-drawer .ant-drawer-content {
+  padding: 0;
+  background-image: linear-gradient(to right bottom, #7243a9, #436fb9);
+ 
+}
+.ant-drawer-header {
+  color: white;
+ background:transparent; 
+border-bottom: none; 
+border-radius:0px;
+
+}
+
+.ant-drawer-title {
+  font-family: 'Pacifico', cursive;
+  color: white;
+  font-size: 1.7rem;
+
 }
