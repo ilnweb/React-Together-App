@@ -47,7 +47,7 @@ class App extends React.Component {
 						photoURL: userAuth.photoURL,
 						...snapShot.data()
           });
-          if(snapShot.data().connections[0].connectionId){
+          if(snapShot.data().connections[0]){
 					const connectionID = snapShot.data().connections[0].connectionId;
 					const connections = firestore.doc(`connections/${connectionID}`);
 					connections
@@ -59,6 +59,8 @@ class App extends React.Component {
 						.catch(function(error) {
 							console.log('Error getting documents: ', error);
 						});
+          } else {
+            this.setState({ isLoading: false })
           }
 				});
 			} else {
