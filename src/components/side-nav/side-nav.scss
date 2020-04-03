@@ -2,13 +2,14 @@
   
 
   &-greeting {
-    height: 9rem;
+    height: 8rem;
     background-image: url(https://res.cloudinary.com/ilnphotography/image/upload/v1582805877/HomePage/back.png_uynssv.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    margin: 0;
+    margin: 1rem 1rem 0 1rem ;
     text-align: center;
     color: white;
+    border-radius:10px;
   }
 
   &-content {
@@ -34,7 +35,7 @@ a .anticon span{
 
 .ant-drawer .ant-drawer-content {
   padding: 0;
-  background-image: linear-gradient(to right bottom, #7243a9, #436fb9);
+  background-image: linear-gradient(120deg, #7243a9, #436fb9);
  
 }
 .ant-drawer-header {

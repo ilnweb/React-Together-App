@@ -47,15 +47,26 @@ class App extends React.Component {
 						photoURL: userAuth.photoURL,
 						...snapShot.data()
           });
-          if(snapShot.data().connections[0]){
+          if(snapShot.data().connections){
 					const connectionID = snapShot.data().connections[0].connectionId;
 					const connections = firestore.doc(`connections/${connectionID}`);
+					const subConnections = firestore.collection(`connections/${connectionID}/userData/`);
 					connections
 						.get()
-						.then((doc) => {
-							setConnection(doc.data());
-						})
-						.then(() => this.setState({ isLoading: false }))
+            .then((doc) => {
+             subConnections.get()
+            .then((querySnapshot) => {
+              setConnection({
+                id:doc.id,
+                ...doc.data(),
+                userData: querySnapshot.docs.reduce((obj, doc2) => {
+                  return {
+                    ...obj,
+                    [doc2.id]:doc2.data()
+                  }
+                },{})
+              });
+						})}).then(() => this.setState({ isLoading: false }))
 						.catch(function(error) {
 							console.log('Error getting documents: ', error);
 						});

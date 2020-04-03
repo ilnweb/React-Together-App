@@ -2,10 +2,7 @@ import React from 'react';
 import './form.scss';
 import { Button, Input, Form, Radio } from 'antd';
 import { MdAttachMoney, MdModeEdit } from "react-icons/md";
-import { connect } from 'react-redux';
-import { addItem } from '../../redux/spendings/spending.actions';
-import firebase from 'firebase/app';
-import { firestore } from '../../firebase/firebase.config';
+
 
 
 class FormAdd extends React.Component {
@@ -21,7 +18,6 @@ class FormAdd extends React.Component {
   
 	handleSubmit = (e) => {
 		e.preventDefault();
-		const { addItem,currentUser } = this.props;
     const { description, amount, type } = this.state;
 
     if (description === '' || amount === '' || type === '') {
@@ -35,18 +31,7 @@ class FormAdd extends React.Component {
     const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
     let formatDate = date.getDate() + "/" +  months[date.getMonth()]  + "/" + date.getFullYear();
 
-    const collectionSet = firestore.doc(`users/${currentUser.id}`);
-    collectionSet.update({
-      spendings: firebase.firestore.FieldValue.arrayUnion({
-        id: id(),
-        date:formatDate,
-        description: description,
-        amount: amount,
-        type: type
-      })
-    })
-
-    addItem({
+    this.props.dispatchItem({
       id: id(),
       date:formatDate,
 			description: description,
@@ -111,13 +96,4 @@ class FormAdd extends React.Component {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => ({
-	addItem: (item) => dispatch(addItem(item))
-});
-
-const mapStateToProps = (state) => ({
-  spendingItems: state.spendings,
-  currentUser:state.user.currentUser
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(FormAdd);
+export default FormAdd;

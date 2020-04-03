@@ -79,15 +79,19 @@ export const createNewConnection = async (connectionName, connectionImg, invited
 				createdAt,
 				connectionName,
 				connectionImg,
-				users: usersDataReady,
-				usersData: {
-					spendings: userIDs,
-					calendar: userIDs,
-					todo: userIDs
-				}
+				users: usersDataReady
 			})
 			.then(function(docRef) {
 				connectionId = docRef.id;
+				docRef.collection('userData').doc('spendings').set({
+					...userIDs
+				});
+				docRef.collection('userData').doc('calendar').set({
+					...userIDs
+				});
+				docRef.collection('userData').doc('list').set({
+					...userIDs
+				});
 			});
 	} catch (error) {
 		alert('error creating connection', error.message);
@@ -126,9 +130,8 @@ export const createNewConnection = async (connectionName, connectionImg, invited
 	return connectionRef;
 };
 
-
-export const acceptInvitation = async (connectionId, currentUserId) => { 
-  const userRef = firestore.doc(`users/${currentUserId}`);
+export const acceptInvitation = async (connectionId, currentUserId) => {
+	const userRef = firestore.doc(`users/${currentUserId}`);
 	try {
 		await userRef.update({
 			connections: firebase.firestore.FieldValue.arrayUnion({
@@ -138,7 +141,37 @@ export const acceptInvitation = async (connectionId, currentUserId) => {
 	} catch (error) {
 		alert('error sending notification', error.message);
 	}
-}
+};
+
+export const pullConnection = async (connectionID) => {
+	let connection;
+	const connections = firestore.doc(`connections/${connectionID}`);
+	const subConnections = firestore.collection(`connections/${connectionID}/userData/`);
+	connections
+		.get()
+		.then((doc) => {
+			subConnections.get().then((querySnapshot) => {
+				connection = {
+					id: doc.id,
+					...doc.data(),
+					userData: querySnapshot.docs.reduce((obj, doc2) => {
+						return {
+							...obj,
+							[doc2.id]: doc2.data()
+						};
+					}, {})
+				};
+			});
+		})
+    .then(() => {
+      console.log(connection);
+      return connection
+    })
+		.catch(function(error) {
+			console.log('Error getting documents: ', error);
+    });
+
+};
 ////////////// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
