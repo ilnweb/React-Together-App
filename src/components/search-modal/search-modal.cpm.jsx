@@ -8,6 +8,7 @@ import { letterName } from '../../functions/functions';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 class SearchModal extends React.Component {
@@ -149,10 +150,12 @@ class SearchModal extends React.Component {
                 item.displayName.toLowerCase().includes(userSearch.toLowerCase()) &&
                   <ItemUser key={item.id} item={item} handleClick={this.handleClick} />
 							)}
-					</div>
+          </div>
+          <Link to='/connections'>
 					<Button className="mt-30" size="large" type="primary" onClick={this.handleCreate}>
-						Create
-					</Button>
+              Create
+          </Button>
+          </Link>
 				</Modal>
 			</div>
 		);

@@ -10,9 +10,8 @@ import { MdArrowBack } from "react-icons/md";
 
 class NotificationsPage extends React.Component {
 
-  handleAccept = (connectionId) => {
-    console.log(connectionId);
-    acceptInvitation(connectionId.connectionId, this.props.currentUser.id)
+  handleAccept = (connection) => {
+    acceptInvitation(connection, this.props.currentUser.id)
   }
 
   render() {

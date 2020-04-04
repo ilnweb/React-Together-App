@@ -1,6 +1,6 @@
 import React from 'react';
 import './user-connect.scss';
-import { Button, Avatar } from 'antd';
+import { Avatar } from 'antd';
 import { letterName } from '../../functions/functions';
 
 const UserConnect = ({ item, handleClick }) => {

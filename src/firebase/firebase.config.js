@@ -120,7 +120,10 @@ export const createNewConnection = async (connectionName, connectionImg, invited
 	try {
 		await userRef.update({
 			connections: firebase.firestore.FieldValue.arrayUnion({
-				connectionId
+        connectionId,
+        createdAt,
+        connectionName,
+        connectionImg
 			})
 		});
 	} catch (error) {
@@ -130,12 +133,12 @@ export const createNewConnection = async (connectionName, connectionImg, invited
 	return connectionRef;
 };
 
-export const acceptInvitation = async (connectionId, currentUserId) => {
+export const acceptInvitation = async (connection, currentUserId) => {
 	const userRef = firestore.doc(`users/${currentUserId}`);
 	try {
 		await userRef.update({
 			connections: firebase.firestore.FieldValue.arrayUnion({
-				connectionId
+				...connection
 			})
 		});
 	} catch (error) {
@@ -144,32 +147,32 @@ export const acceptInvitation = async (connectionId, currentUserId) => {
 };
 
 export const pullConnection = async (connectionID) => {
-	let connection;
-	const connections = firestore.doc(`connections/${connectionID}`);
-	const subConnections = firestore.collection(`connections/${connectionID}/userData/`);
-	connections
-		.get()
-		.then((doc) => {
-			subConnections.get().then((querySnapshot) => {
-				connection = {
-					id: doc.id,
-					...doc.data(),
-					userData: querySnapshot.docs.reduce((obj, doc2) => {
-						return {
-							...obj,
-							[doc2.id]: doc2.data()
-						};
-					}, {})
-				};
-			});
-		})
-    .then(() => {
-      console.log(connection);
-      return connection
-    })
-		.catch(function(error) {
-			console.log('Error getting documents: ', error);
-    });
+	// let connection;
+	// const connections = firestore.doc(`connections/${connectionID}`);
+	// const subConnections = firestore.collection(`connections/${connectionID}/userData/`);
+	// connections
+	// 	.get()
+	// 	.then((doc) => {
+	// 		subConnections.get().then((querySnapshot) => {
+	// 			connection = {
+	// 				id: doc.id,
+	// 				...doc.data(),
+	// 				userData: querySnapshot.docs.reduce((obj, doc2) => {
+	// 					return {
+	// 						...obj,
+	// 						[doc2.id]: doc2.data()
+	// 					};
+	// 				}, {})
+	// 			};
+	// 		});
+	// 	})
+  //   .then(() => {
+  //     console.log(connection);
+  //     return connection
+  //   })
+	// 	.catch(function(error) {
+	// 		console.log('Error getting documents: ', error);
+  //   });
 
 };
 ////////////// Initialize Firebase

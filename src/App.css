@@ -115,3 +115,7 @@ input:-webkit-autofill:focus {
 .ant-collapse-content {
   border-top: none;
 }
+
+.date-color{
+  color: darkgray;
+}

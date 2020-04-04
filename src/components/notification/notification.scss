@@ -16,12 +16,16 @@
   }
 
   &-data{
-    height: 7rem;
+    height: 10rem;
   }
 
   &-list-item{
     justify-content: space-between;
     align-items:flex-start
+  }
+
+  &-buttons{
+    width: 100%;
   }
 
 }

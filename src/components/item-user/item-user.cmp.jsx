@@ -11,7 +11,7 @@ const ItemUser = ({ item, handleClick }) => {
 				<div className="user-list-item">{item.displayName}</div>
 			</div>
 			<div className="flex-c">
-				<Button type="primary" size="large" onClick={()=>handleClick(item)} >370$</Button>
+				<Button type="primary" size="large" onClick={()=>handleClick(item)} >Invite</Button>
 			</div>
 		</div>
 	);
