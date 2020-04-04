@@ -5,11 +5,13 @@ import UserConnect from '../../components/user-connect/user-connect.cmp';
 import AddSpending from '../../components/add-spending/add-spending.cmp';
 import FormAdd from '../../components/form/form.cmp';
 import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
+import ItemSpending from '../../components/item-spending/item-spending.cmp';
 import { firestore } from '../../firebase/firebase.config';
 import firebase from 'firebase/app';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectConnectionData } from '../../redux/connection/connection.selectors';
+import { addConnectionItem } from '../../redux/connection/connection.actions';
 import { createStructuredSelector } from 'reselect';
 import { Collapse, Empty } from 'antd';
 // import WithSpinner from '../../components/with-spinner/with-spinner.cmp';
@@ -23,17 +25,21 @@ class ConnectionsPage extends React.Component {
   };
   
   dispatchItem = (readyItem) => {
-    const {currentUser, connection } = this.props;
+    const {currentUser, connection, addConnectionItem } = this.props;
     const collectionSet = firestore.doc(`connections/${connection.id}/userData/spendings`);
     collectionSet.update({
       [currentUser.id]: firebase.firestore.FieldValue.arrayUnion({
         ...readyItem
       })
     })
+
+    addConnectionItem({
+      ...readyItem
+    })
   }
 
 	render() {
-		const { currentUser, connection } = this.props;
+    const { currentUser, connection } = this.props;
 		console.log(connection);
 		return (
 			<div className="connections-page">
@@ -58,8 +64,9 @@ class ConnectionsPage extends React.Component {
 				</AddSpending>
 				<div className="connection-users flex-c-c p-20 mb-50 ">
 					<Collapse bordered={false} defaultActiveKey={[ '1' ]}>
-						<Panel className="user-header" header={<UserConnect item={currentUser} small />} key="1">
-							<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+            <Panel className="user-header" header={<UserConnect item={currentUser} small />} key="1">
+              {connection && connection.userData ? this.props.connection.userData.spendings[currentUser.id].map(item => <ItemSpending key={item.id} item={item}/>) :
+							<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />}
 						</Panel>
 						{connection &&
 							Object.keys(connection.users).map(
@@ -81,7 +88,7 @@ class ConnectionsPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	// setConnection: (connection) => dispatch(setConnection(connection))
+	addConnectionItem: (item) => dispatch(addConnectionItem(item))
 });
 
 const mapStateToProps = createStructuredSelector({

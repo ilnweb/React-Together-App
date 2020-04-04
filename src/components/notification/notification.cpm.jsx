@@ -9,19 +9,19 @@ const Notification = ({ item, handleAccept }) => {
 		<div className="notification">
 			<div className="notification-data flex-c p-10">
 				<div className="notification-image" style={{ backgroundImage: `url(${item.connectionImg})` }} alt="conection" />
-				<div className="flex-c-c">
+				<div className="flex-c-c ml-10">
 					<div className="notification-list-item ml-10 mt-10 flex-c-c" >
 						<div className="notification-date">
 							<strong>{item.displayName}</strong> invited you to connection <strong>{item.connectionName}</strong>
 						</div>
 						<Moment className="date-color" fromNow date={item.createdAt.toDate()} />
 					</div>
-					<div className="notification-buttons flex-c">
-						<Button className="m-10" type="danger" size="large" block>
+					<div className="notification-buttons flex">
+						<Button className="m-10" type="danger" size="large">
               Decline
             </Button>
             <Link to="/connections">
-						<Button className="m-10" type="primary" size="large" onClick={() => handleAccept(item)} block>
+						<Button className="m-10" type="primary" size="large" onClick={() => handleAccept(item)}>
 							Accept
             </Button>
             </Link>
