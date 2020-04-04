@@ -48,7 +48,7 @@ class App extends React.Component {
 						...snapShot.data()
           });
           if(snapShot.data().connections.length){
-					const connectionID = snapShot.data().connections[0].connectionId;
+					const connectionID = snapShot.data().connections.reverse()[0].connectionId;
 					const connections = firestore.doc(`connections/${connectionID}`);
 					const subConnections = firestore.collection(`connections/${connectionID}/userData/`);
 					connections

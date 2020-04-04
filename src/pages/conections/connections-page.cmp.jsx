@@ -73,7 +73,7 @@ class ConnectionsPage extends React.Component {
 				<div className="connection-users flex-c-c mb-50 ">
           <Collapse bordered={false} defaultActiveKey={['1']}>
 						<Panel className="user-header" header={<UserConnect item={currentUser} total={currentUserTotal}  small />} key="1">
-							{connection && connection.userData ? (
+							{connection && connection.userData.spendings[currentUser.id].length ? (
 								this.props.connection.userData.spendings[currentUser.id].map((item) => (
 									<ItemSpending key={item.id} item={item} />
 								))
