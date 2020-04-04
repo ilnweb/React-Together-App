@@ -15,8 +15,10 @@ export const selectCurrentUrerTotalConnection = createSelector(
     (sumTotal, item) =>  sumTotal + parseInt(item.amount) , 0) : null
 );
 
-// export const selectSpendingsIncTotal = createSelector(
-//   [selectSpendingsItems],
-//   spendingItems =>  spendingItems ? spendingItems.reduce(
-//     (sumTotal, item) => item.type === 'inc' ? sumTotal + parseInt(item.amount) : sumTotal , 0) : null
-// );
+export const selectUsersTotalConnection = createSelector(
+  [selectConnectionData],
+  connectionData => connectionData ? Object.keys(connectionData.userData.spendings).reduce((acc, key) => acc + connectionData.userData.spendings[key].reduce(
+    (sumTotal, item) => connectionData.userData.spendings[key] !== authFB.currentUser.uid ?  sumTotal + parseInt(item.amount):'', 0),0 
+    ) : null
+);
+

@@ -10,7 +10,7 @@ import { firestore } from '../../firebase/firebase.config';
 import firebase from 'firebase/app';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { selectConnectionData, selectCurrentUrerTotalConnection } from '../../redux/connection/connection.selectors';
+import { selectConnectionData, selectCurrentUrerTotalConnection,selectUsersTotalConnection } from '../../redux/connection/connection.selectors';
 import { addConnectionItem } from '../../redux/connection/connection.actions';
 import { createStructuredSelector } from 'reselect';
 import { Collapse, Empty } from 'antd';
@@ -20,8 +20,15 @@ const { Panel } = Collapse;
 
 class ConnectionsPage extends React.Component {
 	state = {
-		isLoading: true
-	};
+    isLoading: true,
+    totalUsers: 0
+  };
+  
+  addUserTotal = (total) => {
+    this.setState(prevState => ({
+      totalUsers: prevState.totalUsers +total
+    }));
+  }
 
 	dispatchItem = (readyItem) => {
 		const { currentUser, connection, addConnectionItem } = this.props;
@@ -38,8 +45,8 @@ class ConnectionsPage extends React.Component {
 	};
 
 	render() {
-		const { currentUser, connection,currentUserTotal } = this.props;
-		console.log(connection);
+		const { currentUser, connection,currentUserTotal,otherUsersTotal } = this.props;
+		console.log(otherUsersTotal);
 		return (
 			<div className="connections-page">
 				{connection ? (
@@ -57,7 +64,7 @@ class ConnectionsPage extends React.Component {
 						<h2 className="mb-20">{connection && connection.connectionName}</h2>
 						<img className="conect-img" src={connection && connection.connectionImg} alt="" />
 						<h2 className="mt-20 mb-0">Total spent :</h2>
-						<h2>{currentUserTotal}$</h2>
+						<h2>{otherUsersTotal}$</h2>
 					</div>
 				</HeaderContainer>
 				<AddSpending>
@@ -81,7 +88,8 @@ class ConnectionsPage extends React.Component {
 										(acc, item) => acc + parseInt(item.amount),
 										0
 									);
-									console.log(connection.userData.spendings[key]);
+                  console.log(connection.userData.spendings[key]);
+                  
 									return (
 										<Panel
 											key={key + index}
@@ -111,7 +119,8 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser,
   connection: selectConnectionData,
-  currentUserTotal:selectCurrentUrerTotalConnection
+  currentUserTotal: selectCurrentUrerTotalConnection,
+  otherUsersTotal:selectUsersTotalConnection
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectionsPage);

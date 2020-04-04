@@ -54,8 +54,7 @@ class App extends React.Component {
 					connections
 						.get()
             .then((doc) => {
-             subConnections.get()
-            .then((querySnapshot) => {
+             subConnections.onSnapshot((querySnapshot) => {
               setConnection({
                 id:doc.id,
                 ...doc.data(),
