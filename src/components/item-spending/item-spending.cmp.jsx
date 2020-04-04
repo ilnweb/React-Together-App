@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { MdDelete } from "react-icons/md";
 // import Moment from 'react-moment';
 
-const ItemSpending = ({ item, removeItem }) => {
+const ItemSpending = ({ item, removeItem, itemDelete }) => {
 	return (
 		<div id={item.id} className="item-spending">
 			<div className="item-data">
@@ -14,9 +14,10 @@ const ItemSpending = ({ item, removeItem }) => {
 			</div>
 			<div className="flex-c">
 				<div className={`item-amount ${item.type === 'exp' ? 'item-red' : 'item-green'}`}>
-					{item.type === 'exp' ? '-' : '+'} {item.amount}
-				</div>
-					<MdDelete className="item-delete icon-standart" onClick={() => removeItem(item)} />
+					{item.type === 'exp' ? '-' : '+'} {item.amount} $
+        </div>
+        {itemDelete && <MdDelete className="item-delete icon-standart" onClick={() => removeItem(item)} />}
+					
 			</div>
 		</div>
 	);
