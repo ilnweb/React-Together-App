@@ -10,7 +10,7 @@ import { firestore } from '../../firebase/firebase.config';
 import firebase from 'firebase/app';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { selectConnectionData } from '../../redux/connection/connection.selectors';
+import { selectConnectionData, selectCurrentUrerTotalConnection } from '../../redux/connection/connection.selectors';
 import { addConnectionItem } from '../../redux/connection/connection.actions';
 import { createStructuredSelector } from 'reselect';
 import { Collapse, Empty } from 'antd';
@@ -38,7 +38,7 @@ class ConnectionsPage extends React.Component {
 	};
 
 	render() {
-		const { currentUser, connection } = this.props;
+		const { currentUser, connection,currentUserTotal } = this.props;
 		console.log(connection);
 		return (
 			<div className="connections-page">
@@ -57,7 +57,7 @@ class ConnectionsPage extends React.Component {
 						<h2 className="mb-20">{connection && connection.connectionName}</h2>
 						<img className="conect-img" src={connection && connection.connectionImg} alt="" />
 						<h2 className="mt-20 mb-0">Total spent :</h2>
-						<h2>4305$</h2>
+						<h2>{currentUserTotal}$</h2>
 					</div>
 				</HeaderContainer>
 				<AddSpending>
@@ -65,7 +65,7 @@ class ConnectionsPage extends React.Component {
 				</AddSpending>
 				<div className="connection-users flex-c-c mb-50 ">
           <Collapse bordered={false} defaultActiveKey={['1']}>
-						<Panel className="user-header" header={<UserConnect item={currentUser}  small />} key="1">
+						<Panel className="user-header" header={<UserConnect item={currentUser} total={currentUserTotal}  small />} key="1">
 							{connection && connection.userData ? (
 								this.props.connection.userData.spendings[currentUser.id].map((item) => (
 									<ItemSpending key={item.id} item={item} />
@@ -110,7 +110,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser,
-	connection: selectConnectionData
+  connection: selectConnectionData,
+  currentUserTotal:selectCurrentUrerTotalConnection
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectionsPage);
