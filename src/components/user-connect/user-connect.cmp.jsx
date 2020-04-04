@@ -3,7 +3,7 @@ import './user-connect.scss';
 import { Avatar } from 'antd';
 import { letterName } from '../../functions/functions';
 
-const UserConnect = ({ item, handleClick }) => {
+const UserConnect = ({ item, handleClick,total }) => {
 	return (
 		<div className="user-connect flex-c">
       <div className="user-connect-data flex-c">
@@ -11,7 +11,7 @@ const UserConnect = ({ item, handleClick }) => {
 				<div className="user-list-item">{item.displayName}</div>
 			</div>
 			<div className="flex-c">
-				<div className="item-red">- 370$</div>
+				<div className="item-red">- {total}$</div>
 			</div>
 		</div>
 	);

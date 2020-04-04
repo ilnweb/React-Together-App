@@ -18,32 +18,33 @@ import { Collapse, Empty } from 'antd';
 // const UserWithSpinner = WithSpinner(User);
 const { Panel } = Collapse;
 
-
 class ConnectionsPage extends React.Component {
 	state = {
 		isLoading: true
-  };
-  
-  dispatchItem = (readyItem) => {
-    const {currentUser, connection, addConnectionItem } = this.props;
-    const collectionSet = firestore.doc(`connections/${connection.id}/userData/spendings`);
-    collectionSet.update({
-      [currentUser.id]: firebase.firestore.FieldValue.arrayUnion({
-        ...readyItem
-      })
-    })
+	};
 
-    addConnectionItem({
-      ...readyItem
-    })
-  }
+	dispatchItem = (readyItem) => {
+		const { currentUser, connection, addConnectionItem } = this.props;
+		const collectionSet = firestore.doc(`connections/${connection.id}/userData/spendings`);
+		collectionSet.update({
+			[currentUser.id]: firebase.firestore.FieldValue.arrayUnion({
+				...readyItem
+			})
+		});
+
+		addConnectionItem({
+			...readyItem
+		});
+	};
 
 	render() {
-    const { currentUser, connection } = this.props;
+		const { currentUser, connection } = this.props;
 		console.log(connection);
 		return (
 			<div className="connections-page">
-				{connection ? ('') : (
+				{connection ? (
+					''
+				) : (
 					<LoadingScreen
 						img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_mobile_testing_reah_dmknjs.svg"
 						title="Connect with friends to track common spendings!"
@@ -60,26 +61,42 @@ class ConnectionsPage extends React.Component {
 					</div>
 				</HeaderContainer>
 				<AddSpending>
-          <FormAdd dispatchItem={this.dispatchItem}/>
+					<FormAdd dispatchItem={this.dispatchItem} />
 				</AddSpending>
-				<div className="connection-users flex-c-c p-20 mb-50 ">
-					<Collapse bordered={false} defaultActiveKey={[ '1' ]}>
-            <Panel className="user-header" header={<UserConnect item={currentUser} small />} key="1">
-              {connection && connection.userData ? this.props.connection.userData.spendings[currentUser.id].map(item => <ItemSpending key={item.id} item={item}/>) :
-							<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />}
+				<div className="connection-users flex-c-c mb-50 ">
+          <Collapse bordered={false} defaultActiveKey={['1']}>
+						<Panel className="user-header" header={<UserConnect item={currentUser}  small />} key="1">
+							{connection && connection.userData ? (
+								this.props.connection.userData.spendings[currentUser.id].map((item) => (
+									<ItemSpending key={item.id} item={item} />
+								))
+							) : (
+								<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+							)}
 						</Panel>
 						{connection &&
-							Object.keys(connection.users).map(
-								(key, index) =>
-									key !== currentUser.id ? (
+							Object.keys(connection.users).map((key, index) => {
+								if (key !== currentUser.id) {
+									const total = connection.userData.spendings[key].reduce(
+										(acc, item) => acc + parseInt(item.amount),
+										0
+									);
+									console.log(connection.userData.spendings[key]);
+									return (
 										<Panel
 											key={key + index}
 											className="user-header"
-											header={<UserConnect item={connection.users[key]} small />}
+											header={<UserConnect item={connection.users[key]} total={total} small />}
 										>
-											<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-										</Panel>) : ('')
-							)}
+											{connection.userData.spendings[key].length ? (
+												connection.userData.spendings[key].map((item) => <ItemSpending key={item.id} item={item} />)
+											) : (
+												<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+											)}
+										</Panel>
+									);
+								}
+							})}
 					</Collapse>
 				</div>
 			</div>
