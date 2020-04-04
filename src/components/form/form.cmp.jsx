@@ -11,7 +11,7 @@ class FormAdd extends React.Component {
 		this.state = {
 			description: '',
 			amount: '',
-      type: '',
+      type: "exp",
       formNotFilled:false
 		};
   }
@@ -51,10 +51,10 @@ class FormAdd extends React.Component {
 		this.setState({ [name]: value });
 	};
   render() {
-    console.log(this.state);
+    const { showType } = this.props;
 		return (
 			<Form className="item-form flex-c-c">
-				<Radio.Group name="type">
+				{ showType && <Radio.Group name="type">
 					<div className="flex-c">
 						<Radio onChange={this.handleChange} value="exp" >
 							Expense
@@ -64,7 +64,7 @@ class FormAdd extends React.Component {
 							Income{' '}
 						</Radio>
 					</div>
-        </Radio.Group>
+        </Radio.Group>}
         {this.state.formNotFilled ? <div className="fail-message">Please check fields and try again!</div> : ''}
 				<Input
 					id="description"

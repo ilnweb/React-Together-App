@@ -61,7 +61,7 @@ class SpendingPage extends React.Component {
 					/>
 				</HeaderContainer>
 				<AddSpending>
-          <FormAdd dispatchItem={this.dispatchItem}/>
+          <FormAdd dispatchItem={this.dispatchItem} showType/>
 				</AddSpending>
 				<div className="spending-list">
 					<TabSpendingsWithSpinner isLoading={this.state.isLoading} />
