@@ -13,7 +13,7 @@ const CardAllConnections = ({item, dispatchConnection}) => (
     className="mb-30"
 		style={{ width: 300 }}
 		cover={<div className="card-image" style={{ backgroundImage: `url(${item.connectionImg})` }} alt="conection" />}
-    actions={[<Link to="/connections"><MdOpenInNew onClick={dispatchConnection} className="icon-standart" key="setting" /></Link>, <MdModeEdit className="icon-standart" key="edit" />, <MdDelete className="icon-standart" key="ellipsis" /> ]}
+    actions={[<Link to="/connections"><MdOpenInNew onClick={()=>dispatchConnection(item)} className="icon-standart" key="setting" /></Link>, <MdModeEdit className="icon-standart" key="edit" />, <MdDelete className="icon-standart" key="ellipsis" /> ]}
 	>
 		<Meta
 			title={item.connectionName}

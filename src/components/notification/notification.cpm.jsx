@@ -20,7 +20,7 @@ const Notification = ({ item, handleAccept }) => {
 						<Button className="m-10" type="danger" size="large">
               Decline
             </Button>
-            <Link to="/connections">
+            <Link to="/all-connections">
 						<Button className="m-10" type="primary" size="large" onClick={() => handleAccept(item)}>
 							Accept
             </Button>
