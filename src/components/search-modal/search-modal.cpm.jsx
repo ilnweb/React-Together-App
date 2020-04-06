@@ -48,7 +48,9 @@ class SearchModal extends React.Component {
 		this.setState({
 			visible: false,
 			userSearch: '',
-			userList: ''
+      userList: '',
+      invitedfriends: '',
+      connectionName: ''
 		});
 	};
 
@@ -80,7 +82,8 @@ class SearchModal extends React.Component {
       photoURL:currentUser.photoURL
     };
     invitedfriends.push(currentUserData);
-    createNewConnection(connectionName,connectionImg,invitedfriends,currentUser);
+    createNewConnection(connectionName, connectionImg, invitedfriends, currentUser);
+    this.handleCancel()
   }
 
 	render() {
@@ -151,11 +154,10 @@ class SearchModal extends React.Component {
                   <ItemUser key={item.id} item={item} handleClick={this.handleClick} />
 							)}
           </div>
-          <Link to='/connections'>
+          
 					<Button className="mt-30" size="large" type="primary" onClick={this.handleCreate}>
               Create
           </Button>
-          </Link>
 				</Modal>
 			</div>
 		);

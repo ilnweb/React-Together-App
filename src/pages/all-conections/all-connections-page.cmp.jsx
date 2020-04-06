@@ -20,7 +20,7 @@ class AllConectionsPage extends React.Component {
 				<SearchModal />
 				<div className="all-connections-display mt-30 flex-c-c">
 					{currentUser &&
-            currentUser.connections.map((item) => <CardAllConnections  key={item.connectionId} item={item}/>)}
+            currentUser.connections.map((item) => <CardAllConnections  key={item.connectionId} item={item}/>).reverse()}
 				</div>
 			</div>
 		);

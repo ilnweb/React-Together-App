@@ -2,7 +2,7 @@ import React from 'react';
 import './bottom-nav.scss';
 import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
-import { MdPersonOutline, MdGroup, MdInsertInvitation } from "react-icons/md";
+import { MdPerson, MdGroup, MdInsertInvitation } from "react-icons/md";
 import { FaRegEdit} from "react-icons/fa";
 
 class BottomNav extends React.Component {
@@ -33,7 +33,7 @@ class BottomNav extends React.Component {
 				mode="horizontal"
 			>
 				<Menu.Item key="/">
-					<MdPersonOutline className="icon-standart"/>
+					<MdPerson className="icon-standart"/>
 					<Link to="/" />
 				</Menu.Item>
 				<Menu.Item key="/connections">
