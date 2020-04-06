@@ -45,7 +45,7 @@ class ConnectionsPage extends React.Component {
 	};
 
 	render() {
-		const { currentUser, connection,currentUserTotal,UsersTotal,removeConnectionItem } = this.props;
+		const { currentUser, connection, currentUserTotal, UsersTotal, removeConnectionItem } = this.props;
 		return (
 			<div className="connections-page">
 				{connection ? (

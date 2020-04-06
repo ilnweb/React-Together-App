@@ -29,7 +29,6 @@ class SignIn extends React.Component {
 
 	handleChange = (e) => {
 		const { value, name } = e.target;
-
 		this.setState({ [name]: value });
 	};
 
@@ -63,7 +62,6 @@ class SignIn extends React.Component {
 						autoComplete="true"
 						onChange={this.handleChange}
 					/>
-
 					<Button className="button-size button-color" size="large" type="primary" onClick={this.handleSubmit}>
 						Sign In
 					</Button>

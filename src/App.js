@@ -14,7 +14,7 @@ import NotificationsPage from './pages/notifications/notifications-page.cmp';
 import AllConectionsPage from './pages/all-conections/all-connections-page.cmp';
 import BottomNav from './components/bottom-nav/bottom-nav.cmp';
 import LoadingScreen from './components/loading-screen/loading-screen.cmp';
-import { authFB, createUserProfileDocument, firestore } from './firebase/firebase.config';
+import { authFB, createUserProfileDocument, pullConnection } from './firebase/firebase.config';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
 import { setConnection } from './redux/connection/connection.actions';
@@ -49,23 +49,7 @@ class App extends React.Component {
           });
           if(snapShot.data().connections.length){
 					const connectionID = snapShot.data().connections.reverse()[0].connectionId;
-					const connections = firestore.doc(`connections/${connectionID}`);
-					const subConnections = firestore.collection(`connections/${connectionID}/userData/`);
-					connections
-						.get()
-            .then((doc) => {
-             subConnections.onSnapshot((querySnapshot) => {
-              setConnection({
-                id:doc.id,
-                ...doc.data(),
-                userData: querySnapshot.docs.reduce((obj, doc2) => {
-                  return {
-                    ...obj,
-                    [doc2.id]:doc2.data()
-                  }
-                },{})
-              });
-						})}).then(() => this.setState({ isLoading: false }))
+					pullConnection(connectionID,setConnection).then(() => this.setState({ isLoading: false }))
 						.catch(function(error) {
 							console.log('Error getting documents: ', error);
 						});

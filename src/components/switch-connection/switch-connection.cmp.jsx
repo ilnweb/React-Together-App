@@ -11,7 +11,6 @@ import { setConnection } from '../../redux/connection/connection.actions';
 const SwitchCnnection = ({ currentUser,setConnection }) => {
 
   const dispatchConnection = (item) => {
-    console.log("works");
     pullConnection(item.connectionId,setConnection)
   }
 

@@ -3,12 +3,18 @@ import './all-connections-page.scss';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
+import { pullConnection } from '../../firebase/firebase.config';
+import { setConnection } from '../../redux/connection/connection.actions';
 import HeaderContainer from '../../components/header-container/header-container.cmp';
 import CardAllConnections from '../../components/card-all-connections/card-all-connections.cmp';
 import SearchModal from '../../components/search-modal/search-modal.cpm';
 import { MdArrowBack } from 'react-icons/md';
 
 class AllConectionsPage extends React.Component {
+  dispatchConnection = (item) => {
+    const { setConnection } = this.props;
+    pullConnection(item.connectionId,setConnection)
+  }
 	render() {
 		const { currentUser } = this.props;
 		return (
@@ -20,15 +26,19 @@ class AllConectionsPage extends React.Component {
 				<SearchModal />
 				<div className="all-connections-display mt-30 flex-c-c">
 					{currentUser &&
-            currentUser.connections.map((item) => <CardAllConnections  key={item.connectionId} item={item}/>).reverse()}
+            currentUser.connections.map((item) => <CardAllConnections key={item.connectionId} item={item} dispatchConnection={this.dispatchConnection}/>).reverse()}
 				</div>
 			</div>
 		);
 	}
 }
 
+const mapDispatchToProps = (dispatch) => ({
+	setConnection: (connection) => dispatch(setConnection(connection))
+});
+
 const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps)(AllConectionsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(AllConectionsPage);
