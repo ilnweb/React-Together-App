@@ -29,13 +29,15 @@
 <li>User Home-page displaying name and image from google and facebook sign-in </li>
 <li>Ability to input your monthly Income and Expense</li>
 <li>Calculation of the total Income and Expense</li>
+<li>Connecting with Friend/s to track mutual expenses</li>
+<li>Creating a group with title and image</li>
+<li>Calculation of each friend's total, group totals and displaying individual spending item of each group member</li>
 </ul>
 
 <h3>Upcoming features:</h3>
 
 <ul>
 <li>Yearly statistic of user personal spendings</li>
-<li>Connecting with Friend/s to track mutual expenses</li>
 <li>Shared calendar with Friend/s </li>
 <li>Shared ToDo list to view common tasks</li>
 </ul>
