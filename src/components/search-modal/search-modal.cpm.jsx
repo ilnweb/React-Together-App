@@ -8,8 +8,6 @@ import { letterName } from '../../functions/functions';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-
 
 class SearchModal extends React.Component {
 	constructor(props) {
@@ -48,18 +46,18 @@ class SearchModal extends React.Component {
 		this.setState({
 			visible: false,
 			userSearch: '',
-      userList: '',
-      invitedfriends: '',
-      connectionName: ''
+			userList: '',
+			invitedfriends: '',
+			connectionName: ''
 		});
 	};
 
-  handleClick = (item) => {
-    if (!this.state.invitedfriends.includes(item)) {
-      this.setState((prevState) => ({
-        invitedfriends: [ ...this.state.invitedfriends, item ]
-      }));
-    }
+	handleClick = (item) => {
+		if (!this.state.invitedfriends.includes(item)) {
+			this.setState((prevState) => ({
+				invitedfriends: [ ...this.state.invitedfriends, item ]
+			}));
+		}
 	};
 
 	handleChange = (e) => {
@@ -71,20 +69,20 @@ class SearchModal extends React.Component {
 		this.setState({
 			connectionImg: imageUrl
 		});
-  };
-  
-  handleCreate = () => {
-    const { invitedfriends, connectionName, connectionImg } = this.state;
-    const { currentUser } = this.props;
-    const currentUserData = {
-      displayName:currentUser.displayName,
-      id:currentUser.id,
-      photoURL:currentUser.photoURL
-    };
-    invitedfriends.push(currentUserData);
-    createNewConnection(connectionName, connectionImg, invitedfriends, currentUser);
-    this.handleCancel()
-  }
+	};
+
+	handleCreate = () => {
+		const { invitedfriends, connectionName, connectionImg } = this.state;
+		const { currentUser } = this.props;
+		const currentUserData = {
+			displayName: currentUser.displayName,
+			id: currentUser.id,
+			photoURL: currentUser.photoURL
+		};
+		invitedfriends.push(currentUserData);
+		createNewConnection(connectionName, connectionImg, invitedfriends, currentUser);
+		this.handleCancel();
+	};
 
 	render() {
 		const { userList, userSearch, invitedfriends } = this.state;
@@ -124,13 +122,15 @@ class SearchModal extends React.Component {
 						<div className="search-user-list mb-20">
 							<p>Invited friends</p>
 							<div className="invited-friends flex-c">
-								{invitedfriends ?
+								{invitedfriends ? (
 									invitedfriends.map((item) => (
 										<Avatar className="avatar-small-no-picture m-5" key={item.id} size="large" src={item.photoURL}>
 											{letterName(item.displayName)}
 										</Avatar>
-									)) : <div>"No friends Invited" </div> 
-								}
+									))
+								) : (
+									<div>"No friends Invited" </div>
+								)}
 							</div>
 						</div>
 					</div>
@@ -150,14 +150,15 @@ class SearchModal extends React.Component {
 							userList &&
 							userList.map(
 								(item) =>
-                item.displayName.toLowerCase().includes(userSearch.toLowerCase()) &&
-                  <ItemUser key={item.id} item={item} handleClick={this.handleClick} />
+									item.displayName.toLowerCase().includes(userSearch.toLowerCase()) && (
+										<ItemUser key={item.id} item={item} handleClick={this.handleClick} />
+									)
 							)}
-          </div>
-          
+					</div>
+
 					<Button className="mt-30" size="large" type="primary" onClick={this.handleCreate}>
-              Create
-          </Button>
+						Create
+					</Button>
 				</Modal>
 			</div>
 		);
@@ -165,7 +166,7 @@ class SearchModal extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
+	currentUser: selectCurrentUser
 });
 
 export default connect(mapStateToProps)(SearchModal);

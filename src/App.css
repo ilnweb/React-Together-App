@@ -74,6 +74,11 @@ a {
   color: #f50057;
 }
 
+.black{
+  color: rgb(27, 27, 27);
+  
+}
+
 input:-webkit-autofill,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,

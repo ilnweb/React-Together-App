@@ -1,16 +1,19 @@
 import React from 'react';
 import './header.scss';
 import SideNav from '../side-nav/side-nav.cmp';
-import { MdNotifications,MdGroup } from "react-icons/md";
+import { MdNotifications } from 'react-icons/md';
+import SwitchCnnection from '../switch-connection/switch-connection.cmp';
 import { Link } from 'react-router-dom';
 
 const Header = () => (
 	<div className="header">
-		<SideNav />
-		<Link className="flex-c" to="/notifications">
-      <MdNotifications  style={{fontSize:"1.15rem", color:"white"}}/>
-      <MdGroup className="icon-standart ml-10" style={{ color:"white"}}/>
+    <SideNav />
+    <div className="flex-c">
+		<Link className="flex-c mr-10" to="/notifications">
+			<MdNotifications style={{ fontSize: '1.15rem', color: 'white' }} />
 		</Link>
+    <SwitchCnnection />
+    </div>
 	</div>
 );
 
