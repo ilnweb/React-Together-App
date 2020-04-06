@@ -23,7 +23,7 @@ class NotificationsPage extends React.Component {
 					<h1>Your notifications</h1>
 				</HeaderContainer>
 				<div className="notifications-container m-10">
-          {currentUser && currentUser.notifications.map(item =>(<Notification item={item} handleAccept={this.handleAccept}/>)).reverse()}
+          {currentUser && currentUser.notifications.map((item,index) =>(<Notification key={index} item={item} handleAccept={this.handleAccept}/>)).reverse()}
 				</div>
 			</div>
 		);

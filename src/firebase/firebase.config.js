@@ -143,6 +143,15 @@ export const acceptInvitation = async (connection, currentUserId) => {
 		});
 	} catch (error) {
 		alert('error sending notification', error.message);
+  }
+  try {
+		await userRef.update({
+			notifications: firebase.firestore.FieldValue.arrayRemove({
+				...connection
+			})
+		});
+	} catch (error) {
+		alert('error sending notification', error.message);
 	}
 };
 
