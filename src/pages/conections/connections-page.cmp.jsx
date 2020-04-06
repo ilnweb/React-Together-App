@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectConnectionData, selectCurrentUrerTotalConnection,selectUsersTotalConnection } from '../../redux/connection/connection.selectors';
 import { addConnectionItem } from '../../redux/connection/connection.actions';
+import { removeConnectionItem } from '../../redux/connection/connection.actions';
 import { createStructuredSelector } from 'reselect';
 import { Collapse, Empty } from 'antd';
 // import WithSpinner from '../../components/with-spinner/with-spinner.cmp';
@@ -45,8 +46,7 @@ class ConnectionsPage extends React.Component {
 	};
 
 	render() {
-		const { currentUser, connection,currentUserTotal,otherUsersTotal } = this.props;
-		console.log(otherUsersTotal);
+		const { currentUser, connection,currentUserTotal,UsersTotal,removeConnectionItem } = this.props;
 		return (
 			<div className="connections-page">
 				{connection ? (
@@ -61,10 +61,10 @@ class ConnectionsPage extends React.Component {
 				)}
 				<HeaderContainer>
 					<div className="flex-c-c">
-						<h2 className="mb-20">{connection && connection.connectionName}</h2>
-						<img className="conect-img" src={connection && connection.connectionImg} alt="" />
-						<h2 className="mt-20 mb-0">Total spent :</h2>
-						<h2>{otherUsersTotal}$</h2>
+						<h2 className="mb-10">{connection && connection.connectionName}</h2>
+						<div className="conect-img" style={{backgroundImage:`url(${connection && connection.connectionImg})`}} alt="" />
+						<h2 className="mt-10 mb-0">Total spent :</h2>
+						<h2>{UsersTotal}$</h2>
 					</div>
 				</HeaderContainer>
 				<AddSpending>
@@ -75,7 +75,7 @@ class ConnectionsPage extends React.Component {
 						<Panel className="user-header" header={<UserConnect item={currentUser} total={currentUserTotal}  small />} key="1">
 							{connection && connection.userData.spendings[currentUser.id].length ? (
 								this.props.connection.userData.spendings[currentUser.id].map((item) => (
-									<ItemSpending key={item.id} item={item} />
+                  <ItemSpending key={item.id} item={item} removeItem={removeConnectionItem} itemDelete/>
 								))
 							) : (
 								<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
@@ -88,8 +88,6 @@ class ConnectionsPage extends React.Component {
 										(acc, item) => acc + parseInt(item.amount),
 										0
 									);
-                  console.log(connection.userData.spendings[key]);
-                  
 									return (
 										<Panel
 											key={key + index}
@@ -103,7 +101,8 @@ class ConnectionsPage extends React.Component {
 											)}
 										</Panel>
 									);
-								}
+                }
+                return '';
 							})}
 					</Collapse>
 				</div>
@@ -113,14 +112,15 @@ class ConnectionsPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	addConnectionItem: (item) => dispatch(addConnectionItem(item))
+	addConnectionItem: (item) => dispatch(addConnectionItem(item)),
+	removeConnectionItem: (item) => dispatch(removeConnectionItem(item))
 });
 
 const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser,
   connection: selectConnectionData,
   currentUserTotal: selectCurrentUrerTotalConnection,
-  otherUsersTotal:selectUsersTotalConnection
+  UsersTotal:selectUsersTotalConnection
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectionsPage);

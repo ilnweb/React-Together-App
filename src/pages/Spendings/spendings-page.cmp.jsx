@@ -9,6 +9,7 @@ import { firestore } from '../../firebase/firebase.config';
 import firebase from 'firebase/app';
 import { connect } from 'react-redux';
 import { addItem } from '../../redux/spendings/spending.actions';
+import { removeItem } from '../../redux/spendings/spending.actions';
 import { setUserSpending } from '../../redux/spendings/spending.actions';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
@@ -48,7 +49,7 @@ class SpendingPage extends React.Component {
   }
 
 	render() {
-		const { currentUser, totalExp, totalInc } = this.props;
+		const { currentUser, totalExp, totalInc, removeItem } = this.props;
 		return (
 			<div className="spending">
 				<HeaderContainer>
@@ -64,7 +65,7 @@ class SpendingPage extends React.Component {
           <FormAdd dispatchItem={this.dispatchItem} showType/>
 				</AddSpending>
 				<div className="spending-list">
-					<TabSpendingsWithSpinner isLoading={this.state.isLoading} />
+          <TabSpendingsWithSpinner isLoading={this.state.isLoading} removeItem={removeItem}/>
 				</div>
 			</div>
 		);
@@ -73,7 +74,8 @@ class SpendingPage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   setUserSpending: (list) => dispatch(setUserSpending(list)),
-  addItem: (item) => dispatch(addItem(item))
+  addItem: (item) => dispatch(addItem(item)),
+  removeItem: (item) => dispatch(removeItem(item))
 });
 
 const mapStateToProps = createStructuredSelector({

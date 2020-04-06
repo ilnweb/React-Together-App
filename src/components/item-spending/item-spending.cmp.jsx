@@ -1,7 +1,5 @@
 import React from 'react';
 import './item-spending.scss';
-import { removeItem } from '../../redux/spendings/spending.actions';
-import { connect } from 'react-redux';
 import { MdDelete } from "react-icons/md";
 // import Moment from 'react-moment';
 
@@ -23,12 +21,4 @@ const ItemSpending = ({ item, removeItem, itemDelete }) => {
 	);
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	removeItem: (item) => dispatch(removeItem(item))
-});
-
-const mapStateToProps = (state) => ({
-	spendingItems: state.spendings
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ItemSpending);
+export default ItemSpending;
