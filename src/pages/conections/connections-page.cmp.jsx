@@ -15,8 +15,7 @@ import { addConnectionItem } from '../../redux/connection/connection.actions';
 import { removeConnectionItem } from '../../redux/connection/connection.actions';
 import { createStructuredSelector } from 'reselect';
 import { Collapse, Empty } from 'antd';
-// import WithSpinner from '../../components/with-spinner/with-spinner.cmp';
-// const UserWithSpinner = WithSpinner(User);
+
 const { Panel } = Collapse;
 
 class ConnectionsPage extends React.Component {
