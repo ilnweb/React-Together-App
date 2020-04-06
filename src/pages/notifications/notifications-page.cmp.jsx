@@ -22,7 +22,7 @@ class NotificationsPage extends React.Component {
         <MdArrowBack className="back-button" onClick={()=>this.props.history.goBack()}/>
 					<h1>Your notifications</h1>
 				</HeaderContainer>
-				<div className="notifications-container m-10">
+				<div className="notifications-container m-10 mt-20">
           {currentUser && currentUser.notifications.map((item,index) =>(<Notification key={index} item={item} handleAccept={this.handleAccept}/>)).reverse()}
 				</div>
 			</div>

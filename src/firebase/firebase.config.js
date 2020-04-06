@@ -19,37 +19,35 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 	const userRef = firestore.doc(`users/${userAuth.uid}`);
 	const snapShot = await userRef.get();
-	const userRefArray = firestore.doc(`searchusers/F6HYw5Nwerc3tnwSf3aI`);
+	
 
 	if (!snapShot.exists) {
 		const createdAt = new Date();
 		const { displayName, email, photoURL } = userAuth;
 		try {
-			await userRef.set({
-				displayName,
-				email,
-				photoURL,
-				createdAt,
-				spendings: [],
-				connections: [],
-				notifications: [],
-				...additionalData
-			});
-		} catch (error) {
-			alert('error creating user', error.message);
-		}
-
-		try {
-			await userRefArray.update({
-				users: firebase.firestore.FieldValue.arrayUnion({
-					id: userAuth.uid,
-					photoURL,
+			await userRef
+				.set({
 					displayName,
+					email,
+					photoURL,
+					createdAt,
+					spendings: [],
+					connections: [],
+					notifications: [],
 					...additionalData
 				})
-			});
+        .then((doc) => {
+          const userRefArray = firestore.doc(`searchusers/F6HYw5Nwerc3tnwSf3aI`);
+						userRefArray.update({
+							users: firebase.firestore.FieldValue.arrayUnion({
+								id: doc.id,
+								photoURL: doc.data().photoURL,
+								displayName: doc.data().displayName
+							})
+						});
+				});
 		} catch (error) {
-			console.log('error creating user array', error.message);
+			alert('error creating user', error.message);
 		}
 	}
 
@@ -143,8 +141,8 @@ export const acceptInvitation = async (connection, currentUserId) => {
 		});
 	} catch (error) {
 		alert('error sending notification', error.message);
-  }
-  try {
+	}
+	try {
 		await userRef.update({
 			notifications: firebase.firestore.FieldValue.arrayRemove({
 				...connection
@@ -155,7 +153,7 @@ export const acceptInvitation = async (connection, currentUserId) => {
 	}
 };
 
-export const pullConnection = async (connectionID,setConnection) => {
+export const pullConnection = async (connectionID, setConnection) => {
 	const connections = firestore.doc(`connections/${connectionID}`);
 	const subConnections = firestore.collection(`connections/${connectionID}/userData/`);
 	connections.get().then((doc) => {
