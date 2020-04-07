@@ -10,7 +10,7 @@ const Header = () => (
     <SideNav />
     <div className="flex-c">
 		<Link className="flex-c mr-10" to="/notifications">
-			<MdNotifications style={{ fontSize: '1.15rem', color: 'white' }} />
+			<MdNotifications style={{ fontSize: '1.3rem', color: 'white' }} />
 		</Link>
     <SwitchCnnection />
     </div>

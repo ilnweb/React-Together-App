@@ -5,7 +5,7 @@ import HeaderContainer from '../../components/header-container/header-container.
 
 const ToDoPage = () => (
   <div className="todo-page">
-  <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_email_campaign_qa8y_bycdui.svg" title="Coming soon, Shared To-Do List!" inside/> 
+  <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_email_campaign_qa8y_bycdui.webp" title="Coming soon, Shared To-Do List!" inside/> 
     <HeaderContainer>
       <h1>Todo page</h1>
     </HeaderContainer>
