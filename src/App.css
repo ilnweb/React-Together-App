@@ -78,27 +78,10 @@ a {
   color: rgb(27, 27, 27);
   
 }
-
-input:-webkit-autofill,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  border: none;
-  -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 1000px #5645a1 inset;
-  transition: background-color 5000s ease-in-out 0s;
-}
-
-input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 50px #5645a1 inset!important;/*your box-shadow*/
-  -webkit-text-fill-color:  white!important;
-} 
+ 
 
 .ant-btn-primary{
-  background-image: linear-gradient(to right , #5e50a5 , #ed1459);
+  background: #ed1459;
   border: none;
   transition: 1s;
   transition: all .25s;
@@ -112,7 +95,6 @@ input:-webkit-autofill:focus {
 }
 
 .ant-input {
-  
   /* background-color: #fff; */
   background-image: none;
   border: 1px solid #1890ff;

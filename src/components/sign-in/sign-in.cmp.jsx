@@ -62,7 +62,7 @@ class SignIn extends React.Component {
 						autoComplete="true"
 						onChange={this.handleChange}
 					/>
-					<Button className="button-size button-color" size="large" type="primary" onClick={this.handleSubmit}>
+					<Button className="button-size" size="large" type="primary" onClick={this.handleSubmit}>
 						Sign In
 					</Button>
 					<div className="flex-c input-style">

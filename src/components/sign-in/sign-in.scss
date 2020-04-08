@@ -5,18 +5,9 @@
   margin-bottom: 2rem;
 }
 
-.input-signin{
-  border: 1px solid #529fe7;
-  background-color: #5645a1;
-}
-
-.input-signin > input.ant-input{
-  background-color: #5645a1;
-}
-
 .g-signin,
 .f-signin {
-  background-image: linear-gradient(to right , #5e50a5 , #1890ff);
+  background-image: linear-gradient(to right , #ed1459 , #5e50a5);
   color: white;
   border: none;
   display: flex;
@@ -33,7 +24,7 @@
 
 .g-signin:hover,
 .f-signin:hover {
-  background-image: linear-gradient(to right , #1890ff , #5e50a5);
+  background-image: linear-gradient(to right, #5e50a5, #ed1459 );
   color: white;
   transition: all 2s;
 }
