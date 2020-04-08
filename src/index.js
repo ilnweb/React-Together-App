@@ -8,13 +8,11 @@ import { Provider } from 'react-redux';
 import {store, persistor} from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
-
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <PersistGate persistor={persistor}>
-        <App />
+       <App />
       </PersistGate>
     </BrowserRouter>
   </Provider>,

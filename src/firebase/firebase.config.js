@@ -18,36 +18,40 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 	if (!userAuth) return;
 
 	const userRef = firestore.doc(`users/${userAuth.uid}`);
+	const userArr = firestore.doc('searchusers/F6HYw5Nwerc3tnwSf3aI');
 	const snapShot = await userRef.get();
-	
 
 	if (!snapShot.exists) {
-		const createdAt = new Date();
 		const { displayName, email, photoURL } = userAuth;
+		const createdAt = new Date();
+
 		try {
 			await userRef
 				.set({
 					displayName,
 					email,
-					photoURL,
 					createdAt,
+					photoURL,
 					spendings: [],
 					connections: [],
 					notifications: [],
 					...additionalData
 				})
-        .then((doc) => {
-          const userRefArray = firestore.doc(`searchusers/F6HYw5Nwerc3tnwSf3aI`);
-						userRefArray.update({
-							users: firebase.firestore.FieldValue.arrayUnion({
-								id: doc.id,
-								photoURL: doc.data().photoURL,
-								displayName: doc.data().displayName
-							})
-						});
-				});
 		} catch (error) {
-			alert('error creating user', error.message);
+			console.log('error creating user', error.message);
+    }
+    const snapShotUser = await userRef.get();
+		try {
+			await userArr.update({
+		    users: firebase.firestore.FieldValue.arrayUnion({
+		      displayName:snapShotUser.data().displayName,
+		      id: snapShotUser.id,
+		      photoURL:snapShotUser.data().photoURL
+		      
+		    })
+		  })
+		} catch (error) {
+			console.log('error adding user to array', error.message);
 		}
 	}
 

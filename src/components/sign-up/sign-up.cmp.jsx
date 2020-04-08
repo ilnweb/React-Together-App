@@ -5,36 +5,48 @@ import { Button, Input, Form } from 'antd';
 import { authFB, createUserProfileDocument } from '../../firebase/firebase.config';
 
 class SignUp extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			displayName: '',
-			email: '',
-			password: '',
-			confirmPassword: ''
-		};
-	}
+  constructor() {
+    super();
 
-	handleSubmit = async (event) => {
-		event.preventDefault();
-		const { displayName, email, password, confirmPassword } = this.state;
-		if (password !== confirmPassword) {
-			alert("Passwords don't match");
-			return;
-		}
+    this.state = {
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    };
+  }
 
-		try {
-			const { user } = await authFB.createUserWithEmailAndPassword(email, password);
-			await createUserProfileDocument(user, { displayName });
-		} catch (error) {
-			console.error(error);
-		}
-	};
 
-	handleChange = (e) => {
-		const { value, name } = e.target;
-		this.setState({ [name]: value });
-	};
+  handleSubmit = async event => {
+    event.preventDefault();
+
+    const { displayName, email, password, confirmPassword } = this.state;
+
+    if (password !== confirmPassword) {
+      alert("Passwords don't match");
+      return;
+    }
+
+    try {
+      const { user } = await authFB.createUserWithEmailAndPassword(email, password);
+      await createUserProfileDocument(user, { displayName });
+
+      this.setState({
+        displayName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      });
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({[name]: value});
+  }
 
 	render() {
 		const { displayName, email, password, confirmPassword } = this.state;
