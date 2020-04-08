@@ -6,11 +6,15 @@
 }
 
 .switch-image{
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   background-size:cover;
   background-position: center;
   border-radius: 5px;
+}
+
+.switch-item{
+  justify-content: flex-start;
 }
 
 .drop{
@@ -22,4 +26,8 @@
 .ant-empty-normal {
   width: 100%;
 
+}
+
+.ant-dropdown-menu-item{
+  width: 100%;
 }
