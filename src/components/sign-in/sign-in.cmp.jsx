@@ -37,7 +37,7 @@ class SignIn extends React.Component {
 			<div className="sign-in-up flex-c-c">
 				<h1>Sign In</h1>
         <Form className="sign-in-up flex-c">
-          <label for="email1">Email</label>
+          <label htmlFor="email1" style={{display:"none"}}>Email</label>
 					<Input
 						id="email1"
 						name="email"
@@ -51,7 +51,7 @@ class SignIn extends React.Component {
 						autoComplete="true"
 						onChange={this.handleChange}
           />
-          <label for="password1">Password</label>
+          <label htmlFor="password1" style={{display:"none"}}>Password</label>
 					<Input.Password
 						id="password1"
 						name="password"
