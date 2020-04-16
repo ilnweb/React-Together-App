@@ -97,7 +97,7 @@ class App extends React.Component {
 					<Route path="/all-connections" component={AllConectionsPage} />
 					<Route path="/notifications" component={NotificationsPage} />
 				</Switch>
-				<Route component={BottomNav} />
+				<BottomNav />
 			</div>
 		);
 	}

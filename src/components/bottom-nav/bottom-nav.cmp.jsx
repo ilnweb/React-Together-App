@@ -4,18 +4,23 @@ import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
 import { MdPerson, MdGroup, MdInsertInvitation } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
+import { withRouter } from "react-router";
 
 class BottomNav extends React.Component {
-	state = {
-		current: '/'
-	};
+  constructor(props) {
+    super(props);
+    this.state = {
+      current: this.props.location.pathname
+    }
+  }
 
-	componentDidMount() {
-		const { pathname } = this.props.location;
-		this.setState({
-			current: pathname
-		});
-	}
+	// componentDidMount() {
+  //   const { pathname } = this.props.location;
+  //   console.log(pathname);
+	// 	this.setState({
+	// 		current: pathname
+	// 	});
+	// }
 
 	handleClick = (e) => {
 		this.setState({
@@ -23,11 +28,13 @@ class BottomNav extends React.Component {
 		});
 	};
 
-	render() {
+  render() {
+    console.log(this.props.location.pathname);
 		return (
 			<Menu
 				className="bottom-nav flex-c"
-				onClick={this.handleClick}
+        onClick={this.handleClick}
+        onChange={this.handleClick}
 				selectedKeys={[ this.state.current ]}
 				mode="horizontal"
 			>
@@ -52,4 +59,4 @@ class BottomNav extends React.Component {
 	}
 }
 
-export default BottomNav;
+export default withRouter(BottomNav);
