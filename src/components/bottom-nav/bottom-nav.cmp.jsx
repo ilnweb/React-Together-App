@@ -7,11 +7,23 @@ import { FaRegEdit } from 'react-icons/fa';
 import { withRouter } from "react-router";
 
 class BottomNav extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      current: this.props.location.pathname
+  state = {
+    current: this.props.location.pathname
+  }
+  
+  currentTab = (location) => {
+    this.setState({
+			current: location
+		});
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.location.pathname !== state.current) {
+      return {
+        current: props.location.pathname
+      };
     }
+    return null;
   }
 
 	handleClick = (e) => {
@@ -21,12 +33,14 @@ class BottomNav extends React.Component {
 	};
 
   render() {
+    console.log(this.state.current);
+    
 		return (
 			<Menu
 				className="bottom-nav flex-c"
         onClick={this.handleClick}
         onChange={this.handleClick}
-				selectedKeys={[ this.state.current ]}
+				selectedKeys={ [this.state.current] }
 				mode="horizontal"
 			>
 				<Menu.Item key="/">
