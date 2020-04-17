@@ -175,6 +175,23 @@ export const pullConnection = async (connectionID, setConnection) => {
 		});
 	});
 };
+
+export const changeUsers = async (connectionID, setConnection) => {
+	const users = firestore.collection(`users`);
+  const userSearch = firestore.doc('searchusers/F6HYw5Nwerc3tnwSf3aI');
+	users.get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+      userSearch.update({
+        [doc.id]: {
+          displayName: doc.data().displayName,
+          photoURL:doc.data().photoURL
+        }
+      })
+      console.log(doc.id, " => ", doc.data());
+    });
+});
+};
 ////////////// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 

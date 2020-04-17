@@ -14,14 +14,6 @@ class BottomNav extends React.Component {
     }
   }
 
-	// componentDidMount() {
-  //   const { pathname } = this.props.location;
-  //   console.log(pathname);
-	// 	this.setState({
-	// 		current: pathname
-	// 	});
-	// }
-
 	handleClick = (e) => {
 		this.setState({
 			current: e.key
@@ -29,7 +21,6 @@ class BottomNav extends React.Component {
 	};
 
   render() {
-    console.log(this.props.location.pathname);
 		return (
 			<Menu
 				className="bottom-nav flex-c"
