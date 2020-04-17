@@ -26,30 +26,27 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 		const createdAt = new Date();
 
 		try {
-			await userRef
-				.set({
-					displayName,
-					email,
-					createdAt,
-					photoURL,
-					spendings: [],
-					connections: [],
-					notifications: [],
-					...additionalData
-				})
+			await userRef.set({
+				displayName,
+				email,
+				createdAt,
+				photoURL,
+				spendings: [],
+				connections: [],
+				notifications: [],
+				...additionalData
+			});
 		} catch (error) {
 			console.log('error creating user', error.message);
-    }
-    const snapShotUser = await userRef.get();
+		}
+		const snapShotUser = await userRef.get();
 		try {
 			await userArr.update({
-		    users: firebase.firestore.FieldValue.arrayUnion({
-		      displayName:snapShotUser.data().displayName,
-		      id: snapShotUser.id,
-		      photoURL:snapShotUser.data().photoURL
-		      
-		    })
-		  })
+				[snapShotUser.id]: {
+					displayName: snapShotUser.data().displayName,
+					photoURL: snapShotUser.data().photoURL
+				}
+			});
 		} catch (error) {
 			console.log('error adding user to array', error.message);
 		}
