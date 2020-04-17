@@ -4,7 +4,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/71669725-2b50-4b29-acea-6591a50d1648/deploy-status)](https://app.netlify.com/sites/together-live/deploys)
 
-<a href="https://together-live.netlify.com/"  target="blank"><h2>Check out project on Netlify</h2></a>
+<a href="https://together-live.netlify.app/"  target="blank"><h2>Check out project on Netlify</h2></a>
 
 <h4>In this project I apply my knowledge in the following:</h4>
 
