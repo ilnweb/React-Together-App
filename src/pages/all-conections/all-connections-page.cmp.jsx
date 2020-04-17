@@ -3,7 +3,7 @@ import './all-connections-page.scss';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
-import { pullConnection, changeUsers } from '../../firebase/firebase.config';
+import { pullConnection } from '../../firebase/firebase.config';
 import { setConnection } from '../../redux/connection/connection.actions';
 import HeaderContainer from '../../components/header-container/header-container.cmp';
 import CardAllConnections from '../../components/card-all-connections/card-all-connections.cmp';
@@ -24,7 +24,6 @@ class AllConectionsPage extends React.Component {
 					<h1>Your connections</h1>
 				</HeaderContainer>
         <SearchModal />
-        <button onClick={changeUsers}>Change users</button>
 				<div className="all-connections-display mt-30 flex-c-c">
 					{currentUser &&
             currentUser.connections.map((item) => <CardAllConnections key={item.connectionId} item={item} dispatchConnection={this.dispatchConnection}/>).reverse()}
