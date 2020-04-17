@@ -164,7 +164,6 @@ class SearchModal extends React.Component {
 									)
 							)}
 					</div>
-
 					<Button className="mt-30" size="large" type="primary" onClick={this.handleCreate}>
 						Create
 					</Button>

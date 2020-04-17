@@ -30,7 +30,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 				displayName,
 				email,
 				createdAt,
-				photoURL,
+        photoURL,
+        notificationStatus:false,
 				spendings: [],
 				connections: [],
 				notifications: [],
@@ -100,7 +101,8 @@ export const createNewConnection = async (connectionName, connectionImg, invited
 		const userRef = firestore.doc(`users/${item.id}`);
 		if (item.id !== currentUser.id) {
 			try {
-				await userRef.update({
+        await userRef.update({
+          notificationStatus:true,
 					notifications: firebase.firestore.FieldValue.arrayUnion({
 						displayName: currentUser.displayName,
 						connectionId,
@@ -189,6 +191,8 @@ export const pullConnection = async (connectionID, setConnection) => {
 //     });
 // });
 // };
+
+
 
 ////////////// Initialize Firebase
 firebase.initializeApp(firebaseConfig);

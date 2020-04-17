@@ -13,3 +13,13 @@
     font-size: 2rem!important;
   }
 }
+
+.ant-badge-dot {
+  z-index: auto;
+  width: 7px;
+  height: 7px;
+  background: #ff025b;
+  border-radius: 100%;
+  -webkit-box-shadow: 0 0 0 1px #fff;
+  box-shadow: 0 0 0 1px #fff;
+}
