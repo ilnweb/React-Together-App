@@ -7,11 +7,17 @@ import { MdAddCircle } from 'react-icons/md';
 const { Panel } = Collapse;
 
 class TodoList extends React.Component {
-  state = {
-    
-  }
+	state = {
+		description: ''
+	};
+
+	handleChange = (e) => {
+		const { value, name } = e.target;
+		this.setState({ [name]: value });
+	};
 
 	render() {
+		console.log(this.state);
 		return (
 			<div className="todo-list">
 				<Collapse defaultActiveKey={[ '1' ]} className="todo-list-items">
@@ -19,9 +25,10 @@ class TodoList extends React.Component {
 						<Input.Search
 							size="large"
 							className="mb-20"
-							name="userSearch"
-							placeholder="Search user by name"
-							value={'kk'}
+							name="description"
+							placeholder="Add item to list"
+							onChange={this.handleChange}
+							value={this.state.description}
 							enterButton={<MdAddCircle style={{ fontSize: '1.7rem' }} />}
 						/>
 						<ItemList item={{ id: 1, description: 'Carrots' }} />

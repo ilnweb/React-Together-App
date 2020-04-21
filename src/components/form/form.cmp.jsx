@@ -3,8 +3,6 @@ import './form.scss';
 import { Button, Input, Form, Radio } from 'antd';
 import { MdAttachMoney, MdModeEdit } from "react-icons/md";
 
-
-
 class FormAdd extends React.Component {
 	constructor() {
 		super();

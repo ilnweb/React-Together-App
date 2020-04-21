@@ -3,6 +3,8 @@ import './todo-page.scss';
 import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
 import HeaderContainer from '../../components/header-container/header-container.cmp';
 import TodoList from '../../components/todo-list/todo-list.cpm';
+import AddSpending from '../../components/add-spending/add-spending.cmp';
+import FormToDo from '../../components/form-todo/form-todo.cmp';
 
 class ToDoPage extends React.Component {
 	state = {};
@@ -19,7 +21,10 @@ class ToDoPage extends React.Component {
 				}
 				<HeaderContainer>
 					<h1>Todo page</h1>
-				</HeaderContainer>
+        </HeaderContainer>
+        <AddSpending>
+					<FormToDo/>
+				</AddSpending>
           <TodoList/>
 			</div>
 		);
