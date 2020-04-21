@@ -26,6 +26,7 @@ class TodoList extends React.Component {
 						/>
 						<ItemList item={{ id: 1, description: 'Carrots' }} />
 						<ItemList item={{ id: 1, description: 'Tomatos' }} />
+						<ItemList item={{ id: 1, description: 'Cucumber' }} />
 					</Panel>
 				</Collapse>
 				<Button className="button-size list-button" size="large" type="primary">
