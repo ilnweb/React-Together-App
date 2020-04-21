@@ -97,9 +97,9 @@ export const createNewConnection = async (connectionName, connectionImg, invited
 		alert('error creating connection', error.message);
 	}
 
-	invitedfriends.map(async (item) => {
-		const userRef = firestore.doc(`users/${item.id}`);
-		if (item.id !== currentUser.id) {
+	invitedfriends.map(async (user) => {
+		const userRef = firestore.doc(`users/${user.id}`);
+		if (user.id !== currentUser.id) {
 			try {
         await userRef.update({
           notificationStatus:true,
@@ -191,6 +191,32 @@ export const pullConnection = async (connectionID, setConnection) => {
 //     });
 // });
 // };
+
+export const addNotification = async (connection, currentUser, notification) => {
+	const userRef = firestore.doc(`users/${currentUser.id}`);
+	try {
+		await userRef.update({
+      notifications: firebase.firestore.FieldValue.arrayUnion({
+        connection,
+				...notification
+      }),
+      notificationStatus:true,
+		});
+	} catch (error) {
+		alert('error sending notification', error.message);
+	}
+};
+
+export const clearNotificationStatus = async (currentUserID) => {
+	const userRef = firestore.doc(`users/${currentUserID}`);
+	try {
+		await userRef.update({
+      notificationStatus:false,
+		});
+	} catch (error) {
+		alert('error sending notification', error.message);
+	}
+};
 
 
 

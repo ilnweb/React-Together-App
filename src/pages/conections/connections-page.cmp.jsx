@@ -6,11 +6,15 @@ import AddSpending from '../../components/add-spending/add-spending.cmp';
 import FormAdd from '../../components/form/form.cmp';
 import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
 import ItemSpending from '../../components/item-spending/item-spending.cmp';
-import { firestore } from '../../firebase/firebase.config';
+import { firestore, addNotification } from '../../firebase/firebase.config';
 import firebase from 'firebase/app';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { selectConnectionData, selectCurrentUrerTotalConnection,selectUsersTotalConnection } from '../../redux/connection/connection.selectors';
+import {
+	selectConnectionData,
+	selectCurrentUrerTotalConnection,
+	selectUsersTotalConnection
+} from '../../redux/connection/connection.selectors';
 import { addConnectionItem } from '../../redux/connection/connection.actions';
 import { removeConnectionItem } from '../../redux/connection/connection.actions';
 import { createStructuredSelector } from 'reselect';
@@ -20,15 +24,15 @@ const { Panel } = Collapse;
 
 class ConnectionsPage extends React.Component {
 	state = {
-    isLoading: true,
-    totalUsers: 0
-  };
-  
-  addUserTotal = (total) => {
-    this.setState(prevState => ({
-      totalUsers: prevState.totalUsers +total
-    }));
-  }
+		isLoading: true,
+		totalUsers: 0
+	};
+
+	addUserTotal = (total) => {
+		this.setState((prevState) => ({
+			totalUsers: prevState.totalUsers + total
+		}));
+	};
 
 	dispatchItem = (readyItem) => {
 		const { currentUser, connection, addConnectionItem } = this.props;
@@ -37,6 +41,20 @@ class ConnectionsPage extends React.Component {
 			[currentUser.id]: firebase.firestore.FieldValue.arrayUnion({
 				...readyItem
 			})
+		});
+
+		Object.keys(connection.users).map((key, index) => {
+			const notification = {
+				connectionId: 'CIdxKk7BJJ7cXKN67I6x',
+				connectionImg: '',
+				connectionName: 'sss',
+				createdAt: 'April 17, 2020 at 4:58:50 PM UTC+2,',
+				displayName: 'Iliyan Tsachev',
+				photoURL: 'https://lh3.googleusercontent.com/a-/AOh14GhdZXjyTExHa-JlVptJkCVpKzxvcAMiksEbD5rhrA'
+			};
+			if (key !== currentUser.id) {
+				addNotification(connection, currentUser);
+			}
 		});
 
 		addConnectionItem({
@@ -48,9 +66,7 @@ class ConnectionsPage extends React.Component {
 		const { currentUser, connection, currentUserTotal, UsersTotal, removeConnectionItem } = this.props;
 		return (
 			<div className="connections-page">
-				{connection ? (
-					''
-				) : (
+				{!connection && (
 					<LoadingScreen
 						img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_mobile_testing_reah_dmknjs.svg"
 						title="Connect with friends to track common spendings!"
@@ -61,7 +77,11 @@ class ConnectionsPage extends React.Component {
 				<HeaderContainer>
 					<div className="flex-c-c">
 						<h2 className="mb-10">{connection && connection.connectionName}</h2>
-						<div className="conect-img" style={{backgroundImage:`url(${connection && connection.connectionImg})`}} alt="" />
+						<div
+							className="conect-img"
+							style={{ backgroundImage: `url(${connection && connection.connectionImg})` }}
+							alt=""
+						/>
 						<h2 className="mt-10 mb-0">Total spent :</h2>
 						<h2>{UsersTotal}$</h2>
 					</div>
@@ -70,11 +90,15 @@ class ConnectionsPage extends React.Component {
 					<FormAdd dispatchItem={this.dispatchItem} />
 				</AddSpending>
 				<div className="connection-users flex-c-c mb-50 ">
-          <Collapse bordered={false} defaultActiveKey={['1']}>
-						<Panel className="user-header" header={<UserConnect item={currentUser} total={currentUserTotal}  small />} key="1">
+					<Collapse bordered={false} defaultActiveKey={[ '1' ]}>
+						<Panel
+							className="user-header"
+							header={<UserConnect item={currentUser} total={currentUserTotal} small />}
+							key="1"
+						>
 							{connection && connection.userData.spendings[currentUser.id].length ? (
 								this.props.connection.userData.spendings[currentUser.id].map((item) => (
-                  <ItemSpending key={item.id} item={item} removeItem={removeConnectionItem} itemDelete/>
+									<ItemSpending key={item.id} item={item} removeItem={removeConnectionItem} itemDelete />
 								))
 							) : (
 								<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
@@ -100,8 +124,8 @@ class ConnectionsPage extends React.Component {
 											)}
 										</Panel>
 									);
-                }
-                return '';
+								}
+								return '';
 							})}
 					</Collapse>
 				</div>
@@ -117,9 +141,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser,
-  connection: selectConnectionData,
-  currentUserTotal: selectCurrentUrerTotalConnection,
-  UsersTotal:selectUsersTotalConnection
+	connection: selectConnectionData,
+	currentUserTotal: selectCurrentUrerTotalConnection,
+	UsersTotal: selectUsersTotalConnection
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectionsPage);

@@ -50,14 +50,14 @@ class BottomNav extends React.Component {
 				<Menu.Item key="/connections">
 					<MdGroup className="icon-standart" />
 					<Link to="/connections" />
+        </Menu.Item>
+        <Menu.Item className="flex-c" key="/to-do">
+					<FaRegEdit style={{fontSize:'1.4rem'}} className="icon-standart" />
+					<Link to="/to-do" />
 				</Menu.Item>
 				<Menu.Item key="/calendar">
-					<MdInsertInvitation className="icon-standart" />
+					<MdInsertInvitation style={{fontSize:'1.4rem'}} className="icon-standart" />
 					<Link to="/calendar" />
-				</Menu.Item>
-				<Menu.Item className="flex-c" key="/to-do">
-					<FaRegEdit className="icon-standart" />
-					<Link to="/to-do" />
 				</Menu.Item>
 			</Menu>
 		);
