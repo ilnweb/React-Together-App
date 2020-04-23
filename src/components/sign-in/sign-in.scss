@@ -3,15 +3,20 @@
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 2rem;
+
+  h1{
+    color: black;
+  }
 }
 
 .g-signin,
-.f-signin {
-  background-image: linear-gradient(to right , #ed1459 , #5e50a5);
+.f-signin,
+.button-color {
+  background-image: linear-gradient(to right , #ed1459f1 ,#7444aaee);
   color: white;
   border: none;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   
 }
@@ -23,7 +28,8 @@
 }
 
 .g-signin:hover,
-.f-signin:hover {
+.f-signin:hover,
+.button-color:hover {
   background-image: linear-gradient(to right, #5e50a5, #ed1459 );
   color: white;
   transition: all 2s;
@@ -32,5 +38,5 @@
 .signup-sub {
   cursor: pointer;
   text-align: center;
-  color: rgb(201, 201, 201);
+  color: rgb(154, 154, 154);
 }

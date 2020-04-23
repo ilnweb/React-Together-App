@@ -66,10 +66,6 @@ a {
   
 }
 
-.logo img {
-  width: 40%;
-}
-
 .color-primary {
   color: #f50057;
 }
@@ -87,6 +83,11 @@ a {
   transition: all .25s;
   opacity: .9;
   
+}
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+  color: #fff;
+  /* background-color: #40a9ff; */
+  border-color: #40a9ff;
 }
 .ant-btn-primary:hover,.ant-btn-primary:focus{
   background-image: linear-gradient(to right ,#ed1459 ,  #5e50a5);

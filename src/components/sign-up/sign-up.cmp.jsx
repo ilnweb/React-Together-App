@@ -58,7 +58,7 @@ class SignUp extends React.Component {
 						id="name"
 						name="displayName"
 						value={displayName}
-						className="input-style input-signin"
+						className="input-style input-signin  border-purple"
 						type="text"
             label="Name"
             size="large"
@@ -70,7 +70,7 @@ class SignUp extends React.Component {
 						id="email"
 						name="email"
 						value={email}
-						className="input-style input-signin"
+						className="input-style input-signin  border-purple"
 						type="email"
             label="Email"
             size="large"
@@ -82,7 +82,7 @@ class SignUp extends React.Component {
 						id="password"
 						name="password"
 						value={password}
-						className="input-style input-signin"
+						className="input-style input-signin  border-purple"
 						type="password"
             label="Password"
             size="large"
@@ -94,7 +94,7 @@ class SignUp extends React.Component {
 						id="confirm-password"
 						name="confirmPassword"
 						value={confirmPassword}
-						className="input-style input-signin"
+						className="input-style input-signin  border-purple"
 						type="password"
             label="Password"
             size="large"
@@ -102,7 +102,7 @@ class SignUp extends React.Component {
 						autoComplete="true"
 						onChange={this.handleChange}
 					/>
-					<Button className="button-size input-style" type="primary" size="large" onClick={this.handleSubmit}>
+					<Button className="button-size input-style button-color" type="primary" size="large" onClick={this.handleSubmit}>
 						Sign Up
 					</Button>
 					<div className="signup-sub input-style" onClick={this.props.showSignUp}>

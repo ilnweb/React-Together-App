@@ -42,7 +42,7 @@ class SignIn extends React.Component {
 						id="email1"
 						name="email"
 						value={this.state.email}
-						className="input-style input-signin"
+						className="input-style input-signin border-purple"
 						type="email"
 						label="Email"
 						size="large"
@@ -56,7 +56,7 @@ class SignIn extends React.Component {
 						id="password1"
 						name="password"
 						value={this.state.password}
-						className="input-style input-signin"
+						className="input-style input-signin border-purple"
 						type="password"
 						label="Password"
 						size="large"
@@ -64,7 +64,7 @@ class SignIn extends React.Component {
 						autoComplete="true"
 						onChange={this.handleChange}
 					/>
-					<Button className="button-size"  size="large" type="primary" onClick={this.handleSubmit}>
+					<Button className="button-size button-color"  size="large" onClick={this.handleSubmit}>
 						Sign In
 					</Button>
 					<div className="flex-c input-style">
