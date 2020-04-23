@@ -43,7 +43,7 @@
   </ul>
   <h4>Shared To-Do list to view common tasks :</h4>
   <ul>
-    <li>Shared acces to unlimited number of To-Do lists in a group</li>
+    <li>Shared access to unlimited number of To-Do lists in a group</li>
     <li>Each user can create, modify or delete group lists</li>
     <li>Each user can add or delete items in all lists</li>
   </ul>
