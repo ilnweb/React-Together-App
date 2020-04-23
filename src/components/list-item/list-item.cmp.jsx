@@ -7,7 +7,7 @@ import { Checkbox } from 'antd';
 
 const ItemList = ({ item, removeItem }) => {
 	return (
-		<div className="item-spending">
+		<div className="item-list">
 			<Checkbox/>
 			<div className="item-data">
 				<div className="item-description">{item&&item.toUpperCase()}</div>

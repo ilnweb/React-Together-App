@@ -3,7 +3,6 @@ import './todo-list.scss';
 import { Collapse, Empty, Button, Input } from 'antd';
 import ItemList from '../list-item/list-item.cmp';
 import { firestore } from '../../firebase/firebase.config';
-import firebase from 'firebase/app';
 import { MdAddCircle } from 'react-icons/md';
 
 const { Panel } = Collapse;
@@ -29,12 +28,14 @@ class TodoList extends React.Component {
     }catch (error) {
       alert('error sending list item', error.message);
     }
+    this.setState({
+      description: ''
+    });
   };
   
   removeItem = async (itemRemove) => {
     console.log('dispatch');
 		const { listID, list, connectionID } = this.props;
-		const {description } = this.state;
     const collectionSet = firestore.doc(`connections/${connectionID}/userData/list`);
     try {
       await collectionSet.update({

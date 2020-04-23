@@ -12,7 +12,9 @@ import { selectConnectionData } from '../../redux/connection/connection.selector
 import { createStructuredSelector } from 'reselect';
 
 class ToDoPage extends React.Component {
-	state = {};
+	state = {
+		isLoading: true
+	};
 
 	dispatchItem = (readyItem) => {
 		const { connection } = this.props;
@@ -24,9 +26,9 @@ class ToDoPage extends React.Component {
 				items: []
 			}
 		});
-  };
-  
-  deleteItem = (readyItem) => {
+	};
+
+	deleteItem = (readyItem) => {
 		const { connection } = this.props;
 		const collectionSet = firestore.doc(`connections/${connection.id}/userData/list`);
 		collectionSet.update({
@@ -40,22 +42,33 @@ class ToDoPage extends React.Component {
 		console.log(lists);
 		return (
 			<div className="todo-page">
-				{
-					//<LoadingScreen
+        {
+          // lists && !lists.length && (
+					// <LoadingScreen
 					// 	img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_email_campaign_qa8y_bycdui.svg"
-					// 	title="Coming soon, Shared To-Do List!"
+          //   title="Shared To-Do List"
 					// 	inside
 					// />
-				}
+          // )
+        }
 				<HeaderContainer>
 					<h1>Todo page</h1>
 				</HeaderContainer>
 				<AddSpending>
 					<FormToDo dispatchItem={this.dispatchItem} />
-        </AddSpending>
-        <div className='lists-container mb-50'>
-          {lists && Object.keys(lists).map((key, index) => <TodoList key={index} list={lists[key]} listID={key} connectionID={connection.id} deleteItem={this.deleteItem}/>)}
-        </div>
+				</AddSpending>
+				<div className="lists-container mb-50">
+					{lists &&
+						Object.keys(lists).map((key, index) => (
+							<TodoList
+								key={index}
+								list={lists[key]}
+								listID={key}
+								connectionID={connection.id}
+								deleteItem={this.deleteItem}
+							/>
+						))}
+				</div>
 			</div>
 		);
 	}
