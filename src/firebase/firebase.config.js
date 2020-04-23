@@ -90,7 +90,7 @@ export const createNewConnection = async (connectionName, connectionImg, invited
 					...userIDs
 				});
 				docRef.collection('userData').doc('list').set({
-					...userIDs
+				
 				});
 			});
 	} catch (error) {
