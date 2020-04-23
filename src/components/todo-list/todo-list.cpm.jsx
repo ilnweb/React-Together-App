@@ -55,7 +55,7 @@ class TodoList extends React.Component {
 	};
 
 	render() {
-		const { list } = this.props;
+		const { list,listID } = this.props;
 		return (
 			<div className="todo-list mt-30 mb-30">
 				<Collapse defaultActiveKey={[ '1' ]} className="todo-list-items">
@@ -72,7 +72,7 @@ class TodoList extends React.Component {
             {list.items.length ? list.items.map((item, index) => <ItemList key={index} item={item} removeItem={this.removeItem}/>) :<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />}
 					</Panel>
 				</Collapse>
-				<Button className="button-size list-button" size="large" type="primary">
+				<Button className="button-size list-button" size="large" type="primary" onClick={()=> this.props.deleteItem(listID)}>
 					Delete List
 				</Button>
 			</div>

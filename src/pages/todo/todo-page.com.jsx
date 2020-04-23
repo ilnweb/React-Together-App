@@ -24,6 +24,14 @@ class ToDoPage extends React.Component {
 				items: []
 			}
 		});
+  };
+  
+  deleteItem = (readyItem) => {
+		const { connection } = this.props;
+		const collectionSet = firestore.doc(`connections/${connection.id}/userData/list`);
+		collectionSet.update({
+			[readyItem]: firebase.firestore.FieldValue.delete()
+		});
 	};
 
 	render() {
@@ -46,7 +54,7 @@ class ToDoPage extends React.Component {
 					<FormToDo dispatchItem={this.dispatchItem} />
         </AddSpending>
         <div className='lists-container mb-50'>
-          {lists && Object.keys(lists).map((key, index) => <TodoList key={index} list={lists[key]} listID={key} connectionID={connection.id} />)}
+          {lists && Object.keys(lists).map((key, index) => <TodoList key={index} list={lists[key]} listID={key} connectionID={connection.id} deleteItem={this.deleteItem}/>)}
         </div>
 			</div>
 		);
