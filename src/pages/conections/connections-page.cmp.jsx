@@ -54,7 +54,8 @@ class ConnectionsPage extends React.Component {
 			};
 			if (key !== currentUser.id) {
 				addNotification(connection, currentUser);
-			}
+      }
+      return notification;
 		});
 
 		addConnectionItem({

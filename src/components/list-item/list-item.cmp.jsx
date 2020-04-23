@@ -7,10 +7,10 @@ import { Checkbox } from 'antd';
 
 const ItemList = ({ item, removeItem }) => {
 	return (
-		<div id={item.id} className="item-spending">
+		<div className="item-spending">
 			<Checkbox/>
 			<div className="item-data">
-				<div className="item-description">{item.description.toUpperCase()}</div>
+				<div className="item-description">{item&&item.toUpperCase()}</div>
 			</div>
 			<div className="flex-c">
 				<MdDelete className="item-delete icon-standart" onClick={() => removeItem(item)} />

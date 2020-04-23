@@ -1,7 +1,7 @@
 import React from 'react';
 import './form-todo.cmp';
-import { Button, Input, Form, Radio } from 'antd';
-import { MdAttachMoney, MdModeEdit } from 'react-icons/md';
+import { Button, Input, Form } from 'antd';
+import { MdModeEdit } from 'react-icons/md';
 
 class FormToDo extends React.Component {
 	constructor() {
@@ -18,7 +18,8 @@ class FormToDo extends React.Component {
 		if (name === '') {
 			this.setState({ formNotFilled: true });
 			return;
-		}
+    }
+    
 		const id = () => {
 			return '_' + Math.random().toString(36).substr(2, 9);
 		};
@@ -27,12 +28,12 @@ class FormToDo extends React.Component {
 		let formatDate = date.getDate() + '/' + months[date.getMonth()] + '/' + date.getFullYear();
 
 		this.props.dispatchItem({
-			[id()]: {
+        id:id(),
         name: name,
         date:formatDate,
         items:[]
 			}
-		});
+		);
 
 		this.setState({
 			name: '',
@@ -56,7 +57,7 @@ class FormToDo extends React.Component {
 					placeholder="Name"
 					suffix={<MdModeEdit style={{ color: 'rgba(0,0,0,.25)' }} />}
 					onChange={this.handleChange}
-					value={this.state.description}
+					value={this.state.name}
 					size="large"
 				/>
 				<Button type="primary" size="large" className="mt-0" onClick={this.handleSubmit}>
