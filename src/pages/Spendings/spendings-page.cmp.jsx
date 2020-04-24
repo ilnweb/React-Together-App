@@ -52,7 +52,8 @@ class SpendingPage extends React.Component {
 		const { currentUser, totalExp, totalInc, removeItem } = this.props;
 		return (
 			<div className="spending">
-				<HeaderContainer>
+        <HeaderContainer>
+        <div className='page-title'>Personal Spendings</div>
 					<UserWithSpinner
 						isLoading={this.state.isLoading}
 						currentUser={currentUser}

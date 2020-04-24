@@ -46,16 +46,17 @@ class App extends React.Component {
 						id: snapShot.id,
 						photoURL: userAuth.photoURL,
 						...snapShot.data()
-          });
-          if(snapShot.data().connections.length){
-					const connectionID = snapShot.data().connections.reverse()[0].connectionId;
-					pullConnection(connectionID,setConnection).then(() => this.setState({ isLoading: false }))
-						.catch(function(error) {
-							console.log('Error getting documents: ', error);
-						});
-          } else {
-            this.setState({ isLoading: false })
-          }
+					});
+					if (snapShot.data().connections.length) {
+						const connectionID = snapShot.data().connections.reverse()[0].connectionId;
+						pullConnection(connectionID, setConnection)
+							.then(() => this.setState({ isLoading: false }))
+							.catch(function(error) {
+								console.log('Error getting documents: ', error);
+							});
+					} else {
+						this.setState({ isLoading: false });
+					}
 				});
 			} else {
 				this.setState({ currentUser: userAuth });
@@ -69,11 +70,13 @@ class App extends React.Component {
 	}
 
 	render() {
-    const { isLoading } = this.state;
-   
+		const { isLoading } = this.state;
+
 		return (
 			<div className="App">
-        {isLoading && <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1582856305/HomePage/undraw_mobile_marketing_iqbr_bznozj.svg" title="Lets do it better!" /> }
+				{
+					// isLoading && <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1582856305/HomePage/undraw_mobile_marketing_iqbr_bznozj.svg" title="Lets do it better!" />
+				}
 				<Header />
 				<Switch>
 					<Route

@@ -74,6 +74,15 @@ a {
   color: rgb(27, 27, 27);
   
 }
+
+.page-title{
+  position: absolute;
+  top: 20px;
+  left: 35px;
+  line-height: 0;
+  color: white;
+  font-size: 12px;
+}
  
 
 .ant-btn-primary{

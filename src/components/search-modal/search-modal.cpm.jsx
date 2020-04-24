@@ -23,17 +23,19 @@ class SearchModal extends React.Component {
 	}
 
 	componentDidMount() {
-    const users = firestore.doc(`searchusers/F6HYw5Nwerc3tnwSf3aI`);
+		const users = firestore.doc(`searchusers/F6HYw5Nwerc3tnwSf3aI`);
 		users
 			.get()
-      .then((doc) => {
-        const userArr = [];
-        const users = doc.data();
-        Object.keys(users).map(key => userArr.push({
-          id: key,
-          displayName: users[key].displayName,
-          photoURL: users[key].photoURL
-        }))
+			.then((doc) => {
+				const userArr = [];
+				const users = doc.data();
+				Object.keys(users).map((key) =>
+					userArr.push({
+						id: key,
+						displayName: users[key].displayName,
+						photoURL: users[key].photoURL
+					})
+				);
 				this.setState({
 					userList: userArr
 				});
@@ -62,8 +64,8 @@ class SearchModal extends React.Component {
 	handleClick = (item) => {
 		if (!this.state.invitedfriends.includes(item)) {
 			this.setState((prevState) => ({
-        invitedfriends: [...this.state.invitedfriends, item],
-        userSearch:''
+				invitedfriends: [ ...this.state.invitedfriends, item ],
+				userSearch: ''
 			}));
 		}
 	};
@@ -93,8 +95,8 @@ class SearchModal extends React.Component {
 	};
 
 	render() {
-    const { userList, userSearch, invitedfriends } = this.state;
-    console.log(this.state.userList);
+		const { userList, userSearch, invitedfriends } = this.state;
+		console.log(this.state.userList);
 		return (
 			<div>
 				<Button className="mt-30" size="large" type="primary" onClick={this.showModal}>

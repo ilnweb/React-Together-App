@@ -42,17 +42,25 @@ class ToDoPage extends React.Component {
 		console.log(lists);
 		return (
 			<div className="todo-page">
-        {
-          // lists && !lists.length && (
+				{
+					// lists && !lists.length && (
 					// <LoadingScreen
 					// 	img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_email_campaign_qa8y_bycdui.svg"
-          //   title="Shared To-Do List"
+					//   title="Shared To-Do List"
 					// 	inside
 					// />
-          // )
-        }
-				<HeaderContainer>
-					<h1>Todo page</h1>
+					// )
+				}
+        <HeaderContainer>
+          <div className='page-title'>Group To-Do lists</div>
+					<div className="flex-c-c mb-20 mt-5">
+						<h2 className="mb-10">{connection && connection.connectionName}</h2>
+						<div
+							className="conect-img"
+							style={{ backgroundImage: `url(${connection && connection.connectionImg})` }}
+							alt=""
+						/>
+					</div>
 				</HeaderContainer>
 				<AddSpending>
 					<FormToDo dispatchItem={this.dispatchItem} />

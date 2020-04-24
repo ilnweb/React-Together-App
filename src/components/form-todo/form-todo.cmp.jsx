@@ -7,7 +7,8 @@ class FormToDo extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			name: ''
+			name: '',
+			formNotFilled: false
 		};
 	}
 
@@ -18,8 +19,8 @@ class FormToDo extends React.Component {
 		if (name === '') {
 			this.setState({ formNotFilled: true });
 			return;
-    }
-    
+		}
+
 		const id = () => {
 			return '_' + Math.random().toString(36).substr(2, 9);
 		};
@@ -28,12 +29,11 @@ class FormToDo extends React.Component {
 		let formatDate = date.getDate() + '/' + months[date.getMonth()] + '/' + date.getFullYear();
 
 		this.props.dispatchItem({
-        id:id(),
-        name: name,
-        date:formatDate,
-        items:[]
-			}
-		);
+			id: id(),
+			name: name,
+			date: formatDate,
+			items: []
+		});
 
 		this.setState({
 			name: '',
@@ -47,12 +47,14 @@ class FormToDo extends React.Component {
 	};
 	render() {
 		return (
-			<Form className="item-form flex-c-c">
-				<h3 className="mb-0">Create New To-do List</h3>
+      <Form className="flex-c-c">
+        <h3 className="mb-0">Create New To-do List</h3>
+        {this.state.formNotFilled ? <div className="fail-message">Please check fields and try again!</div> : ''}
 				<Input
 					id="name"
 					name="name"
-					type="text"
+          type="text"
+          className="mt-10"
 					label="Name"
 					placeholder="Name"
 					suffix={<MdModeEdit style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -60,7 +62,7 @@ class FormToDo extends React.Component {
 					value={this.state.name}
 					size="large"
 				/>
-				<Button type="primary" size="large" className="mt-0" onClick={this.handleSubmit}>
+				<Button type="primary" size="large" className="mt-20" onClick={this.handleSubmit}>
 					ADD
 				</Button>
 			</Form>

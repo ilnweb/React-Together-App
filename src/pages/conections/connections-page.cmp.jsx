@@ -43,20 +43,7 @@ class ConnectionsPage extends React.Component {
 			})
 		});
 
-		Object.keys(connection.users).map((key, index) => {
-			const notification = {
-				connectionId: 'CIdxKk7BJJ7cXKN67I6x',
-				connectionImg: '',
-				connectionName: 'sss',
-				createdAt: 'April 17, 2020 at 4:58:50 PM UTC+2,',
-				displayName: 'Iliyan Tsachev',
-				photoURL: 'https://lh3.googleusercontent.com/a-/AOh14GhdZXjyTExHa-JlVptJkCVpKzxvcAMiksEbD5rhrA'
-			};
-			if (key !== currentUser.id) {
-				addNotification(connection, currentUser);
-      }
-      return notification;
-		});
+		addNotification(connection, currentUser);
 
 		addConnectionItem({
 			...readyItem
@@ -75,7 +62,8 @@ class ConnectionsPage extends React.Component {
 						button
 					/>
 				)}
-				<HeaderContainer>
+        <HeaderContainer>
+        <div className='page-title'>Group Spendings</div>
 					<div className="flex-c-c">
 						<h2 className="mb-10">{connection && connection.connectionName}</h2>
 						<div
