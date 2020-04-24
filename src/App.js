@@ -12,6 +12,7 @@ import CalendarPage from './pages/calendar/calendar-page.cmp';
 import ToDoPage from './pages/todo/todo-page.com';
 import NotificationsPage from './pages/notifications/notifications-page.cmp';
 import AllConectionsPage from './pages/all-conections/all-connections-page.cmp';
+import UserProfile from './pages/user-profile/user-profile.cmp';
 import BottomNav from './components/bottom-nav/bottom-nav.cmp';
 import LoadingScreen from './components/loading-screen/loading-screen.cmp';
 import { authFB, createUserProfileDocument, pullConnection } from './firebase/firebase.config';
@@ -96,6 +97,7 @@ class App extends React.Component {
 					/>
 					<Route path="/connections" render={() => <ConnectionsPageWithSpinner isLoading={isLoading} />} />
 					<Route path="/calendar" component={CalendarPage} />
+					<Route path="/profile" component={UserProfile} />
 					<Route path="/to-do" component={ToDoPage} />
 					<Route path="/all-connections" component={AllConectionsPage} />
 					<Route path="/notifications" component={NotificationsPage} />

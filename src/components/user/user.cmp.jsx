@@ -6,7 +6,7 @@ const User = ({ currentUser, reverce, totalExp, totalInc, income, small }) => {
 	const userName = currentUser && currentUser.displayName.split(' ').slice(0, 1);
 	const avatarLetter = userName && userName[0].split('')[0].toUpperCase();
 	return (
-		<div className={`user ${reverce ? 'user-reverce' : ''}`}>
+		<div className={`user mt-5 ${reverce ? 'user-reverce' : ''}`}>
 			<div className="user-img">
 				{currentUser.photoURL ? (
 					<Avatar className="avatar-picture" size={small ? 50 : 70} src={currentUser.photoURL} />

@@ -1,0 +1,20 @@
+.user-profile{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to right bottom, rgb(207, 207, 207),#edf4ff );
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+
+  &-display{
+    width: 90%;
+    min-height: 20%;
+    background-color:white;
+    border-radius:10px;
+    
+  }
+}
