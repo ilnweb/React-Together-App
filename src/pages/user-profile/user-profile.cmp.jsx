@@ -8,7 +8,6 @@ import { Avatar, Button } from 'antd';
 import { MdArrowBack } from 'react-icons/md';
 
 class UserProfile extends React.Component {
-  
 	render() {
 		const { currentUser } = this.props;
 		return (
@@ -17,20 +16,20 @@ class UserProfile extends React.Component {
 					<MdArrowBack className="back-button" onClick={() => this.props.history.goBack()} />
 					<h1>Your Profile</h1>
 				</HeaderContainer>
-        <div className="user-profile-display mt-30 flex-c-c p-30">
-        <Avatar className="avatar-picture" size={100} src={currentUser&&currentUser.photoURL} />
-					<h2 className="mt-20 black">{currentUser&&currentUser.displayName}</h2>
-          <h2 className="black">{currentUser && currentUser.email}</h2>
-          <Button type="primary" size="large" className="mt-15">Delete Profile</Button>
+				<div className="user-profile-display mt-30 flex-c-c p-30">
+					<Avatar className="avatar-picture" size={100} src={currentUser && currentUser.photoURL} />
+					<h2 className="mt-20 black">{currentUser && currentUser.displayName}</h2>
+					<h2 className="black">{currentUser && currentUser.email}</h2>
+					<Button type="primary" size="large" className="mt-15">
+						Delete Profile
+					</Button>
 				</div>
 			</div>
 		);
 	}
 }
 
-const mapDispatchToProps = (dispatch) => ({
-	
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser
