@@ -43,7 +43,7 @@ class ConnectionsPage extends React.Component {
 			})
 		});
 
-		// addNotification(connection, currentUser);
+		addNotification(connection, currentUser, 'update', 'added an item in');
 		addConnectionItem({
 			...readyItem
 		});

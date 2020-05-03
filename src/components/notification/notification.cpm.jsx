@@ -8,11 +8,11 @@ const Notification = ({ item, handleAccept }) => {
 	return (
 		<div className="notification">
 			<div className="notification-data flex-c p-10">
-				<div className="notification-image" style={{ backgroundImage: `url(${item.connectionImg})` }} alt="conection" />
+				<div className="notification-image" style={{ backgroundImage: `url(${item.type ? item.userImg : item.connectionImg})` }} alt="conection" />
 				<div className="flex-c-c ml-10">
 					<div className="notification-list-item ml-10 mt-10 flex-c-c" >
 						<div className="notification-date">
-							<strong>{item.displayName}</strong> invited you to connection <strong>{item.connectionName}</strong>
+							<strong>{item.displayName}</strong>&nbsp; {item.type ? item.notificationBody : 'invited you to connection' }&nbsp; <strong>{item.connectionName}</strong>
 						</div>
 						<Moment className="date-color" fromNow date={item.createdAt.toDate()} />
 					</div>

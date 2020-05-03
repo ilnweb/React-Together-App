@@ -23,6 +23,7 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import WithSpinner from './components/with-spinner/with-spinner.cmp';
 
+
 const SpendingPageWithSpinner = WithSpinner(SpendingPage);
 const ConnectionsPageWithSpinner = WithSpinner(ConnectionsPage);
 
@@ -76,7 +77,7 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				{
-					// isLoading && <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1582856305/HomePage/undraw_mobile_marketing_iqbr_bznozj.svg" title="Lets do it better!" />
+					isLoading && <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1582856305/HomePage/undraw_mobile_marketing_iqbr_bznozj.svg" title="Lets do it better!" />
 				}
 				<Header />
 				<Switch>

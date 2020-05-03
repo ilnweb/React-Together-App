@@ -30,8 +30,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 				displayName,
 				email,
 				createdAt,
-        photoURL,
-        notificationStatus:false,
+				photoURL,
+				notificationStatus: false,
 				spendings: [],
 				connections: [],
 				notifications: [],
@@ -89,9 +89,7 @@ export const createNewConnection = async (connectionName, connectionImg, invited
 				docRef.collection('userData').doc('calendar').set({
 					...userIDs
 				});
-				docRef.collection('userData').doc('list').set({
-				
-				});
+				docRef.collection('userData').doc('list').set({});
 			});
 	} catch (error) {
 		alert('error creating connection', error.message);
@@ -101,8 +99,8 @@ export const createNewConnection = async (connectionName, connectionImg, invited
 		const userRef = firestore.doc(`users/${user.id}`);
 		if (user.id !== currentUser.id) {
 			try {
-        await userRef.update({
-          notificationStatus:true,
+				await userRef.update({
+					notificationStatus: true,
 					notifications: firebase.firestore.FieldValue.arrayUnion({
 						displayName: currentUser.displayName,
 						connectionId,
@@ -192,33 +190,42 @@ export const pullConnection = async (connectionID, setConnection) => {
 // });
 // };
 
-export const addNotification = async (connection, currentUser, notification) => {
-	const userRef = firestore.doc(`users/${currentUser.id}`);
-	try {
-		await userRef.update({
-      notifications: firebase.firestore.FieldValue.arrayUnion({
-        connection,
-				...notification
-      }),
-      notificationStatus:true,
-		});
-	} catch (error) {
-		alert('error sending notification', error.message);
-	}
+export const addNotification = (connection, currentUser, type, notificationBody) => {
+	Object.keys(connection.users).forEach((key) => {
+		if (key !== currentUser.id) {
+      const userRef = firestore.doc(`users/${key}`);
+      const createdAt = new Date();
+			try {
+				userRef.update({
+					notifications: firebase.firestore.FieldValue.arrayUnion({
+						connectionId: connection.id,
+						connectionName: connection.connectionName,
+						displayName: currentUser.displayName,
+						userImg: currentUser.photoURL,
+						notificationBody,
+            type,
+            createdAt
+					}),
+					notificationStatus: true
+				});
+			} catch (error) {
+        alert('error sending notification', error.message);
+        console.log(connection);
+			}
+		}
+	});
 };
 
 export const clearNotificationStatus = async (currentUserID) => {
 	const userRef = firestore.doc(`users/${currentUserID}`);
 	try {
 		await userRef.update({
-      notificationStatus:false,
+			notificationStatus: false
 		});
 	} catch (error) {
 		alert('error sending notification', error.message);
 	}
 };
-
-
 
 ////////////// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
