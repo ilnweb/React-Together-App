@@ -21,7 +21,7 @@ const SwitchCnnection = ({ currentUser,setConnection }) => {
       {currentUser && currentUser.connections.length ?
         currentUser.connections.map((item) => (
           <Menu.Item key={item.connectionId}>
-            <div className="switch-item flex-c  p-10" onClick={() => dispatchConnection(item)}>
+            <div className="switch-item flex-c p-10" onClick={() => dispatchConnection(item)}>
               <div className="switch-image" style={{ backgroundImage: `url(${item.connectionImg})` }} alt="conection" />
               <h2 className="black mb-5 ml-20"> {item.connectionName} </h2>
             </div>

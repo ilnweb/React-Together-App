@@ -16,7 +16,7 @@ const Notification = ({ item, handleAccept }) => {
 						</div>
 						<Moment className="date-color" fromNow date={item.createdAt.toDate()} />
 					</div>
-					<div className="notification-buttons flex">
+					{!item.type && <div className="notification-buttons flex">
 						<Button className="m-10" type="danger" size="large">
               Decline
             </Button>
@@ -25,7 +25,7 @@ const Notification = ({ item, handleAccept }) => {
 							Accept
             </Button>
             </Link>
-					</div>
+					</div>}
 				</div>
 			</div>
 		</div>
