@@ -174,7 +174,6 @@ export const pullConnection = async (connectionID, setConnection) => {
 };
 
 
-
 export const addNotification = (connection, currentUser, type, notificationBody) => {
 	Object.keys(connection.users).forEach((key) => {
 		if (key !== currentUser.id) {
@@ -203,7 +202,7 @@ export const addNotification = (connection, currentUser, type, notificationBody)
 
 export const deleteConnectionFromFirebase = async (connection, currentUserID) => {
 	const userRef = firestore.doc(`users/${currentUserID}`);
-	const connectionRef = firestore.doc(`connections/${connection.id}`);
+	const connectionRef = firestore.doc(`connections/${connection.connectionId}`);
 	try {
 		await userRef.update({
 			connections: firebase.firestore.FieldValue.arrayRemove({
@@ -215,7 +214,7 @@ export const deleteConnectionFromFirebase = async (connection, currentUserID) =>
   }
   try {
 		await connectionRef.update({
-			users: firebase.firestore.FieldValue.delete()
+			['users.' + currentUserID]: firebase.firestore.FieldValue.delete()
 		});
 	} catch (error) {
 		alert('error deleting user', error.message);
