@@ -173,22 +173,7 @@ export const pullConnection = async (connectionID, setConnection) => {
 	});
 };
 
-// export const changeUsers = async (connectionID, setConnection) => {
-// 	const users = firestore.collection(`users`);
-//   const userSearch = firestore.doc('searchusers/F6HYw5Nwerc3tnwSf3aI');
-// 	users.get().then(function(querySnapshot) {
-//     querySnapshot.forEach(function(doc) {
-//         // doc.data() is never undefined for query doc snapshots
-//       userSearch.update({
-//         [doc.id]: {
-//           displayName: doc.data().displayName,
-//           photoURL:doc.data().photoURL
-//         }
-//       })
-//       console.log(doc.id, " => ", doc.data());
-//     });
-// });
-// };
+
 
 export const addNotification = (connection, currentUser, type, notificationBody) => {
 	Object.keys(connection.users).forEach((key) => {
@@ -214,6 +199,27 @@ export const addNotification = (connection, currentUser, type, notificationBody)
 			}
 		}
 	});
+};
+
+export const deleteConnectionFromFirebase = async (connection, currentUserID) => {
+	const userRef = firestore.doc(`users/${currentUserID}`);
+	const connectionRef = firestore.doc(`connections/${connection.id}`);
+	try {
+		await userRef.update({
+			connections: firebase.firestore.FieldValue.arrayRemove({
+				...connection
+			})
+		});
+	} catch (error) {
+		alert('error deleting connection', error.message);
+  }
+  try {
+		await connectionRef.update({
+			users: firebase.firestore.FieldValue.delete()
+		});
+	} catch (error) {
+		alert('error deleting user', error.message);
+	}
 };
 
 export const clearNotificationStatus = async (currentUserID) => {
@@ -243,3 +249,20 @@ providerFacebook.setCustomParameters({ prompt: 'select_account' });
 export const signInWithFacebook = () => authFB.signInWithPopup(providerFacebook);
 
 export default firebase;
+
+// export const changeUsers = async (connectionID, setConnection) => {
+// 	const users = firestore.collection(`users`);
+//   const userSearch = firestore.doc('searchusers/F6HYw5Nwerc3tnwSf3aI');
+// 	users.get().then(function(querySnapshot) {
+//     querySnapshot.forEach(function(doc) {
+//         // doc.data() is never undefined for query doc snapshots
+//       userSearch.update({
+//         [doc.id]: {
+//           displayName: doc.data().displayName,
+//           photoURL:doc.data().photoURL
+//         }
+//       })
+//       console.log(doc.id, " => ", doc.data());
+//     });
+// });
+// };
