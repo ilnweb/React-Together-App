@@ -33,8 +33,6 @@ class BottomNav extends React.Component {
 	};
 
   render() {
-    console.log(this.state.current);
-    
 		return (
 			<Menu
 				className="bottom-nav flex-c"

@@ -13,8 +13,6 @@ class CalendarPage extends React.Component {
     
   }
   render() {
-    const { connection } = this.props;
-    console.log(connection);
     return (
       <div className="calendar-page">
       <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_events_2p66_lvgvqw.svg" title="Coming soon, Shared Calendar!" inside/> 

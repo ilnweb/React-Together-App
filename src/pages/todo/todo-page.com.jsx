@@ -1,6 +1,6 @@
 import React from 'react';
 import './todo-page.scss';
-import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
+// import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
 import HeaderContainer from '../../components/header-container/header-container.cmp';
 import TodoList from '../../components/todo-list/todo-list.cpm';
 import AddSpending from '../../components/add-spending/add-spending.cmp';
@@ -39,7 +39,6 @@ class ToDoPage extends React.Component {
 	render() {
 		const { connection } = this.props;
 		const lists = connection && connection.userData.list;
-		console.log(lists);
 		return (
 			<div className="todo-page">
 				{

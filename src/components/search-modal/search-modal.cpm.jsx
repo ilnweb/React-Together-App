@@ -96,7 +96,6 @@ class SearchModal extends React.Component {
 
 	render() {
 		const { userList, userSearch, invitedfriends } = this.state;
-		console.log(this.state.userList);
 		return (
 			<div>
 				<Button className="mt-30" size="large" type="primary" onClick={this.showModal}>

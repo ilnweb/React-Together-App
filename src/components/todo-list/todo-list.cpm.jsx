@@ -13,7 +13,6 @@ class TodoList extends React.Component {
   };
   
   dispatchItem = async () => {
-    console.log('dispatch');
 		const { listID, list, connectionID } = this.props;
 		const {description } = this.state;
     const collectionSet = firestore.doc(`connections/${connectionID}/userData/list`);
@@ -34,7 +33,6 @@ class TodoList extends React.Component {
   };
   
   removeItem = async (itemRemove) => {
-    console.log('dispatch');
 		const { listID, list, connectionID } = this.props;
     const collectionSet = firestore.doc(`connections/${connectionID}/userData/list`);
     try {
