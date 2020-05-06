@@ -66,7 +66,7 @@ class ToDoPage extends React.Component {
 				</AddSpending>
 				<div className="lists-container mb-50">
 					{lists &&
-						Object.keys(lists).map((key, index) => (
+						Object.keys(lists).sort().map((key, index) => (
 							<TodoList
 								key={index}
 								list={lists[key]}
