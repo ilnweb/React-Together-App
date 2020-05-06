@@ -47,6 +47,7 @@
     <li>Each user can create, modify or delete group lists</li>
     <li>Each user can add or delete items in all lists</li>
   </ul>
+  <h4>Internal notifications for Group invites and user activities</h4>
 
 <h3>Upcoming features</h3>
   <ul>
