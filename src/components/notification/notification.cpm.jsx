@@ -9,10 +9,10 @@ const Notification = ({ item, handleAccept }) => {
 		<div className="notification">
 			<div className="notification-data flex-c p-10">
 				<div>
-					<Avatar shape={item.type ? '' : 'square'} size="large" src={item.type ? item.userImg : item.connectionImg} />
+					<Avatar size={59} src={item.type ? item.userImg : item.connectionImg} />
 				</div>
 				<div className="flex-c-c ml-10">
-					<div className="notification-list-item ml-10 mt-10 flex-c-c">
+					<div className="notification-list-item ml-10 flex-c-c">
 						<div className="notification-date">
 							<strong>{item.displayName}</strong>{' '}
 							{item.type ? item.notificationBody : 'invited you to connection'}{' '}
@@ -22,11 +22,11 @@ const Notification = ({ item, handleAccept }) => {
 					</div>
 					{!item.type && (
 						<div className="notification-buttons flex">
-							<Button className="m-10" type="danger" size="large">
+							<Button className="m-10 mb-0" type="danger" size="small">
 								Decline
 							</Button>
 							<Link to="/all-connections">
-								<Button className="m-10" type="primary" size="large" onClick={() => handleAccept(item)}>
+								<Button className="m-10 mb-0" type="primary" size="small" style={{fontSize:'10px'}} onClick={() => handleAccept(item)}>
 									Accept
 								</Button>
 							</Link>

@@ -77,7 +77,7 @@ class TodoList extends React.Component {
 					</Panel>
 				</Collapse>
 				<Popconfirm
-					title="Are you sure delete this task?"
+					title="Are you sure delete this List?"
 					onConfirm={() => this.props.deleteItem(listID)}
 					okText="Yes"
 					cancelText="No"
