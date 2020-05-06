@@ -10,7 +10,7 @@ const LoadingScreen = ({ title, button, img, isLoading, inside }) => {
 			<div className="logo-container flex-c-c">
 				<h1 className="logo-2">Together</h1>
         <p>{title}</p>
-        {button&& <Link to="/all-connections"><Button type="primary" size="large" className="mt-15">Invite Friends</Button></Link>}
+        {button&& <Link to="/all-connections"><Button type="primary" shape="round" size="large" className="mt-15">Invite Friends</Button></Link>}
 				<img src={img} alt="" />
       </div>
 		</div>

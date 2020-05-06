@@ -117,7 +117,7 @@ class SearchModal extends React.Component {
 		const { userList, userSearch, invitedfriends, noFriendsInvited, noConnectionName } = this.state;
 		return (
 			<div>
-				<Button className="mt-30" size="large" type="primary" onClick={this.showModal}>
+				<Button className="mt-30" shape="round" size="large" type="primary" onClick={this.showModal}>
 					Add new Group
 				</Button>
 				<Modal
@@ -175,7 +175,8 @@ class SearchModal extends React.Component {
 							placeholder="Search user by name"
 							onSearch={this.handleSearch}
 							onChange={this.handleChange}
-							value={userSearch}
+              value={userSearch}
+              size="large"
 							enterButton
 						/>
 						{userSearch &&
@@ -187,7 +188,7 @@ class SearchModal extends React.Component {
 									)
 							)}
 					</div>
-					<Button className="mt-30" size="large" type="primary" onClick={this.handleCreate}>
+					<Button className="mt-30" shape="round" size="large" type="primary" onClick={this.handleCreate}>
 						Create
 					</Button>
 				</Modal>

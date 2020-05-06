@@ -64,18 +64,20 @@ class SignIn extends React.Component {
 						autoComplete="true"
 						onChange={this.handleChange}
 					/>
-					<Button className="button-size button-color"  size="large" onClick={this.handleSubmit}>
+					<Button className="button-size button-color" shape="round" size="large" onClick={this.handleSubmit}>
 						Sign In
 					</Button>
 					<div className="flex-c input-style">
-						<Button
+            <Button
+            shape="round"
               className="flex-c g-signin mr-5"
               aria-label="Google log-in"
 							size="large"
               icon={<FaGoogle/>}
 							onClick={signInWithGoogle}
 						/>
-						<Button
+            <Button
+            shape="round"
               className="flex-c f-signin ml-5"
               aria-label="Facebook log-in"
 							size="large"

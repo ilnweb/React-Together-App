@@ -90,7 +90,7 @@ class FormAdd extends React.Component {
           size="large"
           onPressEnter={this.handleSubmit}
 				/>
-				<Button type="primary" size="large" className="mt-15" onClick={this.handleSubmit}>ADD</Button>
+				<Button type="primary" shape="round" size="large" className="mt-15" onClick={this.handleSubmit}>ADD</Button>
 			</Form>
 		);
 	}

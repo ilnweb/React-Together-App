@@ -63,7 +63,7 @@ class FormToDo extends React.Component {
           size="large"
           onPressEnter={this.handleSubmit}
 				/>
-				<Button type="primary" size="large" className="mt-20" onClick={this.handleSubmit}>
+				<Button type="primary" shape="round" size="large" className="mt-20" onClick={this.handleSubmit}>
 					ADD
 				</Button>
 			</Form>
