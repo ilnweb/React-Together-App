@@ -74,7 +74,8 @@ class FormAdd extends React.Component {
 					suffix={<MdModeEdit style={{ color: 'rgba(0,0,0,.25)' }} />}
 					onChange={this.handleChange}
 					value={this.state.description}
-					size="large"
+          size="large"
+          onPressEnter={this.handleSubmit}
 				/>
 				<Input
 					id="amount"
@@ -86,7 +87,8 @@ class FormAdd extends React.Component {
 					suffix={<MdAttachMoney style={{ color: 'rgba(0,0,0,.25)' }} />}
 					onChange={this.handleChange}
 					value={this.state.amount}
-					size="large"
+          size="large"
+          onPressEnter={this.handleSubmit}
 				/>
 				<Button type="primary" size="large" className="mt-15" onClick={this.handleSubmit}>ADD</Button>
 			</Form>

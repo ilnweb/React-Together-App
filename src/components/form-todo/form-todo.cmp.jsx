@@ -60,7 +60,8 @@ class FormToDo extends React.Component {
 					suffix={<MdModeEdit style={{ color: 'rgba(0,0,0,.25)' }} />}
 					onChange={this.handleChange}
 					value={this.state.name}
-					size="large"
+          size="large"
+          onPressEnter={this.handleSubmit}
 				/>
 				<Button type="primary" size="large" className="mt-20" onClick={this.handleSubmit}>
 					ADD
