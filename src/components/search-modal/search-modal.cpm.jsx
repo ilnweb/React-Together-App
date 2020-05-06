@@ -18,7 +18,9 @@ class SearchModal extends React.Component {
 			userList: '',
 			invitedfriends: '',
 			connectionName: '',
-			connectionImg: ''
+			connectionImg: '',
+			noFriendsInvited: false,
+			noConnectionName: false
 		};
 	}
 
@@ -72,7 +74,12 @@ class SearchModal extends React.Component {
 
 	handleChange = (e) => {
 		const { name, value } = e.target;
-		this.setState({ [name]: value });
+    this.setState({
+      [name]: value
+    });
+    this.setState({
+      noConnectionName: false
+    });
 	};
 
 	handleImage = (imageUrl) => {
@@ -83,7 +90,19 @@ class SearchModal extends React.Component {
 
 	handleCreate = () => {
 		const { invitedfriends, connectionName, connectionImg } = this.state;
-		const { currentUser } = this.props;
+    const { currentUser } = this.props;
+    if (!connectionName) {
+			this.setState({
+				noConnectionName: true
+			});
+			return;
+		}
+		if (!invitedfriends) {
+			this.setState({
+				noFriendsInvited: true
+			});
+			return;
+		}
 		const currentUserData = {
 			displayName: currentUser.displayName,
 			id: currentUser.id,
@@ -95,7 +114,7 @@ class SearchModal extends React.Component {
 	};
 
 	render() {
-		const { userList, userSearch, invitedfriends } = this.state;
+		const { userList, userSearch, invitedfriends, noFriendsInvited, noConnectionName } = this.state;
 		return (
 			<div>
 				<Button className="mt-30" size="large" type="primary" onClick={this.showModal}>
@@ -112,6 +131,7 @@ class SearchModal extends React.Component {
 					<div className="conection-details">
 						<div className="search-user-list mb-20">
 							Group Name
+							{noConnectionName ? <div className="field-error flex-c">Add a Group name</div> : ''}
 							<Input
 								id="name"
 								name="connectionName"
@@ -130,7 +150,7 @@ class SearchModal extends React.Component {
 							<UploadImage handleImage={this.handleImage} />
 						</div>
 						<div className="search-user-list mb-20">
-							<p>Invited friends to this Group</p>
+							<p>Group invited friends</p>
 							<div className="invited-friends flex-c">
 								{invitedfriends ? (
 									invitedfriends.map((item) => (
@@ -138,8 +158,10 @@ class SearchModal extends React.Component {
 											{letterName(item.displayName)}
 										</Avatar>
 									))
+								) : noFriendsInvited ? (
+									<div className="field-error flex-c">"Invite Atleast one Friend"</div>
 								) : (
-									<div>"No friends Invited" </div>
+									<div>"No friends Invited"</div>
 								)}
 							</div>
 						</div>
