@@ -26,7 +26,7 @@ const Notification = ({ item, handleAccept }) => {
 								Decline
 							</Button>
 							<Link to="/all-connections">
-								<Button className="m-10 mb-0" type="primary" size="small" style={{fontSize:'10px'}} onClick={() => handleAccept(item)}>
+								<Button className="m-10 mb-0" type="primary" size="small" onClick={() => handleAccept(item)}>
 									Accept
 								</Button>
 							</Link>
