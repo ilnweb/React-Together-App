@@ -32,7 +32,12 @@ class AllConectionsPage extends React.Component {
 					{currentUser &&
 						currentUser.connections
 							.map((item) => (
-                <CardAllConnections key={item.connectionId} item={item} dispatchConnection={this.dispatchConnection} deleteConnection={this.deleteConnection}/>
+								<CardAllConnections
+									key={item.connectionId}
+									item={item}
+									dispatchConnection={this.dispatchConnection}
+									deleteConnection={this.deleteConnection}
+								/>
 							))
 							.reverse()}
 				</div>

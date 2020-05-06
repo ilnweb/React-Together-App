@@ -108,6 +108,10 @@ a {
  
 }
 
+.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow svg {
+  color: #7344aa;
+}
+
 .ant-input {
   /* background-color: #fff; */
   background-image: none;
