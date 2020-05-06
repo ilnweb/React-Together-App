@@ -173,7 +173,6 @@ export const pullConnection = async (connectionID, setConnection) => {
 	});
 };
 
-
 export const addNotification = (connection, currentUser, type, notificationBody) => {
 	Object.keys(connection.users).forEach((key) => {
 		if (key !== currentUser.id) {

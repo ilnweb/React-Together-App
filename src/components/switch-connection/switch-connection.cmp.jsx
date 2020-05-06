@@ -17,7 +17,7 @@ const SwitchCnnection = ({ currentUser,setConnection }) => {
  
 	const menu = (
 		<Menu className="drop flex-c-c">
-			<div className="switch-title">Switch Groupes</div>
+			<div className="switch-title">Switch Groups</div>
       {currentUser && currentUser.connections.length ?
         currentUser.connections.map((item) => (
           <Menu.Item key={item.connectionId}>

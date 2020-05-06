@@ -42,7 +42,7 @@ class SideNav extends React.Component {
 						</Link>
 						<Link className="flex-c" to="/all-connections">
               <MdGroup className="icon-standart m-15 ml-0 mb-10" />
-              <span onClick={this.onClose}> All Conections</span>
+              <span onClick={this.onClose}> All Groups</span>
 						</Link>
 						<Link className="flex-c" to="/signin">
 							<MdExitToApp className="icon-standart m-15 ml-0 mb-10" />{' '}

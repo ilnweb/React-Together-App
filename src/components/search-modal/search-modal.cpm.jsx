@@ -99,11 +99,11 @@ class SearchModal extends React.Component {
 		return (
 			<div>
 				<Button className="mt-30" size="large" type="primary" onClick={this.showModal}>
-					Add new connection
+					Add new Group
 				</Button>
 				<Modal
 					className="search-modal"
-					title="New connection"
+					title="Create new Group"
 					style={{ top: 20 }}
 					visible={this.state.visible}
 					onCancel={this.handleCancel}
@@ -111,7 +111,7 @@ class SearchModal extends React.Component {
 				>
 					<div className="conection-details">
 						<div className="search-user-list mb-20">
-							Connection Name
+							Group Name
 							<Input
 								id="name"
 								name="connectionName"
@@ -126,11 +126,11 @@ class SearchModal extends React.Component {
 							/>
 						</div>
 						<div className="search-user-list mb-20">
-							<p>Connection Image</p>
+							<p>Group Image</p>
 							<UploadImage handleImage={this.handleImage} />
 						</div>
 						<div className="search-user-list mb-20">
-							<p>Invited friends</p>
+							<p>Invited friends to this Group</p>
 							<div className="invited-friends flex-c">
 								{invitedfriends ? (
 									invitedfriends.map((item) => (

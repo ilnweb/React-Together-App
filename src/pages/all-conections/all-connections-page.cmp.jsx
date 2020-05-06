@@ -25,7 +25,7 @@ class AllConectionsPage extends React.Component {
 			<div className="all-connections">
 				<HeaderContainer>
 					<MdArrowBack className="back-button" onClick={() => this.props.history.goBack()} />
-					<h1>Your connections</h1>
+					<h1>Your Groups</h1>
 				</HeaderContainer>
 				<SearchModal />
 				<div className="all-connections-display mt-30 flex-c-c">
