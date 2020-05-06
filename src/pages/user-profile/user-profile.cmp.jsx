@@ -20,7 +20,7 @@ class UserProfile extends React.Component {
 					<Avatar className="avatar-picture" size={100} src={currentUser && currentUser.photoURL} />
 					<h2 className="mt-20 black">{currentUser && currentUser.displayName}</h2>
 					<h2 className="black">{currentUser && currentUser.email}</h2>
-					<Button type="primary" size="large" className="mt-15">
+					<Button type="primary" shape="round" size="large" className="mt-15">
 						Delete Profile
 					</Button>
 				</div>
