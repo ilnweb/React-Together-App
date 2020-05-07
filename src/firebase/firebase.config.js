@@ -34,7 +34,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 				notificationStatus: false,
 				spendings: [],
 				connections: [],
-				notifications: [],
+        notifications: [],
+        lastConnection:'',
 				...additionalData
 			});
 		} catch (error) {
@@ -154,8 +155,9 @@ export const acceptInvitation = async (connection, currentUserId) => {
 	}
 };
 
-export const pullConnection = async (connectionID, setConnection) => {
+export const pullConnection = async (connectionID, setConnection,userID) => {
 	const connections = firestore.doc(`connections/${connectionID}`);
+	const user = firestore.doc(`users/${userID}`);
 	const subConnections = firestore.collection(`connections/${connectionID}/userData/`);
 	connections.get().then((doc) => {
 		subConnections.onSnapshot((querySnapshot) => {
@@ -170,7 +172,14 @@ export const pullConnection = async (connectionID, setConnection) => {
 				}, {})
 			});
 		});
-	});
+  });
+  try {
+		await user.update({
+			lastConnection: connectionID
+		});
+	} catch (error) {
+		alert('error last connection', error.message);
+	}
 };
 
 export const addNotification = (connection, currentUser, type, notificationBody) => {

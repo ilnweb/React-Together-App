@@ -12,7 +12,7 @@ import { Empty } from 'antd';
 const SwitchCnnection = ({ currentUser,setConnection }) => {
 
   const dispatchConnection = (item) => {
-    pullConnection(item.connectionId,setConnection)
+    pullConnection(item.connectionId,setConnection, currentUser.id)
   }
  
 	const menu = (

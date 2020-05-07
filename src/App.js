@@ -49,8 +49,8 @@ class App extends React.Component {
 						photoURL: userAuth.photoURL,
 						...snapShot.data()
 					});
-					if (snapShot.data().connections.length) {
-						const connectionID = snapShot.data().connections.reverse()[0].connectionId;
+					if (snapShot.data().lastConnection) {
+						const connectionID = snapShot.data().lastConnection;
 						pullConnection(connectionID, setConnection)
 							.then(() => this.setState({ isLoading: false }))
 							.catch(function(error) {
