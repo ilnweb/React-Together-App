@@ -31,7 +31,7 @@ const SwitchCnnection = ({ currentUser,setConnection }) => {
 	);
 	return (
     <Dropdown  overlay={menu}>
-      <MdGroup className="icon-standart" />
+      <MdGroup className="icon-standart ml-10" />
 		</Dropdown>
 	);
 };

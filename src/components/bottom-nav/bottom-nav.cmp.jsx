@@ -2,8 +2,9 @@ import React from 'react';
 import './bottom-nav.scss';
 import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
-import { MdPerson, MdGroup, MdInsertInvitation } from 'react-icons/md';
+import { MdPersonOutline, MdInsertInvitation } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
+import { AiOutlineDotChart } from 'react-icons/ai';
 import { withRouter } from "react-router";
 
 class BottomNav extends React.Component {
@@ -42,11 +43,11 @@ class BottomNav extends React.Component {
 				mode="horizontal"
 			>
 				<Menu.Item key="/">
-					<MdPerson className="icon-standart" />
+					<MdPersonOutline className="icon-standart" />
 					<Link to="/" />
 				</Menu.Item>
 				<Menu.Item key="/connections">
-					<MdGroup className="icon-standart" />
+					<AiOutlineDotChart className="icon-standart" />
 					<Link to="/connections" />
         </Menu.Item>
         <Menu.Item className="flex-c" key="/to-do">

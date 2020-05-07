@@ -9,22 +9,29 @@ import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { clearNotificationStatus } from '../../firebase/firebase.config';
+import { withRouter } from "react-router";
 
-const Header = ({currentUser}) => (
-	<div className="header">
-		<SideNav />
-		<div className="flex-c">
-			<Link className="flex mr-10" to="/notifications">
-			  {currentUser&&currentUser.notificationStatus&&<Badge count={'N'} dot={true} offset={[ 7, 7 ]} />}
-				<MdNotifications onClick={()=>clearNotificationStatus(currentUser.id)} style={{ fontSize: '1.35rem', color: 'white' }} />
-			</Link>
-			<SwitchCnnection />
+const Header = ({ currentUser, location }) => {
+  console.log(location.pathname);
+	return (
+		<div className="header">
+			<SideNav />
+			<div className="flex-c">
+				<Link className="flex" to="/notifications">
+					{currentUser && currentUser.notificationStatus && <Badge count={'N'} dot={true} offset={[ 7, 7 ]} />}
+					<MdNotifications
+						onClick={() => clearNotificationStatus(currentUser.id)}
+						style={{ fontSize: '1.35rem', color: 'white' }}
+					/>
+				</Link>
+				{location.pathname!=='/' ? <SwitchCnnection className="flex ml-10"/> :''}
+			</div>
 		</div>
-	</div>
-);
+	);
+};
 
 const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps)(Header);
+export default  withRouter(connect(mapStateToProps)(Header));

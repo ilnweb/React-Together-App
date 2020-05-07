@@ -79,7 +79,7 @@ class App extends React.Component {
 				{
 					isLoading ? <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1582856305/HomePage/undraw_mobile_marketing_iqbr_bznozj.svg" title="Lets do it better!" />:''
 				}
-				<Header />
+        <Header location={this.props.location}/>
 				<Switch>
 					<Route
 						exact
