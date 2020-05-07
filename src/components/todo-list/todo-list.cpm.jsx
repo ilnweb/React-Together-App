@@ -70,7 +70,7 @@ class TodoList extends React.Component {
 							onPressEnter={this.dispatchItem}
 						/>
 						{list.items.length ? (
-							list.items.map((item, index) => <ItemList key={index} item={item} removeItem={this.removeItem} />)
+							list.items.slice(0).reverse().map((item, index) => <ItemList key={index} item={item} removeItem={this.removeItem} />)
 						) : (
 							<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
 						)}

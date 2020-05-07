@@ -13,11 +13,11 @@ const TabSpendings = ({ spendingItems, totalExp, totalInc, removeItem }) => {
 		<Tabs size="large" defaultActiveKey="1">
 			<TabPane className="tab-full" tab="EXPENSE" key="1">
 				{!totalExp ? <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} /> : ''}
-				{spendingItems.map((item) => (item.type === 'exp' ? <ItemSpending key={item.id} item={item} removeItem={removeItem} itemDelete/> : ''))}
+				{spendingItems.slice(0).reverse().map((item) => (item.type === 'exp' ? <ItemSpending key={item.id} item={item} removeItem={removeItem} itemDelete/> : ''))}
 			</TabPane>
 			<TabPane className="tab-full" tab="INCOME" key="2">
 				{!totalInc ? <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} /> : ''}
-				{spendingItems.map((item) => (item.type === 'inc' ? <ItemSpending key={item.id} item={item} removeItem={removeItem} itemDelete /> : ''))}
+				{spendingItems.slice(0).reverse().map((item) => (item.type === 'inc' ? <ItemSpending key={item.id} item={item} removeItem={removeItem} itemDelete /> : ''))}
 			</TabPane>
 		</Tabs>
 	);
