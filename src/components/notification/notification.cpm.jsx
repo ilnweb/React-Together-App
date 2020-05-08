@@ -4,7 +4,7 @@ import { Button, Avatar } from 'antd';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 
-const Notification = ({ item, handleAccept }) => {
+const Notification = ({ item, handleAccept,handleDecline }) => {
 	return (
 		<div className="notification">
 			<div className="notification-data flex-c p-10">
@@ -22,7 +22,7 @@ const Notification = ({ item, handleAccept }) => {
 					</div>
 					{!item.type && (
 						<div className="notification-buttons flex">
-							<Button className="m-10 mb-0" type="danger" size="small">
+							<Button className="m-10 mb-0" type="danger" size="small" onClick={() => handleDecline(item)}>
 								Decline
 							</Button>
 							<Link to="/all-connections">

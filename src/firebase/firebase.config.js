@@ -34,8 +34,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 				notificationStatus: false,
 				spendings: [],
 				connections: [],
-        notifications: [],
-        lastConnection:'',
+				notifications: [],
+				lastConnection: '',
 				...additionalData
 			});
 		} catch (error) {
@@ -155,10 +155,32 @@ export const acceptInvitation = async (connection, currentUserId) => {
 	}
 };
 
-export const pullConnection = async (connectionID, setConnection,userID) => {
+export const declineNotigication = async (connection, currentUserId) => {
+	const userRef = firestore.doc(`users/${currentUserId}`);
+	try {
+		await userRef.update({
+			notifications: firebase.firestore.FieldValue.arrayRemove({
+				...connection
+			})
+		});
+	} catch (error) {
+		alert('error sending notification', error.message);
+	}
+};
+
+export const pullConnection = async (connectionID, setConnection, userID) => {
 	const connections = firestore.doc(`connections/${connectionID}`);
 	const user = firestore.doc(`users/${userID}`);
 	const subConnections = firestore.collection(`connections/${connectionID}/userData/`);
+	if (userID) {
+		try {
+			await user.update({
+				lastConnection: connectionID
+			});
+		} catch (error) {
+			alert('error last connection', error.message);
+		}
+	}
 	connections.get().then((doc) => {
 		subConnections.onSnapshot((querySnapshot) => {
 			setConnection({
@@ -172,22 +194,14 @@ export const pullConnection = async (connectionID, setConnection,userID) => {
 				}, {})
 			});
 		});
-  });
-  if(userID){
-  try {
-		await user.update({
-			lastConnection: connectionID
-		});
-	} catch (error) {
-		alert('error last connection', error.message);
-	}}
+	});
 };
 
 export const addNotification = (connection, currentUser, type, notificationBody) => {
 	Object.keys(connection.users).forEach((key) => {
 		if (key !== currentUser.id) {
-      const userRef = firestore.doc(`users/${key}`);
-      const createdAt = new Date();
+			const userRef = firestore.doc(`users/${key}`);
+			const createdAt = new Date();
 			try {
 				userRef.update({
 					notifications: firebase.firestore.FieldValue.arrayUnion({
@@ -196,14 +210,14 @@ export const addNotification = (connection, currentUser, type, notificationBody)
 						displayName: currentUser.displayName,
 						userImg: currentUser.photoURL,
 						notificationBody,
-            type,
-            createdAt
+						type,
+						createdAt
 					}),
 					notificationStatus: true
 				});
 			} catch (error) {
-        alert('error sending notification', error.message);
-        console.log(connection);
+				alert('error sending notification', error.message);
+				console.log(connection);
 			}
 		}
 	});
@@ -220,8 +234,8 @@ export const deleteConnectionFromFirebase = async (connection, currentUserID) =>
 		});
 	} catch (error) {
 		alert('error deleting connection', error.message);
-  }
-  try {
+	}
+	try {
 		await connectionRef.update({
 			['users.' + currentUserID]: firebase.firestore.FieldValue.delete()
 		});
