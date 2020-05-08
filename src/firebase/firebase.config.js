@@ -173,13 +173,14 @@ export const pullConnection = async (connectionID, setConnection,userID) => {
 			});
 		});
   });
+  if(userID){
   try {
 		await user.update({
 			lastConnection: connectionID
 		});
 	} catch (error) {
 		alert('error last connection', error.message);
-	}
+	}}
 };
 
 export const addNotification = (connection, currentUser, type, notificationBody) => {

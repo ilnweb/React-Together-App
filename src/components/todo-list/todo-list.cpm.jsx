@@ -2,8 +2,12 @@ import React from 'react';
 import './todo-list.scss';
 import { Collapse, Empty, Button, Input, Popconfirm } from 'antd';
 import ItemList from '../list-item/list-item.cmp';
-import { firestore } from '../../firebase/firebase.config';
+import { firestore, addNotification } from '../../firebase/firebase.config';
 import { MdAddCircle } from 'react-icons/md';
+import { connect } from 'react-redux';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { selectConnectionData } from '../../redux/connection/connection.selectors';
+import { createStructuredSelector } from 'reselect';
 
 const { Panel } = Collapse;
 
@@ -13,7 +17,7 @@ class TodoList extends React.Component {
 	};
 
 	dispatchItem = async () => {
-		const { listID, list, connectionID } = this.props;
+		const { listID, list, connectionID,connection, currentUser } = this.props;
 		const { description } = this.state;
 		const collectionSet = firestore.doc(`connections/${connectionID}/userData/list`);
 		try {
@@ -30,6 +34,7 @@ class TodoList extends React.Component {
 		this.setState({
 			description: ''
 		});
+		addNotification(connection, currentUser, 'list', `added an item in ${list.name} list`);
 	};
 
 	removeItem = async (itemRemove) => {
@@ -70,7 +75,10 @@ class TodoList extends React.Component {
 							onPressEnter={this.dispatchItem}
 						/>
 						{list.items.length ? (
-							list.items.slice(0).reverse().map((item, index) => <ItemList key={index} item={item} removeItem={this.removeItem} />)
+							list.items
+								.slice(0)
+								.reverse()
+								.map((item, index) => <ItemList key={index} item={item} removeItem={this.removeItem} />)
 						) : (
 							<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
 						)}
@@ -91,4 +99,9 @@ class TodoList extends React.Component {
 	}
 }
 
-export default TodoList;
+const mapStateToProps = createStructuredSelector({
+	currentUser: selectCurrentUser,
+	connection: selectConnectionData
+});
+
+export default connect(mapStateToProps)(TodoList);

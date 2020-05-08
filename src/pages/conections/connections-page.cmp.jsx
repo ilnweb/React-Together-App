@@ -61,8 +61,8 @@ class ConnectionsPage extends React.Component {
 						button
 					/>
 				)}
-        <HeaderContainer>
-        <div className='page-title'>Group Spendings</div>
+				<HeaderContainer>
+					<div className="page-title">Group Spendings</div>
 					<div className="flex-c-c">
 						<h2 className="mb-10">{connection && connection.connectionName}</h2>
 						<div
@@ -85,9 +85,12 @@ class ConnectionsPage extends React.Component {
 							key="1"
 						>
 							{connection && connection.userData.spendings[currentUser.id].length ? (
-								this.props.connection.userData.spendings[currentUser.id].slice(0).reverse().map((item) => (
-									<ItemSpending key={item.id} item={item} removeItem={removeConnectionItem} itemDelete />
-								))
+								this.props.connection.userData.spendings[currentUser.id]
+									.slice(0)
+									.reverse()
+									.map((item) => (
+										<ItemSpending key={item.id} item={item} removeItem={removeConnectionItem} itemDelete />
+									))
 							) : (
 								<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
 							)}
@@ -106,7 +109,10 @@ class ConnectionsPage extends React.Component {
 											header={<UserConnect item={connection.users[key]} total={total} small />}
 										>
 											{connection.userData.spendings[key].length ? (
-												connection.userData.spendings[key].slice(0).reverse().map((item) => <ItemSpending key={item.id} item={item} />)
+												connection.userData.spendings[key]
+													.slice(0)
+													.reverse()
+													.map((item) => <ItemSpending key={item.id} item={item} />)
 											) : (
 												<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
 											)}
