@@ -5,7 +5,8 @@ import Notification from '../../components/notification/notification.cpm';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
-import { acceptInvitation, declineNotigication,deleteNotigication } from '../../firebase/firebase.config';
+import { setConnection } from '../../redux/connection/connection.actions';
+import { acceptInvitation, declineNotigication,deleteNotigication,pullConnection } from '../../firebase/firebase.config';
 import { MdArrowBack } from 'react-icons/md';
 import { Empty } from 'antd';
 
@@ -20,7 +21,11 @@ class NotificationsPage extends React.Component {
   
   handleDelete = (notification) => {
 		deleteNotigication(notification, this.props.currentUser.id);
-	};
+  };
+  
+  handlePullconnection= (connection) => {
+		pullConnection(connection.connectionId, this.props.setConnection, this.props.currentUser.id);
+  };
 
 	render() {
 		const { currentUser } = this.props;
@@ -40,6 +45,7 @@ class NotificationsPage extends React.Component {
 									handleAccept={this.handleAccept}
                   handleDecline={this.handleDecline}
                   handleDelete={this.handleDelete}
+                  handlePullconnection={this.handlePullconnection}
 								/>
 							))
 							.reverse()
@@ -51,8 +57,11 @@ class NotificationsPage extends React.Component {
 		);
 	}
 }
+const mapDispatchToProps = (dispatch) => ({
+	setConnection: (connection) => dispatch(setConnection(connection))
+});
 const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps)(NotificationsPage);
+export default connect(mapStateToProps,mapDispatchToProps)(NotificationsPage);
