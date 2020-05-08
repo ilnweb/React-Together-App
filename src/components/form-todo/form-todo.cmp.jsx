@@ -47,7 +47,7 @@ class FormToDo extends React.Component {
 	};
 	render() {
 		return (
-      <Form className="flex-c-c">
+      <Form className="p-15 flex-c-c">
         <h3 className="mb-0">Create New To-do List</h3>
         {this.state.formNotFilled ? <div className="fail-message">Please check fields and try again!</div> : ''}
 				<Input
