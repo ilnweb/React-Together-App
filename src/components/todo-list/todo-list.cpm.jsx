@@ -66,7 +66,7 @@ class TodoList extends React.Component {
 					<Panel header={<div className="todo-list-title">{list && list.name.toUpperCase()}</div>} key="1">
 						<Input.Search
 							size="large"
-							className="mb-20"
+							className="p-15"
 							name="description"
 							placeholder="Add item to list"
 							onChange={this.handleChange}
