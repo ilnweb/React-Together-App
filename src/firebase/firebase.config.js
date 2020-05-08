@@ -168,6 +168,19 @@ export const declineNotigication = async (connection, currentUserId) => {
 	}
 };
 
+export const deleteNotigication = async (notification, currentUserId) => {
+	const userRef = firestore.doc(`users/${currentUserId}`);
+	try {
+		await userRef.update({
+			notifications: firebase.firestore.FieldValue.arrayRemove({
+				...notification
+			})
+		});
+	} catch (error) {
+		alert('error sending notification', error.message);
+	}
+};
+
 export const pullConnection = async (connectionID, setConnection, userID) => {
 	const connections = firestore.doc(`connections/${connectionID}`);
 	const user = firestore.doc(`users/${userID}`);

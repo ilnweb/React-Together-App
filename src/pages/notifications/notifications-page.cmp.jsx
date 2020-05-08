@@ -5,7 +5,7 @@ import Notification from '../../components/notification/notification.cpm';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
-import { acceptInvitation, declineNotigication } from '../../firebase/firebase.config';
+import { acceptInvitation, declineNotigication,deleteNotigication } from '../../firebase/firebase.config';
 import { MdArrowBack } from 'react-icons/md';
 import { Empty } from 'antd';
 
@@ -16,6 +16,10 @@ class NotificationsPage extends React.Component {
 
 	handleDecline = (connection) => {
 		declineNotigication(connection, this.props.currentUser.id);
+  };
+  
+  handleDelete = (notification) => {
+		deleteNotigication(notification, this.props.currentUser.id);
 	};
 
 	render() {
@@ -34,7 +38,8 @@ class NotificationsPage extends React.Component {
 									key={index}
 									item={item}
 									handleAccept={this.handleAccept}
-									handleDecline={this.handleDecline}
+                  handleDecline={this.handleDecline}
+                  handleDelete={this.handleDelete}
 								/>
 							))
 							.reverse()

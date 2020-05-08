@@ -4,7 +4,7 @@ import { Button, Avatar } from 'antd';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 
-const Notification = ({ item, handleAccept,handleDecline }) => {
+const Notification = ({ item, handleAccept, handleDecline }) => {
 	return (
 		<div className="notification">
 			<div className="notification-data flex-c p-10">
