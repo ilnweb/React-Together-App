@@ -3,8 +3,9 @@ import './notification.scss';
 import { Button, Avatar } from 'antd';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
+import { MdDelete } from 'react-icons/md';
 
-const Notification = ({ item, handleAccept, handleDecline }) => {
+const Notification = ({ item, handleAccept, handleDecline, handleDelete }) => {
 	return (
 		<div className="notification">
 			<div className="notification-data flex-c p-10">
@@ -14,8 +15,7 @@ const Notification = ({ item, handleAccept, handleDecline }) => {
 				<div className="flex-c-c ml-10">
 					<div className="notification-list-item ml-10 flex-c-c">
 						<div className="notification-date">
-							<strong>{item.displayName}</strong>{' '}
-							{item.type ? item.notificationBody : 'invited you to connection'}{' '}
+							<strong>{item.displayName}</strong> {item.type ? item.notificationBody : 'invited you to connection'}{' '}
 							<strong>{item.connectionName}</strong>
 						</div>
 						<Moment className="date-color" fromNow date={item.createdAt && item.createdAt.toDate()} />
@@ -33,6 +33,9 @@ const Notification = ({ item, handleAccept, handleDecline }) => {
 						</div>
 					)}
 				</div>
+			</div>
+			<div className="mr-10">
+				<MdDelete style={{ fontSize: '1.5rem' }} onClick={() => handleDelete(item)} />
 			</div>
 		</div>
 	);

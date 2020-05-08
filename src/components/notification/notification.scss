@@ -5,7 +5,8 @@
   overflow: hidden;
   background-color:white;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items:center;
   
   &-list-item{
     justify-content: space-between;
