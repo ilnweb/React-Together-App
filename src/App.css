@@ -61,7 +61,7 @@ a {
 }
 
 .logo {
-  font-family: 'Pacifico', cursive;
+  font-family: monospace, Helvetica, sans-serif;
   padding: .5rem 1rem;
   font-size: 6rem;
   font-weight: 400;
