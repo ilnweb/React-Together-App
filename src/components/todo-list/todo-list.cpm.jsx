@@ -19,7 +19,10 @@ class TodoList extends React.Component {
 	dispatchItem = async () => {
 		const { listID, list, connectionID,connection, currentUser } = this.props;
 		const { description } = this.state;
-		const collectionSet = firestore.doc(`connections/${connectionID}/userData/list`);
+    const collectionSet = firestore.doc(`connections/${connectionID}/userData/list`);
+    if (!description) {
+      return;
+    }
 		try {
 			await collectionSet.update({
 				[listID]: {
