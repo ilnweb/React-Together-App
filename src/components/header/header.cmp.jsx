@@ -12,7 +12,6 @@ import { clearNotificationStatus } from '../../firebase/firebase.config';
 import { withRouter } from "react-router";
 
 const Header = ({ currentUser, location }) => {
-  console.log(location.pathname);
 	return (
 		<div className="header">
 			<SideNav />
