@@ -30,7 +30,7 @@ const SwitchCnnection = ({ currentUser,setConnection }) => {
 		</Menu>
 	);
 	return (
-    <Dropdown  overlay={menu}>
+    <Dropdown overlay={menu} placement="bottomRight">
       <MdGroup className="icon-standart ml-10" />
 		</Dropdown>
 	);
