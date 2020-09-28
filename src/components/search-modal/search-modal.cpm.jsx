@@ -118,7 +118,7 @@ class SearchModal extends React.Component {
 		return (
 			<div>
 				<Button className="mt-30" shape="round" size="large" type="primary" onClick={this.showModal}>
-					Add new Group
+					Create new Group
 				</Button>
 				<Modal
 					className="search-modal"
