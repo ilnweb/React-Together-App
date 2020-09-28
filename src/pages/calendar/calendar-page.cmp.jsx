@@ -15,7 +15,7 @@ class CalendarPage extends React.Component {
   render() {
     return (
       <div className="calendar-page">
-      <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_events_2p66_lvgvqw.svg" title="Coming soon, Shared Calendar!" inside/> 
+      <LoadingScreen img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_events_2p66_lvgvqw.svg" title="Coming soon, Shared Calendar!" inside mainTitle="Callendar"/> 
 				<HeaderContainer>
 					<h1> Calendar page</h1>
 				</HeaderContainer>

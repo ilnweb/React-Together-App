@@ -58,7 +58,8 @@ class ConnectionsPage extends React.Component {
 						img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_mobile_testing_reah_dmknjs.svg"
 						title="Connect with friends to track common spendings!"
 						inside
-						button
+            button
+            mainTitle="Groups"
 					/>
 				)}
 				<HeaderContainer>
