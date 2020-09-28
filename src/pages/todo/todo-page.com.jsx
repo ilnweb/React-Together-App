@@ -10,6 +10,7 @@ import firebase from 'firebase/app';
 import { connect } from 'react-redux';
 import { selectConnectionData } from '../../redux/connection/connection.selectors';
 import { createStructuredSelector } from 'reselect';
+import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
 
 class ToDoPage extends React.Component {
 	state = {
@@ -41,15 +42,15 @@ class ToDoPage extends React.Component {
 		const lists = connection && connection.userData.list;
 		return (
 			<div className="todo-page">
-				{
-					// lists && !lists.length && (
-					// <LoadingScreen
-					// 	img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_email_campaign_qa8y_bycdui.svg"
-					//   title="Shared To-Do List"
-					// 	inside
-					// />
-					// )
-				}
+      {!connection && (
+        <LoadingScreen
+          img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_mobile_testing_reah_dmknjs.svg"
+          title="Connect with friends to create shared tasks!"
+          inside
+          button
+          mainTitle="To-Do"
+        />
+      )}
         <HeaderContainer>
           <div className='page-title'>Group To-Do lists</div>
 					<div className="flex-c-c mb-20 mt-5">
