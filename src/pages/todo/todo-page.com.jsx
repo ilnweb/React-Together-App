@@ -10,7 +10,7 @@ import firebase from 'firebase/app';
 import { connect } from 'react-redux';
 import { selectConnectionData } from '../../redux/connection/connection.selectors';
 import { createStructuredSelector } from 'reselect';
-import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
+// import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
 import NoGroupScreen from "../../components/no-group-screen/no-group-screen.cmp";
 
 class ToDoPage extends React.Component {

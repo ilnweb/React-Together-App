@@ -4,7 +4,7 @@ import HeaderContainer from '../../components/header-container/header-container.
 import UserConnect from '../../components/user-connect/user-connect.cmp';
 import AddSpending from '../../components/add-spending/add-spending.cmp';
 import FormAdd from '../../components/form/form.cmp';
-import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
+// import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
 import NoGroupScreen from "../../components/no-group-screen/no-group-screen.cmp";
 import ItemSpending from '../../components/item-spending/item-spending.cmp';
 import { firestore, addNotification } from '../../firebase/firebase.config';
