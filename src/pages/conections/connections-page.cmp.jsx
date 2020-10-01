@@ -30,18 +30,18 @@ class ConnectionsPage extends React.Component {
     hasConnections:false
   };
   
-  componentDidMount() {
-    firestore.doc(`users/${this.props.currentUser.id}`).get()
-      .then((doc) => {
-        if (doc.data().connections.length > 0) {
-         this.setState({
-          hasConnections: true
-         });
+  // componentDidMount() {
+  //   firestore.doc(`users/${this.props.currentUser.id}`).get()
+  //     .then((doc) => {
+  //       if (doc.data().connections.length > 0) {
+  //        this.setState({
+  //         hasConnections: true
+  //        });
           
-        }
-        console.log(doc.data().connections)
-      });
-  }
+  //       }
+  //       console.log(doc.data().connections)
+  //     });
+  // }
 
 	addUserTotal = (total) => {
 		this.setState((prevState) => ({
@@ -69,7 +69,7 @@ class ConnectionsPage extends React.Component {
 		const { currentUser, connection, currentUserTotal, UsersTotal, removeConnectionItem } = this.props;
 		return (
 			<div className="connections-page">
-				{!this.state.hasConnections && (
+				{!connection && (
 					<NoGroupScreen
 						img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_mobile_testing_reah_dmknjs.svg"
 						title="Connect with friends to track common spendings!"

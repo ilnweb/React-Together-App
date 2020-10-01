@@ -24,7 +24,13 @@ function beforeUpload(file) {
 class UploadImage extends React.Component {
 	state = {
 		loading: false
-	};
+  };
+  
+   dummyRequest = ({ file, onSuccess }) => {
+    setTimeout(() => {
+      onSuccess("ok");
+    }, 0);
+  };
 
 	handleChange = (info) => {
 		if (info.file.status === 'uploading') {
@@ -85,9 +91,9 @@ class UploadImage extends React.Component {
 				listType="picture-card"
 				className="avatar-uploader"
 				showUploadList={false}
-				action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+				customRequest={this.dummyRequest}
 				beforeUpload={beforeUpload}
-				onChange={this.handleChange}
+        onChange={this.handleChange}
 			>
 				{imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
 			</Upload>
