@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { selectConnectionData } from '../../redux/connection/connection.selectors';
 import { createStructuredSelector } from 'reselect';
 import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
+import NoGroupScreen from "../../components/no-group-screen/no-group-screen.cmp";
 
 class ToDoPage extends React.Component {
 	state = {
@@ -44,7 +45,7 @@ class ToDoPage extends React.Component {
 		return (
 			<div className="todo-page">
         { !connection && (
-        <LoadingScreen
+        <NoGroupScreen
           img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_email_campaign_qa8y_bycdui.svg"
           title="Connect with friends to create shared tasks!"
           inside

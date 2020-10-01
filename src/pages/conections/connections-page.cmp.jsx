@@ -5,6 +5,7 @@ import UserConnect from '../../components/user-connect/user-connect.cmp';
 import AddSpending from '../../components/add-spending/add-spending.cmp';
 import FormAdd from '../../components/form/form.cmp';
 import LoadingScreen from '../../components/loading-screen/loading-screen.cmp';
+import NoGroupScreen from "../../components/no-group-screen/no-group-screen.cmp";
 import ItemSpending from '../../components/item-spending/item-spending.cmp';
 import { firestore, addNotification } from '../../firebase/firebase.config';
 import firebase from 'firebase/app';
@@ -54,7 +55,7 @@ class ConnectionsPage extends React.Component {
 		return (
 			<div className="connections-page">
 				{!connection && (
-					<LoadingScreen
+					<NoGroupScreen
 						img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_mobile_testing_reah_dmknjs.svg"
 						title="Connect with friends to track common spendings!"
 						inside
