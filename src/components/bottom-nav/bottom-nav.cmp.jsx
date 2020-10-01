@@ -5,6 +5,7 @@ import { Menu } from 'antd';
 import { MdPersonOutline, MdInsertInvitation } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
 import { AiOutlineDotChart } from 'react-icons/ai';
+import { HiOutlineUserGroup } from "react-icons/hi";
 import { withRouter } from "react-router";
 
 class BottomNav extends React.Component {
@@ -47,7 +48,7 @@ class BottomNav extends React.Component {
 					<Link to="/" />
 				</Menu.Item>
 				<Menu.Item key="/connections">
-					<AiOutlineDotChart className="icon-standart" />
+					<HiOutlineUserGroup className="icon-standart" />
 					<Link to="/connections" />
         </Menu.Item>
         <Menu.Item className="flex-c" key="/to-do">

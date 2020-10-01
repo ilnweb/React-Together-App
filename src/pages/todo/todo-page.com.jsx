@@ -39,18 +39,19 @@ class ToDoPage extends React.Component {
 
 	render() {
 		const { connection } = this.props;
-		const lists = connection && connection.userData.list;
+    const lists = connection && connection.userData.list;
+    console.log(connection)
 		return (
 			<div className="todo-page">
-      {!connection && (
+        { !connection && (
         <LoadingScreen
-          img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_mobile_testing_reah_dmknjs.svg"
+          img="https://res.cloudinary.com/ilnphotography/image/upload/v1584784280/HomePage/undraw_email_campaign_qa8y_bycdui.svg"
           title="Connect with friends to create shared tasks!"
           inside
           button
           mainTitle="To-Do"
-        />
-      )}
+        />)
+        }
         <HeaderContainer>
           <div className='page-title'>Group To-Do lists</div>
 					<div className="flex-c-c mb-20 mt-5">
