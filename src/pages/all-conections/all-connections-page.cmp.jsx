@@ -9,6 +9,7 @@ import HeaderContainer from '../../components/header-container/header-container.
 import CardAllConnections from '../../components/card-all-connections/card-all-connections.cmp';
 import SearchModal from '../../components/search-modal/search-modal.cpm';
 import { MdArrowBack } from 'react-icons/md';
+import { withRouter } from "react-router";
 
 class AllConectionsPage extends React.Component {
 	deleteConnection = (connectionToDelete) => {
@@ -16,8 +17,9 @@ class AllConectionsPage extends React.Component {
 		deleteConnectionFromFirebase(connectionToDelete, currentUser.id);
 	};
 	dispatchConnection = async (connection) => {
-		const { setConnection, currentUser } = this.props;
-		await pullConnection(connection.connectionId, setConnection,currentUser.id);
+		const { setConnection, currentUser,history } = this.props;
+    await pullConnection(connection.connectionId, setConnection, currentUser.id);
+    history.push("/connections")
 	};
 	render() {
 		const { currentUser } = this.props;
@@ -54,4 +56,4 @@ const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllConectionsPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AllConectionsPage));
