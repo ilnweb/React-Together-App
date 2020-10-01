@@ -184,7 +184,8 @@ export const deleteNotigication = async (notification, currentUserId) => {
 export const pullConnection = async (connectionID, setConnection, userID) => {
 	const connections = firestore.doc(`connections/${connectionID}`);
 	const user = firestore.doc(`users/${userID}`);
-	const subConnections = firestore.collection(`connections/${connectionID}/userData/`);
+  const subConnections = firestore.collection(`connections/${connectionID}/userData/`);
+  console.log(userID);
 	if (userID) {
 		try {
 			await user.update({

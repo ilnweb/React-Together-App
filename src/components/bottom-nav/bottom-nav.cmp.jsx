@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
 import { MdPersonOutline, MdInsertInvitation } from 'react-icons/md';
 import { FaRegEdit } from 'react-icons/fa';
-import { AiOutlineDotChart } from 'react-icons/ai';
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { withRouter } from "react-router";
 

@@ -15,9 +15,9 @@ class AllConectionsPage extends React.Component {
 		const { currentUser } = this.props;
 		deleteConnectionFromFirebase(connectionToDelete, currentUser.id);
 	};
-	dispatchConnection = (connection) => {
-		const { setConnection } = this.props;
-		pullConnection(connection.connectionId, setConnection);
+	dispatchConnection = async (connection) => {
+		const { setConnection, currentUser } = this.props;
+		await pullConnection(connection.connectionId, setConnection,currentUser.id);
 	};
 	render() {
 		const { currentUser } = this.props;
