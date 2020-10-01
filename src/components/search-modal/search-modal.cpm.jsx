@@ -145,6 +145,33 @@ class SearchModal extends React.Component {
           footer={null}
         >
           <div className="conection-details">
+          <div className="search-user-list mt-10">
+          <p>Search friends</p>
+          <Input.Search
+            className="mb-20"
+            name="userSearch"
+            placeholder="Search user by name"
+            onSearch={this.handleSearch}
+            onChange={this.handleChange}
+            value={userSearch}
+            size="large"
+            enterButton
+          />
+          {userSearch &&
+            userList &&
+            userList.map(
+              (item) =>
+                item.displayName
+                  .toLowerCase()
+                  .includes(userSearch.toLowerCase()) && (
+                  <ItemUser
+                    key={item.id}
+                    item={item}
+                    handleClick={this.handleClick}
+                  />
+                )
+            )}
+        </div>
             <div className="search-user-list mb-20">
               Group Name
               {noConnectionName ? (
@@ -194,33 +221,7 @@ class SearchModal extends React.Component {
             </div>
           </div>
           <hr />
-          <div className="search-user-list mt-10">
-            <p>Search friends</p>
-            <Input.Search
-              className="mb-20"
-              name="userSearch"
-              placeholder="Search user by name"
-              onSearch={this.handleSearch}
-              onChange={this.handleChange}
-              value={userSearch}
-              size="large"
-              enterButton
-            />
-            {userSearch &&
-              userList &&
-              userList.map(
-                (item) =>
-                  item.displayName
-                    .toLowerCase()
-                    .includes(userSearch.toLowerCase()) && (
-                    <ItemUser
-                      key={item.id}
-                      item={item}
-                      handleClick={this.handleClick}
-                    />
-                  )
-              )}
-          </div>
+          
           <Button
             className="mt-30"
             shape="round"
