@@ -36,7 +36,7 @@
   }
 
   &-inc {
-    border-left: .4px solid white;
+    border-left: .5px solid white;
   }
 
   &-exp  span{
@@ -60,5 +60,6 @@
 
 .avatar-no-picture span {
   font-size: 3rem;
-
+  display: flex;
+  justify-content: center;
 }

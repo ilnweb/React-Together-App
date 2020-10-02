@@ -65,7 +65,10 @@ class App extends React.Component {
 							.catch(function(error) {
 								console.log('Error getting documents: ', error);
 							});
-					}
+          }
+          else {
+            this.setState({ isLoading: false });
+          }
 				});
 			} else {
 				this.setState({ currentUser: userAuth });
