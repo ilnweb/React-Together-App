@@ -12,7 +12,7 @@ const User = ({ currentUser, reverce, totalExp, totalInc, income, small }) => {
 					<Avatar className="avatar-picture" size={small ? 50 : 70} src={currentUser.photoURL} />
 				) : (
 					<Avatar className="avatar-no-picture" size={small ? 50 : 70}>
-						<span style={{paddingRight:"1px", paddingBottom:"2px"}}>{avatarLetter}</span>
+						<span style={{paddingRight:"1px"}}>{avatarLetter}</span>
 					</Avatar>
 				)}
 				<h1 className="user-name">{userName}</h1>

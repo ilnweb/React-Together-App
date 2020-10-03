@@ -6,7 +6,7 @@
   min-height: 100vh;
   z-index: 100;
   width: 100%;
-  background-color: rgb(247, 247, 247);
+  background-color: rgb(255, 255, 255);
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
@@ -22,6 +22,7 @@
   height: 100%;
   border-bottom-left-radius: 60px;
   border-bottom-right-radius: 60px;
+  box-shadow: 0 3px 30px rgba(51, 49, 49, 0.46);
 
 }
 

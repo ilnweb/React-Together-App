@@ -95,6 +95,19 @@ a {
   justify-content: center;
 }
 
+.button-defauth{
+  width: 100%;
+  padding: .7rem 3rem;
+  border-radius:100px;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+// .button-defauth>*{
+//   padding-bottom: 3px;
+// }
+
 .back-button{
   position: absolute;
   color: white;
