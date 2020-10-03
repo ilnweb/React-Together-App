@@ -9,10 +9,12 @@ import { setConnection } from '../../redux/connection/connection.actions';
 import { acceptInvitation, declineNotigication,deleteNotigication,pullConnection } from '../../firebase/firebase.config';
 import { MdArrowBack } from 'react-icons/md';
 import { Empty } from 'antd';
+import { withRouter } from "react-router";
 
 class NotificationsPage extends React.Component {
-	handleAccept = (connection) => {
-		acceptInvitation(connection, this.props.currentUser.id);
+	handleAccept = async (connection) => {
+    await acceptInvitation(connection, this.props.currentUser.id);
+    this.props.history.push("/connections")
 	};
 
 	handleDecline = (connection) => {
@@ -64,4 +66,4 @@ const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(NotificationsPage);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(NotificationsPage));

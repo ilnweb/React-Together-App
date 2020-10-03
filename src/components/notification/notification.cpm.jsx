@@ -30,11 +30,9 @@ const Notification = ({ item, handleAccept, handleDecline, handleDelete,handlePu
 								<Button className="m-10 mb-0" type="danger" size="small" onClick={() => handleDecline(item)}>
 									Decline
 								</Button>
-								<Link to="/all-connections">
 									<Button className="m-10 mb-0" type="primary" size="small" onClick={() => handleAccept(item)}>
 										Accept
 									</Button>
-								</Link>
 							</div>
 						)}
 					</div>
