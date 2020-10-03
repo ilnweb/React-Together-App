@@ -20,6 +20,7 @@ import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
 import { setConnection } from './redux/connection/connection.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import { setUserSpending } from './redux/spendings/spending.actions';
 import { createStructuredSelector } from 'reselect';
 import WithSpinner from './components/with-spinner/with-spinner.cmp';
 
@@ -48,7 +49,7 @@ class App extends React.Component {
 	unsubscribeFromAuth = null;
 
 	componentDidMount() {
-		const { setCurrentUser, setConnection } = this.props;
+		const { setCurrentUser, setConnection, setUserSpending } = this.props;
 		this.unsubscribeFromAuth = authFB.onAuthStateChanged(async (userAuth) => {
 			if (userAuth) {
 				const userRef = await createUserProfileDocument(userAuth);
@@ -57,7 +58,9 @@ class App extends React.Component {
 						id: snapShot.id,
 						photoURL: userAuth.photoURL,
 						...snapShot.data()
-					});
+          });
+          const items = snapShot.data().spendings;
+			    setUserSpending(items);
 					if (snapShot.data().lastConnection) {
 						const connectionID = snapShot.data().lastConnection;
 						pullConnection(connectionID, setConnection)
@@ -123,7 +126,8 @@ class App extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
 	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-	setConnection: (connection) => dispatch(setConnection(connection))
+  setConnection: (connection) => dispatch(setConnection(connection)),
+  setUserSpending: (list) => dispatch(setUserSpending(list))
 });
 
 const mapStateToProps = createStructuredSelector({

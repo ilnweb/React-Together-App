@@ -25,13 +25,13 @@ class SpendingPage extends React.Component {
 	};
 
 	componentDidMount() {
-		const { setUserSpending, currentUser } = this.props;
-		const collectionRef = firestore.doc(`users/${currentUser.id}`);
-		collectionRef.get().then((snapshot) => {
-			const items = snapshot.data().spendings;
-			setUserSpending(items);
-			this.setState({ isLoading: false });
-		});
+		// const { setUserSpending, currentUser } = this.props;
+		// const collectionRef = firestore.doc(`users/${currentUser.id}`);
+		// collectionRef.get().then((snapshot) => {
+		// 	const items = snapshot.data().spendings;
+		// 	setUserSpending(items);
+		// 	this.setState({ isLoading: false });
+		// });
   }
   
   dispatchItem = (readyItem) => {
@@ -55,7 +55,7 @@ class SpendingPage extends React.Component {
         <HeaderContainer>
         <div className='page-title'>Personal Spendings</div>
 					<UserWithSpinner
-						isLoading={this.state.isLoading}
+					
 						currentUser={currentUser}
 						totalExp={totalExp}
 						totalInc={totalInc}
@@ -66,7 +66,7 @@ class SpendingPage extends React.Component {
           <FormAdd dispatchItem={this.dispatchItem} showType/>
 				</AddSpending>
 				<div className="spending-list">
-          <TabSpendingsWithSpinner isLoading={this.state.isLoading} removeItem={removeItem}/>
+          <TabSpendingsWithSpinner removeItem={removeItem}/>
 				</div>
 			</div>
 		);
