@@ -4,15 +4,7 @@ import './style/css-util.css';
 import './style/sass-variable.scss';
 import './App.scss';
 import { Switch, Route, Redirect } from 'react-router-dom';
-// import SignInAndSignUpPage from './pages/signIn-signUp/signIn-signUp-page.cmp/signIn-signUp-page.cmp';
 import Header from './components/header/header.cmp';
-// import SpendingPage from './pages/Spendings/spendings-page.cmp';
-// import ConnectionsPage from './pages/conections/connections-page.cmp';
-// import CalendarPage from './pages/calendar/calendar-page.cmp';
-// import ToDoPage from './pages/todo/todo-page.com';
-// import NotificationsPage from './pages/notifications/notifications-page.cmp';
-// import AllConectionsPage from './pages/all-conections/all-connections-page.cmp';
-// import UserProfile from './pages/user-profile/user-profile.cmp';
 import BottomNav from './components/bottom-nav/bottom-nav.cmp';
 import LoadingScreen from './components/loading-screen/loading-screen.cmp';
 import { authFB, createUserProfileDocument, pullConnection } from './firebase/firebase.config';
@@ -32,8 +24,6 @@ const ToDoPage = lazy(() => import('./pages/todo/todo-page.com'));
 const NotificationsPage = lazy(() => import('./pages/notifications/notifications-page.cmp'));
 const AllConectionsPage = lazy(() => import('./pages/all-conections/all-connections-page.cmp'));
 const UserProfile = lazy(() => import('./pages/user-profile/user-profile.cmp'));
-
-
 const SpendingPageWithSpinner = WithSpinner(SpendingPage);
 const ConnectionsPageWithSpinner = WithSpinner(ConnectionsPage);
 
@@ -53,7 +43,7 @@ class App extends React.Component {
 		this.unsubscribeFromAuth = authFB.onAuthStateChanged(async (userAuth) => {
 			if (userAuth) {
 				const userRef = await createUserProfileDocument(userAuth);
-				userRef.get().then((snapShot) => {
+				userRef.onSnapshot((snapShot) => {
 					setCurrentUser({
 						id: snapShot.id,
 						photoURL: userAuth.photoURL,
