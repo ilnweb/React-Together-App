@@ -1,7 +1,7 @@
 import React from 'react';
 import './sign-up.scss';
 import { MdMailOutline,MdPersonOutline } from "react-icons/md";
-import { Button, Input, Form } from 'antd';
+import { Input, Form } from 'antd';
 import { authFB, createUserProfileDocument } from '../../firebase/firebase.config';
 
 class SignUp extends React.Component {

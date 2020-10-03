@@ -5,7 +5,7 @@ import {
   signInWithGoogle,
   signInWithFacebook,
 } from "../../firebase/firebase.config";
-import { Button, Input, Form } from "antd";
+import { Input, Form } from "antd";
 import { MdMailOutline } from "react-icons/md";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 
