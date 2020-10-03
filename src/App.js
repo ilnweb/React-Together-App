@@ -35,9 +35,7 @@ class App extends React.Component {
 			signin: true
 		};
 	}
-
 	unsubscribeFromAuth = null;
-
 	componentDidMount() {
 		const { setCurrentUser, setConnection, setUserSpending } = this.props;
 		this.unsubscribeFromAuth = authFB.onAuthStateChanged(async (userAuth) => {

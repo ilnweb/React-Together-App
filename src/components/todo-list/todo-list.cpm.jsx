@@ -37,7 +37,7 @@ class TodoList extends React.Component {
 		this.setState({
 			description: ''
 		});
-		addNotification(connection, currentUser, 'to-do', `added an item in ${list.name} list`);
+		addNotification(connection, currentUser, 'to-do', `added an item to ${list.name.toUpperCase()} list of`);
 	};
 
 	removeItem = async (itemRemove) => {
