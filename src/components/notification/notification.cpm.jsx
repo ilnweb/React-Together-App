@@ -19,9 +19,9 @@ const Notification = ({ item, handleAccept, handleDecline, handleDelete,handlePu
 								<strong>{item.displayName}</strong> {item.type ? (
 									item.notificationBody
 								) : (
-									'invited you to connection'
+									'invited you to '
 								)}{' '}
-								<strong>{item.connectionName}</strong>
+								<strong>{`${item.connectionName} `}</strong>group
 							</div>
 							<Moment className="date-color" fromNow date={item.createdAt && item.createdAt.toDate()} />
 						</div>
