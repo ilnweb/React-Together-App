@@ -53,7 +53,7 @@ class App extends React.Component {
 		this.unsubscribeFromAuth = authFB.onAuthStateChanged(async (userAuth) => {
 			if (userAuth) {
 				const userRef = await createUserProfileDocument(userAuth);
-				userRef.onSnapshot((snapShot) => {
+				userRef.get().then((snapShot) => {
 					setCurrentUser({
 						id: snapShot.id,
 						photoURL: userAuth.photoURL,
